@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import Acara from "../components/home/Acara";
+import Welcome from "../components/home/Welcome";
+import { getSectionsDetail, getMenusDetail } from "../utils/Api";
 
-function Home() {
+
+export default function Home() {
   return (
     <div>
-      <h1>This is home page.</h1>
+      <Welcome/>
+      <Acara/>
     </div>
   )
 }
 
-export default Home
