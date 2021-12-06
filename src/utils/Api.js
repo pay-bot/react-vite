@@ -11,10 +11,10 @@ export const getSectionsDetail = async (children) => {
   }
 };
 
-export const getMenusDetail = async () => {
+export const getMenuHeader = async () => {
   try {
     const data = await axios.get(
-      'http://127.0.0.1:8000/api/menus'
+      'http://127.0.0.1:8000/api/menus/header'
     );
     return data.data;
   } catch (error) {

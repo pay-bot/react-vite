@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getSectionsDetail, getMenusDetail } from "../../utils/Api";
+import { getSectionsDetail } from "../../utils/Api";
 
 export default function Welcome() {
     const [pageSections, setPageSections] = useState([]);
