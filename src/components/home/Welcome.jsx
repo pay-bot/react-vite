@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getSectionsDetail } from "../../utils/Api";
+import { getSectionsDetail, getText } from "../../utils/Api";
 
 export default function Welcome() {
     const [pageSections, setPageSections] = useState([]);
@@ -15,7 +15,24 @@ export default function Welcome() {
     useEffect(() => {
       getSectionDetail();
     }, []);
+
+  const contenId = 2;
+    const [texts, setTexts] = useState([]);
+    const getTexts = async () => {
+      const response = await getText();
+      const parsedData = await response;
+      const textsData = parsedData;
+      console.log('text', textsData);
+      setTexts(textsData);
+      return texts;
+    };
   
+    useEffect(() => {
+      getSectionDetail();
+      getTexts();
+    }, []);
+
+
     let content;
   
     if (pageSections) {
@@ -26,7 +43,7 @@ export default function Welcome() {
             case 0:
               const s = section?.components ?? section.components[0];
               if (s && s.length !== 0) {
-                // console.log("section content", s[0].heading);
+                console.log("section contetnt", s[0].heading);
   
                  content = s[0].heading
               }

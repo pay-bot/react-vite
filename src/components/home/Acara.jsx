@@ -7,7 +7,7 @@ export default function Acara() {
       const response = await getSectionsDetail(2);
       const parsedData = await response;
       const sectionsData = parsedData.pages;
-      console.log('re1', sectionsData);
+      // console.log('re1', sectionsData);
       setPageSections(sectionsData);
       return pageSections;
     };
@@ -26,7 +26,7 @@ export default function Acara() {
             case 1:
               const s = section?.components ?? section.components[0];
               if (s && s.length !== 0) {
-                console.log("section content", s[0].heading);
+                // console.log("section content", s[0].heading);
   
                  content = s[0].heading
               }

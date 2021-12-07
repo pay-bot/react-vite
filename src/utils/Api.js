@@ -21,3 +21,25 @@ export const getMenuHeader = async () => {
     return [];
   }
 };
+
+export const getText = async () => {
+  try {
+    const data = await axios.get(
+      'http://127.0.0.1:8000/api/texts'
+    );
+    return data.data;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const getTheme = async () => {
+  try {
+    const data = await axios.get(
+      'http://127.0.0.1:8000/api/themes'
+    );
+    return data.data;
+  } catch (error) {
+    return [];
+  }
+};

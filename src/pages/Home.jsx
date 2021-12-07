@@ -12,7 +12,7 @@ export default function Home() {
     const response = await getSectionsDetail(2);
     const parsedData = await response;
     const sectionsData = parsedData.pages.sections;
-    // console.log('re1hom', sectionsData);
+    console.log('re1hom', sectionsData);
     setPageSections(sectionsData);
     return pageSections;
   };
@@ -25,22 +25,16 @@ export default function Home() {
   return (
     <div className="">
 {sortedCols.map((data,i) => {
-  if(data.name === data.name) {
+  if(data.id === 6) {
     return(
 
-    <div className="" key={i}>
-
-{data.name}
-    </div>
+    <Welcome />
     )
   }
-  if(data.name === data.name) {
+  if(data.id === 7) {
     return(
 
-    <div className="" key={i}>
-
-{data.name}
-    </div>
+    <Acara />
     )
   }
   
