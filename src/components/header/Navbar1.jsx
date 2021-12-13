@@ -81,12 +81,17 @@ function Navbar1() {
     let head = header;
     if (head && head.length !== 0) {
       head.forEach((data, i) => {
+        // console.log('iniii' , data)
         switch (data.parent_id) {
           case 3:
             const s = data ?? data;
             if (s && s.length !== 0) {
-              console.log(s)
-              career = s 
+              career.push({
+                name: s.name
+              });
+
+
+                // console.log('iniiu', career)
             }
             break;
           default:
@@ -101,25 +106,37 @@ function Navbar1() {
     <div className="fixed left-0 right-0 top-0 h-16 shadow-md bg-gray-900">
       <nav className="flex items-center container mx-auto h-full justify-between">
         <img src={logo} alt="" className="w-10 h-10" />
-        <div>
+        <div className="group  inline-block relative w-full">
           {sortedHeader.map((data, i) => {
-            if (i === 1) {
+            if (i === 0) {
               console.log(data.id)
               return (
                 <>
-                {/* <ul className="flex items-center space-x-10 text-sm">
+                <ul className="flex  items-center space-x-10 text-sm block ">
 
-                  <li className="flex group inline-block relative"><Link to="/" className="text-gray-400 hover:text-gray-100">{data.name}</Link>
+                  <li className="flex block  "><Link to="/" className="text-gray-400 hover:text-gray-100">{data.name}</Link>
 
 
                   </li>
-                </ul> */}
+                </ul>
                 
                {/* <p className="text-white"> {career}</p> */}
-               <p className="text-white">{career.push(career.name)}</p>
+               <div className="">
+               {career.map((data, i) => (
+                 <div className="relative w-full  bg-gray-200">
+                   <div className=" hidden group-hover:block w-full">
+
+                   <p className=" rounded-t  hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">{data.name}</p>
+                   </div>
+                 </div>
+
+               ))}
+               </div>
                 </>
               )
             }
+
+            
             
             
 
@@ -150,7 +167,13 @@ function Navbar1() {
                     href="#"
                   >One</a
                   >
+                  <a
+                    class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                    href="#"
+                  >One</a
+                  >
                 </li>
+                
 
               </ul>
             </div>
