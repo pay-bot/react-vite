@@ -6,8 +6,8 @@ export default function Welcome() {
     const getSectionDetail = async () => {
       const response = await getSectionsDetail(2);
       const parsedData = await response;
-      const sectionsData = parsedData.pages;
-    //   console.log('re1', sectionsData);
+      const sectionsData = parsedData.pages.sections;
+      console.log('re1', sectionsData);
       setPageSections(sectionsData);
       return pageSections;
     };
@@ -36,21 +36,20 @@ export default function Welcome() {
     let content;
   
     if (pageSections) {
-      let sec = pageSections?.sections;
+      let sec = pageSections;
       if (sec && sec.length !== 0) {
-        sec.forEach((section, i) => {
-          switch (i) {
-            case 0:
-              const s = section?.components ?? section.components[0];
-              if (s && s.length !== 0) {
-                console.log("section contetnt", s[0].heading);
-  
-                 content = s[0].heading
+          sec[0].components.forEach((section, i) => {
+            switch (i) {
+                case 0:
+                  if (section && section.length !== 0) {
+                    console.log("section contetnt", section);
+      
+                    //  content = s[0].heading
+                  }
+                  break;
+                default:
+                  break;
               }
-              break;
-            default:
-              break;
-          }
         });
       }
     }
