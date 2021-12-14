@@ -43,3 +43,14 @@ export const getTheme = async () => {
     return [];
   }
 };
+
+export const getLocation = async () => {
+  try {
+    const data = await axios.get(
+      'http://127.0.0.1:8000/api/locations'
+    );
+    return data.data;
+  } catch (error) {
+    return [];
+  }
+};

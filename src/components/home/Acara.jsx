@@ -41,7 +41,7 @@ export default function Acara() {
   
     return (
       <div>
-        {content}
+        {/* {content} */}
       </div>
     )
   }
