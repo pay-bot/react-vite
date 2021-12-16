@@ -108,19 +108,49 @@ function Navbar1() {
         <img src={logo} alt="" className="w-10 h-10" />
         <div className="flex justify-center gap-x-10 w-full">
           {sortedHeader.map((data, i) => {
-            if (data) {
+            if (data.parent_id === 0) {
               console.log(data.id)
               return (
                 <>
                 <ul className=" text-sm block ">
 
                   <li className="w-full "><Link to="/" className="text-gray-400 hover:text-gray-100 w-full">{data.name}</Link>
-
-
                   </li>
+                  
+                  
                 </ul>
                 
-               {/* <p className="text-white"> {career}</p> */}
+                </>
+              )
+            }
+              if (data.id = data.parent_id) {
+                console.log('child', data.name)
+                return (
+                  <>
+                  <ul className=" text-sm block ">
+  
+                    <li className="w-full "><Link to="/" className="text-gray-400 hover:text-gray-100 w-full">{data.name}</Link>
+                    </li>
+                    
+                    
+                  </ul>
+                  
+                  </>
+                )
+              }
+            })}
+        </div>
+
+      </nav>
+    </div>
+  );
+}
+
+export default Navbar1;
+
+
+
+{/* <p className="text-white"> {career}</p> */}
                {/* <div className="">
                {career.map((data, i) => (
                  <div className="relative w-full  bg-gray-200">
@@ -132,21 +162,3 @@ function Navbar1() {
 
                ))}
                </div> */}
-                </>
-              )
-            }
-
-            
-            
-            
-
-
-          })}
-        </div>
-
-      </nav>
-    </div>
-  );
-}
-
-export default Navbar1;
