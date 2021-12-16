@@ -104,24 +104,24 @@ function Navbar1() {
   
   return (
     <div className="fixed left-0 right-0 top-0 h-16 shadow-md bg-gray-900">
-      <nav className="flex items-center container mx-auto h-full justify-between">
+      <nav className="flex items-center container mx-auto h-full ">
         <img src={logo} alt="" className="w-10 h-10" />
-        <div className="group  inline-block relative w-full">
+        <div className="flex justify-center gap-x-10 w-full">
           {sortedHeader.map((data, i) => {
-            if (i === 0) {
+            if (data) {
               console.log(data.id)
               return (
                 <>
-                <ul className="flex  items-center space-x-10 text-sm block ">
+                <ul className=" text-sm block ">
 
-                  <li className="flex block  "><Link to="/" className="text-gray-400 hover:text-gray-100">{data.name}</Link>
+                  <li className="w-full "><Link to="/" className="text-gray-400 hover:text-gray-100 w-full">{data.name}</Link>
 
 
                   </li>
                 </ul>
                 
                {/* <p className="text-white"> {career}</p> */}
-               <div className="">
+               {/* <div className="">
                {career.map((data, i) => (
                  <div className="relative w-full  bg-gray-200">
                    <div className=" hidden group-hover:block w-full">
@@ -131,7 +131,7 @@ function Navbar1() {
                  </div>
 
                ))}
-               </div>
+               </div> */}
                 </>
               )
             }
@@ -143,43 +143,7 @@ function Navbar1() {
 
           })}
         </div>
-        <div>
-          <div class="p-20">
-            <div class="group inline-block relative">
-              <button
-                class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
-              >
-                <span class="mr-1">Dropdown</span>
-                <svg
-                  class="fill-current h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                  />
-                </svg>
-              </button>
-              <ul class="absolute hidden text-gray-700 pt-1 group-hover:block">
-                <li class="">
-                  <a
-                    class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                    href="#"
-                  >One</a
-                  >
-                  <a
-                    class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                    href="#"
-                  >One</a
-                  >
-                </li>
-                
 
-              </ul>
-            </div>
-          </div>
-          <Button text="Login" bg="bg-gradient-to-r from-purple-500 to-blue-500" />
-        </div>
       </nav>
     </div>
   );
