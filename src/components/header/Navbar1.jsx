@@ -44,11 +44,24 @@ function Navbar1() {
     return header;
   };
   const sortedHeader = _.sortBy(header, "list_order");
+  const sortedHeaderChild = _.sortBy(header, "list_order");
 
   useEffect(() => {
     getHeader();
     getSectionDetail();
   }, []);
+
+  if (header) {
+    let sec = header;
+    if (sec && sec.length !== 0) {
+        sec.forEach((section, i) => {
+          sortedHeaderChild.push({
+            name: section.name,
+            location_id : section.location_id
+          });
+      });
+    }
+  }
 
   let logo;
 
@@ -106,39 +119,33 @@ function Navbar1() {
     <div className="fixed left-0 right-0 top-0 h-16 shadow-md bg-gray-900">
       <nav className="flex items-center container mx-auto h-full ">
         <img src={logo} alt="" className="w-10 h-10" />
-        <div className="flex justify-center gap-x-10 w-full">
-          {sortedHeader.map((data, i) => {
-            if (data.parent_id === 0) {
-              console.log(data.id)
-              return (
+        <div className=" justify-center flex gap-x-10 w-full">
+          {sortedHeader.map((data,i) => 
                 <>
-                <ul className=" text-sm block ">
+                <ul className=" flex flex-wrap p-1 md:p-2 sm:bg-gray-300 sm:rounded-full text-sm md:text-base">
 
-                  <li className="w-full "><Link to="/" className="text-gray-400 hover:text-gray-100 w-full">{data.name}</Link>
-                  </li>
-                  
-                  
-                </ul>
-                
-                </>
-              )
-            }
-              if (data.id = data.parent_id) {
-                console.log('child', data.name)
-                return (
-                  <>
-                  <ul className=" text-sm block ">
-  
-                    <li className="w-full "><Link to="/" className="text-gray-400 hover:text-gray-100 w-full">{data.name}</Link>
+                  <li className="relative mx-1 px-1 py-2 group bg-gray-300 rounded-full mb-1 md:mb-0 "><Link to="/" className="font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800">{data.parent_id === 0 ? data.name : ''}</Link>
+                {sortedHeaderChild.map((child,i) =>{
+              if (data.id === child.parent_id) {
+                return(
+                  <ul className="absolute left-0 top-0 mt-10 p-2 rounded-lg shadow-lg bg-white z-10 hidden group-hover:block">
+                    <li className="p-1 whitespace-no-wrap rounded-full text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-100">
+                    <Link to="/" className="font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800">
+{child.name}
+                    </Link>
                     </li>
-                    
-                    
                   </ul>
-                  
-                  </>
                 )
               }
+                
             })}
+                  </li>
+                </ul>
+                
+               
+                </>
+                
+          )}
         </div>
 
       </nav>
@@ -147,8 +154,6 @@ function Navbar1() {
 }
 
 export default Navbar1;
-
-
 
 {/* <p className="text-white"> {career}</p> */}
                {/* <div className="">
