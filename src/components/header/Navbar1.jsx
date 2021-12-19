@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getSectionsDetail, getMenuHeader } from "../../utils/Api";
+import { getSectionsDetail, getMenuHeader, getTheme } from "../../utils/Api";
 import _ from "lodash";
 
 
@@ -28,40 +28,85 @@ function Navbar1() {
     const response = await getSectionsDetail(1);
     const parsedData = await response;
     const sectionsData = parsedData.pages.sections;
-    console.log('headerlogo', sectionsData);
+    // console.log('headerlogo', sectionsData);
 
     setPageSections(sectionsData);
     return pageSections;
+  };
+
+
+  const [theme, setTheme] = useState([]);
+  const getThemeDetail = async () => {
+    const response = await getTheme();
+    const parsedData = await response;
+    const themeData = parsedData.themes;
+    // console.log('theme', themeData);
+    setTheme(themeData);
+    return theme;
   };
 
   const [header, setHeader] = useState([]);
   const getHeader = async () => {
     const response = await getMenuHeader();
     const parsedData = await response;
-    console.log('navhom', parsedData);
+    // console.log('navhom', parsedData);
     const HeaderData = parsedData;
     setHeader(HeaderData);
     return header;
   };
   const sortedHeader = _.sortBy(header, "list_order");
-  const sortedHeaderChild = _.sortBy(header, "list_order");
-
+  
   useEffect(() => {
     getHeader();
+    getThemeDetail();
     getSectionDetail();
   }, []);
 
+// Menu Header Fetching
+
+  const sortedHeaderChild = _.sortBy(header, "list_order");
+  
   if (header) {
     let sec = header;
     if (sec && sec.length !== 0) {
         sec.forEach((section, i) => {
           sortedHeaderChild.push({
             name: section.name,
-            location_id : section.location_id
           });
       });
     }
   }
+
+  let 
+  bgPage,
+  headerStyle,
+  bgHead,
+  txtcolorprmHead,
+  txtcolorscdHead,
+  fontHead,
+  alignHead
+  
+
+  if (theme) {
+    let tema = theme;
+    if (tema && tema.length !== 0) {
+      tema.forEach((theme, i) => {
+       
+            const t = theme ?? theme;
+            if (t && t.length !== 0) {
+              bgPage = t.bgroundPage
+              headerStyle = t.header
+              bgHead = t.bgroundHeader
+              txtcolorprmHead = t.txtcolorprmHeader
+              txtcolorscdHead = t.txtcolorscdHeader
+              fontHead = t.fontHeader
+              alignHead = t.alignHeader
+        }
+      });
+    }
+  }
+
+  // logo fetching
 
   let logo;
 
@@ -87,36 +132,11 @@ function Navbar1() {
       });
     }
   }
-
-
-  let career = []
-  if (header) {
-    let head = header;
-    if (head && head.length !== 0) {
-      head.forEach((data, i) => {
-        // console.log('iniii' , data)
-        switch (data.parent_id) {
-          case 3:
-            const s = data ?? data;
-            if (s && s.length !== 0) {
-              career.push({
-                name: s.name
-              });
-
-
-                // console.log('iniiu', career)
-            }
-            break;
-          default:
-            break;
-        }
-      });
-    }
-  }
-
+ const bg = bgHead
   
   return (
-    <div className="fixed left-0 right-0 top-0 h-16 shadow-md bg-gray-900">
+    
+    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  md:${bg} bg-red-400 `}>{bgHead}
       <nav className="flex items-center container mx-auto h-full ">
         <img src={logo} alt="" className="w-10 h-10" />
         <div className=" justify-center flex gap-x-10 w-full">

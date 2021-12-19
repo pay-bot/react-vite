@@ -2,6 +2,7 @@
   "name": "swapper",
   "version": "0.0.0",
   "scripts": {
+    "build-css": "npx tailwindcss-cli@latest build -i ./src/global.css -o ./public/styles.css",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"

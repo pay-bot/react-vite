@@ -70,8 +70,9 @@ export default function Welcome() {
       if (sec && sec.length !== 0) {
           sec[0].components.forEach((section, i) => {
             content.push({
-              heading: section.heading,
-              location_id : section.location_id
+        heading: section.heading,
+        location_id : section.location_id
+        
             });
         });
       }
