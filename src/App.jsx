@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import './static/css/global.css'
+import './static/css/tailwind.css'
+
 // import '../public/styles.css'
 
 

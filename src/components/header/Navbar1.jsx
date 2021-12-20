@@ -136,7 +136,7 @@ function Navbar1() {
   
   return (
     
-    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  md:${bg} bg-red-400 `}>{bgHead}
+    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  ${bg}`}>
       <nav className="flex items-center container mx-auto h-full ">
         <img src={logo} alt="" className="w-10 h-10" />
         <div className=" justify-center flex gap-x-10 w-full">
