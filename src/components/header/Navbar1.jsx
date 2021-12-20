@@ -132,38 +132,46 @@ function Navbar1() {
       });
     }
   }
- const bg = bgHead
   
   return (
     
-    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  ${bg}`}>
+    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  ${bgHead}`}>
       <nav className="flex items-center container mx-auto h-full ">
         <img src={logo} alt="" className="w-10 h-10" />
-        <div className=" justify-center flex gap-x-10 w-full">
+        <div className={`${alignHead} flex w-full`} >
           {sortedHeader.map((data,i) => 
-                <>
-                <ul className=" flex flex-wrap p-1 md:p-2 sm:bg-gray-300 sm:rounded-full text-sm md:text-base">
+          {
+            if(data.parent_id === 0)
+            return(
+<div className="inline-flex">
+                <ul className=" flex flex-wrap p-1 md:p-2   text-sm md:text-base">
 
-                  <li className="relative mx-1 px-1 py-2 group bg-gray-300 rounded-full mb-1 md:mb-0 "><Link to="/" className="font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800">{data.parent_id === 0 ? data.name : ''}</Link>
+                  <li className={`w-full relative mx-1 px-1 py- group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-2 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
+                  <ul className={`absolute bg-white left-0 top-0 mt-10 px-2 py-3  shadow-lg  z-10 hidden group-hover:block`}>
                 {sortedHeaderChild.map((child,i) =>{
               if (data.id === child.parent_id) {
                 return(
-                  <ul className="absolute left-0 top-0 mt-10 p-2 rounded-lg shadow-lg bg-white z-10 hidden group-hover:block">
-                    <li className="p-1 whitespace-no-wrap rounded-full text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-100">
+                  <>
+                  {/* <svg class="block fill-current text-white w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg> */}
+                    <li className={`w-80 py-4 px-2 my-1 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-200  ${bgHead}`}>
                     <Link to="/" className="font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800">
 {child.name}
                     </Link>
                     </li>
-                  </ul>
+                    </>
                 )
               }
                 
             })}
+                  </ul>
                   </li>
                 </ul>
                 
                
-                </>
+                </div>
+            )
+          }
+                
                 
           )}
         </div>

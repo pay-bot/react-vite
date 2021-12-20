@@ -64,7 +64,6 @@ export default function Welcome() {
     // }
     let content = []
 
-
     if (pageSections) {
       let sec = pageSections;
       if (sec && sec.length !== 0) {
