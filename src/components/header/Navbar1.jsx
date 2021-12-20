@@ -25,10 +25,10 @@ function Button({ text, bg, padding }) {
 function Navbar1() {
   const [pageSections, setPageSections] = useState([]);
   const getSectionDetail = async () => {
-    const response = await getSectionsDetail(1);
+    const response = await getSectionsDetail(3);
     const parsedData = await response;
     const sectionsData = parsedData.pages.sections;
-    // console.log('headerlogo', sectionsData);
+    console.log('headerlogo', sectionsData);
 
     setPageSections(sectionsData);
     return pageSections;
@@ -115,11 +115,11 @@ function Navbar1() {
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
-          case 1:
+          case 0:
             const s = section?.components ?? section.components[0];
             if (s && s.length !== 0) {
               s[0].photos?.map((data, i) => {
-                // console.log("section content", data.url);
+                console.log("section content", data.url);
                 logo = data.url
               })
 
@@ -137,23 +137,22 @@ function Navbar1() {
     
     <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  ${bgHead}`}>
       <nav className="flex items-center container mx-auto h-full ">
-        <img src={logo} alt="" className="w-10 h-10" />
+        {logo ? (<img src={logo} alt="" className="w-10 h-10" />) : null }
         <div className={`${alignHead} flex w-full`} >
           {sortedHeader.map((data,i) => 
           {
             if(data.parent_id === 0)
             return(
-<div className="inline-flex">
-                <ul className=" flex flex-wrap p-1 md:p-2   text-sm md:text-base">
+                <ul className=" flex flex-wrap py-10 text-sm h-10 md:text-base">
 
-                  <li className={`w-full relative mx-1 px-1 py- group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-2 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
-                  <ul className={`absolute bg-white left-0 top-0 mt-10 px-2 py-3  shadow-lg  z-10 hidden group-hover:block`}>
+                  <li className={`w-full p-2 relative mx-1 h-10 group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-2 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
+                  <ul className={`absolute bg-white left-0 top-0 mt-10   shadow-lg  z-10 hidden group-hover:block`}>
                 {sortedHeaderChild.map((child,i) =>{
               if (data.id === child.parent_id) {
                 return(
                   <>
                   {/* <svg class="block fill-current text-white w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg> */}
-                    <li className={`w-80 py-4 px-2 my-1 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-200  ${bgHead}`}>
+                    <li className={`w-80 py-4 px-2 m-1 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-200  ${bgHead}`}>
                     <Link to="/" className="font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800">
 {child.name}
                     </Link>
@@ -168,7 +167,6 @@ function Navbar1() {
                 </ul>
                 
                
-                </div>
             )
           }
                 
