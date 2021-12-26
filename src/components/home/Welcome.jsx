@@ -67,13 +67,13 @@ export default function Welcome() {
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
-          case 0:
+          case 1:
             const s = section?.components ?? section.components[0];
             if (s && s.length !== 0) {
-              console.log("ini", s[1]);
-              caption = s[1].caption;
-              title = s[1].heading;
-              content = s[1].content;
+              console.log("ini", s[0]);
+              caption = s[0].caption;
+              title = s[0].heading;
+              content = s[0].content;
             }
             break;
           default:

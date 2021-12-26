@@ -67,26 +67,26 @@ export default function Home() {
 
   let caption, title, content;
 
-  if (pageSections) {
-    let sec = pageSections;
-    if (sec && sec.length !== 0) {
-      sec.forEach((section, i) => {
-        switch (i) {
-          case 0:
-            const s = section?.components ?? section.components[0];
-            if (s && s.length !== 0) {
-              console.log('ini' , s[1])
-             caption = s[1].caption
-              title = s[1].heading
-               content = s[1].content
-            }
-            break;
-          default:
-            break;
-        }
-      });
-    }
-  }
+  // if (pageSections) {
+  //   let sec = pageSections;
+  //   if (sec && sec.length !== 0) {
+  //     sec.forEach((section, i) => {
+  //       switch (i) {
+  //         case 0:
+  //           const s = section?.components ?? section.components[0];
+  //           if (s && s.length !== 0) {
+  //             console.log('ini' , s[1])
+  //            caption = s[1].caption
+  //             title = s[1].heading
+  //              content = s[1].content
+  //           }
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     });
+  //   }
+  // }
 
 
 
