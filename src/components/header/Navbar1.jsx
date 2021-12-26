@@ -145,7 +145,7 @@ function Navbar1() {
             return(
                 <ul className=" flex flex-wrap py-10 text-sm md:text-base">
 
-                  <li className={`w-full p-5 relative mx-1 group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-4 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
+                  <li className={`w-full p-5 relative mx-1 group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap ${txtcolorprmHead} hover:${txtcolorscdHead}  hover:border-b-4 border-red-300 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
                   <ul className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block nav-shad`}>
                 {sortedHeaderChild.map((child,i) =>{
               if (data.id === child.parent_id) {

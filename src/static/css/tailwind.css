@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .bg-inherit {
     background-color: inherit;
 }
@@ -1803,6 +1804,932 @@
 .text-rose-900 {
     color: rgb(136 19 55);
 }
+
+.hover\:text-inherit:hover { 
+    color: inherit;
+}
+
+.hover\:text-current:hover { 
+    color: currentColor;
+}
+
+.hover\:text-transparent:hover { 
+    color: transparent;
+}
+
+.hover\:text-black:hover { 
+    color: rgb(0 0 0);
+}
+
+.hover\:text-white:hover { 
+    color: rgb(255 255 255);
+}
+
+.hover\:text-slate-50:hover { 
+    color: rgb(248 250 252);
+}
+
+.hover\:text-slate-100:hover { 
+    color: rgb(241 245 249);
+}
+
+.hover\:text-slate-200:hover { 
+    color: rgb(226 232 240);
+}
+
+.hover\:text-slate-300:hover { 
+    color: rgb(203 213 225);
+}
+
+.hover\:text-slate-400:hover { 
+    color: rgb(148 163 184);
+}
+
+.hover\:text-slate-500:hover { 
+    color: rgb(100 116 139);
+}
+
+.hover\:text-slate-600:hover { 
+    color: rgb(71 85 105);
+}
+
+.hover\:text-slate-700:hover { 
+    color: rgb(51 65 85);
+}
+
+.hover\:text-slate-800:hover { 
+    color: rgb(30 41 59);
+}
+
+.hover\:text-slate-900:hover { 
+    color: rgb(15 23 42);
+}
+
+.hover\:text-gray-50:hover { 
+    color: rgb(249 250 251);
+}
+
+.hover\:text-gray-100:hover { 
+    color: rgb(243 244 246);
+}
+
+.hover\:text-gray-200:hover { 
+    color: rgb(229 231 235);
+}
+
+.hover\:text-gray-300:hover { 
+    color: rgb(209 213 219);
+}
+
+.hover\:text-gray-400:hover { 
+    color: rgb(156 163 175);
+}
+
+.hover\:text-gray-500:hover { 
+    color: rgb(107 114 128);
+}
+
+.hover\:text-gray-600:hover { 
+    color: rgb(75 85 99);
+}
+
+.hover\:text-gray-700:hover { 
+    color: rgb(55 65 81);
+}
+
+.hover\:text-gray-800:hover { 
+    color: rgb(31 41 55);
+}
+
+.hover\:text-gray-900:hover { 
+    color: rgb(17 24 39);
+}
+
+.hover\:text-zinc-50:hover { 
+    color: rgb(250 250 250);
+}
+
+.hover\:text-zinc-100:hover { 
+    color: rgb(244 244 245);
+}
+
+.hover\:text-zinc-200:hover { 
+    color: rgb(228 228 231);
+}
+
+.hover\:text-zinc-300:hover { 
+    color: rgb(212 212 216);
+}
+
+.hover\:text-zinc-400:hover { 
+    color: rgb(161 161 170);
+}
+
+.hover\:text-zinc-500:hover { 
+    color: rgb(113 113 122);
+}
+
+.hover\:text-zinc-600:hover { 
+    color: rgb(82 82 91);
+}
+
+.hover\:text-zinc-700:hover { 
+    color: rgb(63 63 70);
+}
+
+.hover\:text-zinc-800:hover { 
+    color: rgb(39 39 42);
+}
+
+.hover\:text-zinc-900:hover { 
+    color: rgb(24 24 27);
+}
+
+.hover\:text-neutral-50:hover { 
+    color: rgb(250 250 250);
+}
+
+.hover\:text-neutral-100:hover { 
+    color: rgb(245 245 245);
+}
+
+.hover\:text-neutral-200:hover { 
+    color: rgb(229 229 229);
+}
+
+.hover\:text-neutral-300:hover { 
+    color: rgb(212 212 212);
+}
+
+.hover\:text-neutral-400:hover { 
+    color: rgb(163 163 163);
+}
+
+.hover\:text-neutral-500:hover { 
+    color: rgb(115 115 115);
+}
+
+.hover\:text-neutral-600:hover { 
+    color: rgb(82 82 82);
+}
+
+.hover\:text-neutral-700:hover { 
+    color: rgb(64 64 64);
+}
+
+.hover\:text-neutral-800:hover { 
+    color: rgb(38 38 38);
+}
+
+.hover\:text-neutral-900:hover { 
+    color: rgb(23 23 23);
+}
+
+.hover\:text-stone-50:hover { 
+    color: rgb(250 250 249);
+}
+
+.hover\:text-stone-100:hover { 
+    color: rgb(245 245 244);
+}
+
+.hover\:text-stone-200:hover { 
+    color: rgb(231 229 228);
+}
+
+.hover\:text-stone-300:hover { 
+    color: rgb(214 211 209);
+}
+
+.hover\:text-stone-400:hover { 
+    color: rgb(168 162 158);
+}
+
+.hover\:text-stone-500:hover { 
+    color: rgb(120 113 108);
+}
+
+.hover\:text-stone-600:hover { 
+    color: rgb(87 83 78);
+}
+
+.hover\:text-stone-700:hover { 
+    color: rgb(68 64 60);
+}
+
+.hover\:text-stone-800:hover { 
+    color: rgb(41 37 36);
+}
+
+.hover\:text-stone-900:hover { 
+    color: rgb(28 25 23);
+}
+
+.hover\:text-red-50:hover { 
+    color: rgb(254 242 242);
+}
+
+.hover\:text-red-100:hover { 
+    color: rgb(254 226 226);
+}
+
+.hover\:text-red-200:hover { 
+    color: rgb(254 202 202);
+}
+
+.hover\:text-red-300:hover { 
+    color: rgb(252 165 165);
+}
+
+.hover\:text-red-400:hover { 
+    color: rgb(248 113 113);
+}
+
+.hover\:text-red-500:hover { 
+    color: rgb(239 68 68);
+}
+
+.hover\:text-red-600:hover { 
+    color: rgb(220 38 38);
+}
+
+.hover\:text-red-700:hover { 
+    color: rgb(185 28 28);
+}
+
+.hover\:text-red-800:hover { 
+    color: rgb(153 27 27);
+}
+
+.hover\:text-red-900:hover { 
+    color: rgb(127 29 29);
+}
+
+.hover\:text-orange-50:hover { 
+    color: rgb(255 247 237);
+}
+
+.hover\:text-orange-100:hover { 
+    color: rgb(255 237 213);
+}
+
+.hover\:text-orange-200:hover { 
+    color: rgb(254 215 170);
+}
+
+.hover\:text-orange-300:hover { 
+    color: rgb(253 186 116);
+}
+
+.hover\:text-orange-400:hover { 
+    color: rgb(251 146 60);
+}
+
+.hover\:text-orange-500:hover { 
+    color: rgb(249 115 22);
+}
+
+.hover\:text-orange-600:hover { 
+    color: rgb(234 88 12);
+}
+
+.hover\:text-orange-700:hover { 
+    color: rgb(194 65 12);
+}
+
+.hover\:text-orange-800:hover { 
+    color: rgb(154 52 18);
+}
+
+.hover\:text-orange-900:hover { 
+    color: rgb(124 45 18);
+}
+
+.hover\:text-amber-50:hover { 
+    color: rgb(255 251 235);
+}
+
+.hover\:text-amber-100:hover { 
+    color: rgb(254 243 199);
+}
+
+.hover\:text-amber-200:hover { 
+    color: rgb(253 230 138);
+}
+
+.hover\:text-amber-300:hover { 
+    color: rgb(252 211 77);
+}
+
+.hover\:text-amber-400:hover { 
+    color: rgb(251 191 36);
+}
+
+.hover\:text-amber-500:hover { 
+    color: rgb(245 158 11);
+}
+
+.hover\:text-amber-600:hover { 
+    color: rgb(217 119 6);
+}
+
+.hover\:text-amber-700:hover { 
+    color: rgb(180 83 9);
+}
+
+.hover\:text-amber-800:hover { 
+    color: rgb(146 64 14);
+}
+
+.hover\:text-amber-900:hover { 
+    color: rgb(120 53 15);
+}
+
+.hover\:text-yellow-50:hover { 
+    color: rgb(254 252 232);
+}
+
+.hover\:text-yellow-100:hover { 
+    color: rgb(254 249 195);
+}
+
+.hover\:text-yellow-200:hover { 
+    color: rgb(254 240 138);
+}
+
+.hover\:text-yellow-300:hover { 
+    color: rgb(253 224 71);
+}
+
+.hover\:text-yellow-400:hover { 
+    color: rgb(250 204 21);
+}
+
+.hover\:text-yellow-500:hover { 
+    color: rgb(234 179 8);
+}
+
+.hover\:text-yellow-600:hover { 
+    color: rgb(202 138 4);
+}
+
+.hover\:text-yellow-700:hover { 
+    color: rgb(161 98 7);
+}
+
+.hover\:text-yellow-800:hover { 
+    color: rgb(133 77 14);
+}
+
+.hover\:text-yellow-900:hover { 
+    color: rgb(113 63 18);
+}
+
+.hover\:text-lime-50:hover { 
+    color: rgb(247 254 231);
+}
+
+.hover\:text-lime-100:hover { 
+    color: rgb(236 252 203);
+}
+
+.hover\:text-lime-200:hover { 
+    color: rgb(217 249 157);
+}
+
+.hover\:text-lime-300:hover { 
+    color: rgb(190 242 100);
+}
+
+.hover\:text-lime-400:hover { 
+    color: rgb(163 230 53);
+}
+
+.hover\:text-lime-500:hover { 
+    color: rgb(132 204 22);
+}
+
+.hover\:text-lime-600:hover { 
+    color: rgb(101 163 13);
+}
+
+.hover\:text-lime-700:hover { 
+    color: rgb(77 124 15);
+}
+
+.hover\:text-lime-800:hover { 
+    color: rgb(63 98 18);
+}
+
+.hover\:text-lime-900:hover { 
+    color: rgb(54 83 20);
+}
+
+.hover\:text-green-50:hover { 
+    color: rgb(240 253 244);
+}
+
+.hover\:text-green-100:hover { 
+    color: rgb(220 252 231);
+}
+
+.hover\:text-green-200:hover { 
+    color: rgb(187 247 208);
+}
+
+.hover\:text-green-300:hover { 
+    color: rgb(134 239 172);
+}
+
+.hover\:text-green-400:hover { 
+    color: rgb(74 222 128);
+}
+
+.hover\:text-green-500:hover { 
+    color: rgb(34 197 94);
+}
+
+.hover\:text-green-600:hover { 
+    color: rgb(22 163 74);
+}
+
+.hover\:text-green-700:hover { 
+    color: rgb(21 128 61);
+}
+
+.hover\:text-green-800:hover { 
+    color: rgb(22 101 52);
+}
+
+.hover\:text-green-900:hover { 
+    color: rgb(20 83 45);
+}
+
+.hover\:text-emerald-50:hover { 
+    color: rgb(236 253 245);
+}
+
+.hover\:text-emerald-100:hover { 
+    color: rgb(209 250 229);
+}
+
+.hover\:text-emerald-200:hover { 
+    color: rgb(167 243 208);
+}
+
+.hover\:text-emerald-300:hover { 
+    color: rgb(110 231 183);
+}
+
+.hover\:text-emerald-400:hover { 
+    color: rgb(52 211 153);
+}
+
+.hover\:text-emerald-500:hover { 
+    color: rgb(16 185 129);
+}
+
+.hover\:text-emerald-600:hover { 
+    color: rgb(5 150 105);
+}
+
+.hover\:text-emerald-700:hover { 
+    color: rgb(4 120 87);
+}
+
+.hover\:text-emerald-800:hover { 
+    color: rgb(6 95 70);
+}
+
+.hover\:text-emerald-900:hover { 
+    color: rgb(6 78 59);
+}
+
+.hover\:text-teal-50:hover { 
+    color: rgb(240 253 250);
+}
+
+.hover\:text-teal-100:hover { 
+    color: rgb(204 251 241);
+}
+
+.hover\:text-teal-200:hover { 
+    color: rgb(153 246 228);
+}
+
+.hover\:text-teal-300:hover { 
+    color: rgb(94 234 212);
+}
+
+.hover\:text-teal-400:hover { 
+    color: rgb(45 212 191);
+}
+
+.hover\:text-teal-500:hover { 
+    color: rgb(20 184 166);
+}
+
+.hover\:text-teal-600:hover { 
+    color: rgb(13 148 136);
+}
+
+.hover\:text-teal-700:hover { 
+    color: rgb(15 118 110);
+}
+
+.hover\:text-teal-800:hover { 
+    color: rgb(17 94 89);
+}
+
+.hover\:text-teal-900:hover { 
+    color: rgb(19 78 74);
+}
+
+.hover\:text-cyan-50:hover { 
+    color: rgb(236 254 255);
+}
+
+.hover\:text-cyan-100:hover { 
+    color: rgb(207 250 254);
+}
+
+.hover\:text-cyan-200:hover { 
+    color: rgb(165 243 252);
+}
+
+.hover\:text-cyan-300:hover { 
+    color: rgb(103 232 249);
+}
+
+.hover\:text-cyan-400:hover { 
+    color: rgb(34 211 238);
+}
+
+.hover\:text-cyan-500:hover { 
+    color: rgb(6 182 212);
+}
+
+.hover\:text-cyan-600:hover { 
+    color: rgb(8 145 178);
+}
+
+.hover\:text-cyan-700:hover { 
+    color: rgb(14 116 144);
+}
+
+.hover\:text-cyan-800:hover { 
+    color: rgb(21 94 117);
+}
+
+.hover\:text-cyan-900:hover { 
+    color: rgb(22 78 99);
+}
+
+.hover\:text-sky-50:hover { 
+    color: rgb(240 249 255);
+}
+
+.hover\:text-sky-100:hover { 
+    color: rgb(224 242 254);
+}
+
+.hover\:text-sky-200:hover { 
+    color: rgb(186 230 253);
+}
+
+.hover\:text-sky-300:hover { 
+    color: rgb(125 211 252);
+}
+
+.hover\:text-sky-400:hover { 
+    color: rgb(56 189 248);
+}
+
+.hover\:text-sky-500:hover { 
+    color: rgb(14 165 233);
+}
+
+.hover\:text-sky-600:hover { 
+    color: rgb(2 132 199);
+}
+
+.hover\:text-sky-700:hover { 
+    color: rgb(3 105 161);
+}
+
+.hover\:text-sky-800:hover { 
+    color: rgb(7 89 133);
+}
+
+.hover\:text-sky-900:hover { 
+    color: rgb(12 74 110);
+}
+
+.hover\:text-blue-50:hover { 
+    color: rgb(239 246 255);
+}
+
+.hover\:text-blue-100:hover { 
+    color: rgb(219 234 254);
+}
+
+.hover\:text-blue-200:hover { 
+    color: rgb(191 219 254);
+}
+
+.hover\:text-blue-300:hover { 
+    color: rgb(147 197 253);
+}
+
+.hover\:text-blue-400:hover { 
+    color: rgb(96 165 250);
+}
+
+.hover\:text-blue-500:hover { 
+    color: rgb(59 130 246);
+}
+
+.hover\:text-blue-600:hover { 
+    color: rgb(37 99 235);
+}
+
+.hover\:text-blue-700:hover { 
+    color: rgb(29 78 216);
+}
+
+.hover\:text-blue-800:hover { 
+    color: rgb(30 64 175);
+}
+
+.hover\:text-blue-900:hover { 
+    color: rgb(30 58 138);
+}
+
+.hover\:text-indigo-50:hover { 
+    color: rgb(238 242 255);
+}
+
+.hover\:text-indigo-100:hover { 
+    color: rgb(224 231 255);
+}
+
+.hover\:text-indigo-200:hover { 
+    color: rgb(199 210 254);
+}
+
+.hover\:text-indigo-300:hover { 
+    color: rgb(165 180 252);
+}
+
+.hover\:text-indigo-400:hover { 
+    color: rgb(129 140 248);
+}
+
+.hover\:text-indigo-500:hover { 
+    color: rgb(99 102 241);
+}
+
+.hover\:text-indigo-600:hover { 
+    color: rgb(79 70 229);
+}
+
+.hover\:text-indigo-700:hover { 
+    color: rgb(67 56 202);
+}
+
+.hover\:text-indigo-800:hover { 
+    color: rgb(55 48 163);
+}
+
+.hover\:text-indigo-900:hover { 
+    color: rgb(49 46 129);
+}
+
+.hover\:text-violet-50:hover { 
+    color: rgb(245 243 255);
+}
+
+.hover\:text-violet-100:hover { 
+    color: rgb(237 233 254);
+}
+
+.hover\:text-violet-200:hover { 
+    color: rgb(221 214 254);
+}
+
+.hover\:text-violet-300:hover { 
+    color: rgb(196 181 253);
+}
+
+.hover\:text-violet-400:hover { 
+    color: rgb(167 139 250);
+}
+
+.hover\:text-violet-500:hover { 
+    color: rgb(139 92 246);
+}
+
+.hover\:text-violet-600:hover { 
+    color: rgb(124 58 237);
+}
+
+.hover\:text-violet-700:hover { 
+    color: rgb(109 40 217);
+}
+
+.hover\:text-violet-800:hover { 
+    color: rgb(91 33 182);
+}
+
+.hover\:text-violet-900:hover { 
+    color: rgb(76 29 149);
+}
+
+.hover\:text-purple-50:hover { 
+    color: rgb(250 245 255);
+}
+
+.hover\:text-purple-100:hover { 
+    color: rgb(243 232 255);
+}
+
+.hover\:text-purple-200:hover { 
+    color: rgb(233 213 255);
+}
+
+.hover\:text-purple-300:hover { 
+    color: rgb(216 180 254);
+}
+
+.hover\:text-purple-400:hover { 
+    color: rgb(192 132 252);
+}
+
+.hover\:text-purple-500:hover { 
+    color: rgb(168 85 247);
+}
+
+.hover\:text-purple-600:hover { 
+    color: rgb(147 51 234);
+}
+
+.hover\:text-purple-700:hover { 
+    color: rgb(126 34 206);
+}
+
+.hover\:text-purple-800:hover { 
+    color: rgb(107 33 168);
+}
+
+.hover\:text-purple-900:hover { 
+    color: rgb(88 28 135);
+}
+
+.hover\:text-fuchsia-50:hover { 
+    color: rgb(253 244 255);
+}
+
+.hover\:text-fuchsia-100:hover { 
+    color: rgb(250 232 255);
+}
+
+.hover\:text-fuchsia-200:hover { 
+    color: rgb(245 208 254);
+}
+
+.hover\:text-fuchsia-300:hover { 
+    color: rgb(240 171 252);
+}
+
+.hover\:text-fuchsia-400:hover { 
+    color: rgb(232 121 249);
+}
+
+.hover\:text-fuchsia-500:hover { 
+    color: rgb(217 70 239);
+}
+
+.hover\:text-fuchsia-600:hover { 
+    color: rgb(192 38 211);
+}
+
+.hover\:text-fuchsia-700:hover { 
+    color: rgb(162 28 175);
+}
+
+.hover\:text-fuchsia-800:hover { 
+    color: rgb(134 25 143);
+}
+
+.hover\:text-fuchsia-900:hover { 
+    color: rgb(112 26 117);
+}
+
+.hover\:text-pink-50:hover { 
+    color: rgb(253 242 248);
+}
+
+.hover\:text-pink-100:hover { 
+    color: rgb(252 231 243);
+}
+
+.hover\:text-pink-200:hover { 
+    color: rgb(251 207 232);
+}
+
+.hover\:text-pink-300:hover { 
+    color: rgb(249 168 212);
+}
+
+.hover\:text-pink-400:hover { 
+    color: rgb(244 114 182);
+}
+
+.hover\:text-pink-500:hover { 
+    color: rgb(236 72 153);
+}
+
+.hover\:text-pink-600:hover { 
+    color: rgb(219 39 119);
+}
+
+.hover\:text-pink-700:hover { 
+    color: rgb(190 24 93);
+}
+
+.hover\:text-pink-800:hover { 
+    color: rgb(157 23 77);
+}
+
+.hover\:text-pink-900:hover { 
+    color: rgb(131 24 67);
+}
+
+.hover\:text-rose-50:hover { 
+    color: rgb(255 241 242);
+}
+
+.hover\:text-rose-100:hover { 
+    color: rgb(255 228 230);
+}
+
+.hover\:text-rose-200:hover { 
+    color: rgb(254 205 211);
+}
+
+.hover\:text-rose-300:hover { 
+    color: rgb(253 164 175);
+}
+
+.hover\:text-rose-400:hover { 
+    color: rgb(251 113 133);
+}
+
+.hover\:text-rose-500:hover { 
+    color: rgb(244 63 94);
+}
+
+.hover\:text-rose-600:hover { 
+    color: rgb(225 29 72);
+}
+
+.hover\:text-rose-700:hover { 
+    color: rgb(190 18 60);
+}
+
+.hover\:text-rose-800:hover { 
+    color: rgb(159 18 57);
+}
+
+.hover\:text-rose-900:hover { 
+    color: rgb(136 19 55);
+}
+
+.hover\:justify-start	    :hover { 
+    
+    justify-content: flex-start;
+}
+.hover\:justify-end	    :hover { 
+    
+    justify-content: flex-end;
+}
+.hover\:justify-center	    :hover { 
+    
+    justify-content: center;
+}
+.hover\:justify-between    :hover { 
+    
+    justify-content: space-between;
+}
+.hover\:justify-around	    :hover { 
+    
+    justify-content: space-around;
+}
+.hover\:justify-evenly	    :hover { 
+    
+    justify-content: space-evenly;
+}
+
 
 .justify-start	     {
     
