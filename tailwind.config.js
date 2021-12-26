@@ -4,7 +4,9 @@ module.exports = {
   content: [    "./index.html",    "./src/**/*.{vue,js,ts,jsx,tsx}",  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {        '3xl': '2px 2px 2px 2px rgba(0, 0, 0, 0.3)',      }
+    },
   },
   variants: {
     extend: {},

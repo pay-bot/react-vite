@@ -3,7 +3,7 @@ import axios from "axios"
 export const getSectionsDetail = async (children) => {
   try {
     const data = await axios.get(
-      `http://127.0.0.1:8000/api/pages/${children}/sections`
+      `https://yap-cms.herokuapp.com/api/pages/${children}/sections`
     );
     return data.data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const getSectionsDetail = async (children) => {
 export const getMenuHeader = async () => {
   try {
     const data = await axios.get(
-      'http://127.0.0.1:8000/api/menus/header'
+      'https://yap-cms.herokuapp.com/api/menus/header'
     );
     return data.data;
   } catch (error) {
@@ -25,7 +25,7 @@ export const getMenuHeader = async () => {
 export const getText = async () => {
   try {
     const data = await axios.get(
-      'http://127.0.0.1:8000/api/texts'
+      'https://yap-cms.herokuapp.com/api/texts'
     );
     return data.data;
   } catch (error) {
@@ -36,7 +36,7 @@ export const getText = async () => {
 export const getTheme = async () => {
   try {
     const data = await axios.get(
-      'http://127.0.0.1:8000/api/themes'
+      'https://yap-cms.herokuapp.com/api/themes'
     );
     return data.data;
   } catch (error) {
@@ -47,7 +47,7 @@ export const getTheme = async () => {
 export const getLocation = async () => {
   try {
     const data = await axios.get(
-      'http://127.0.0.1:8000/api/locations'
+      'https://yap-cms.herokuapp.com/api/locations'
     );
     return data.data;
   } catch (error) {

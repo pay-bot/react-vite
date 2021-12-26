@@ -25,7 +25,7 @@ function Button({ text, bg, padding }) {
 function Navbar1() {
   const [pageSections, setPageSections] = useState([]);
   const getSectionDetail = async () => {
-    const response = await getSectionsDetail(3);
+    const response = await getSectionsDetail(1);
     const parsedData = await response;
     const sectionsData = parsedData.pages.sections;
     console.log('headerlogo', sectionsData);
@@ -49,7 +49,7 @@ function Navbar1() {
   const getHeader = async () => {
     const response = await getMenuHeader();
     const parsedData = await response;
-    // console.log('navhom', parsedData);
+    console.log('navhom', parsedData);
     const HeaderData = parsedData;
     setHeader(HeaderData);
     return header;
@@ -135,7 +135,7 @@ function Navbar1() {
   
   return (
     
-    <div className={`fixed left-0 right-0 top-0 h-16 shadow-md  ${bgHead}`}>
+    <div className={` px-16 h-20 shadow-md  ${bgHead}`}>
       <nav className="flex items-center container mx-auto h-full ">
         {logo ? (<img src={logo} alt="" className="w-10 h-10" />) : null }
         <div className={`${alignHead} flex w-full`} >
@@ -143,10 +143,10 @@ function Navbar1() {
           {
             if(data.parent_id === 0)
             return(
-                <ul className=" flex flex-wrap py-10 text-sm h-10 md:text-base">
+                <ul className=" flex flex-wrap py-10 text-sm md:text-base">
 
-                  <li className={`w-full p-2 relative mx-1 h-10 group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-2 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
-                  <ul className={`absolute bg-white left-0 top-0 mt-10   shadow-lg  z-10 hidden group-hover:block`}>
+                  <li className={`w-full p-5 relative mx-1 group`}  ><Link to="/" className={`font-semibold whitespace-no-wrap text-gray-600 hover:text-blue-800 hover:border-b-4 py-2`} >{data.parent_id === 0 ? data.name : ''}</Link>
+                  <ul className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block nav-shad`}>
                 {sortedHeaderChild.map((child,i) =>{
               if (data.id === child.parent_id) {
                 return(

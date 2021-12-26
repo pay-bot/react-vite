@@ -3,5 +3,19 @@
 @tailwind utilities;
 
 .group:hover .group-hover\:block {
-    display: block !important;
-  }
+  display: block !important;
+}
+
+.nav-shad {
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.bggrad {
+  background: rgb(8, 188, 214);
+  background: linear-gradient(
+    90deg,
+    rgba(8, 188, 214, 1) 0%,
+    rgba(16, 224, 236, 1) 0%,
+    rgba(116, 242, 250, 0) 93%
+  );
+}
