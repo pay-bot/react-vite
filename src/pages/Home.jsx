@@ -93,7 +93,7 @@ export default function Home() {
   return (
     <div className={` w-full ${bgPage}`}>
       <div className="max-w-screen-2xl mx-auto ">
-        <Navbar />
+        {/* <Navbar /> */}
         <Welcome/>
        
         {/* {sortedCols.map((data, i) => {
