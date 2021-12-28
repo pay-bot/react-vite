@@ -93,8 +93,8 @@ export default function Home() {
   return (
     <div className={` w-full ${bgPage}`}>
       <div className="max-w-screen-2xl mx-auto ">
-        {/* <Navbar /> */}
-        {/* <Welcome/> */}
+        <Navbar />
+        <Welcome/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
