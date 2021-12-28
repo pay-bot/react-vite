@@ -36,8 +36,8 @@ export default function Navbar() {
     
     <>
     
-    {navStyle === 'header1' && <Navbar1/>}
-    {navStyle === 'header2' && <Navbar2/>}
+    {/* {navStyle === 'header1' && <Navbar1/>}
+    {navStyle === 'header2' && <Navbar2/>} */}
     </>
   )
 }
