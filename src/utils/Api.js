@@ -54,3 +54,60 @@ export const getLocation = async () => {
     return [];
   }
 };
+
+// import axios from "axios"
+
+// export const getSectionsDetail = async (children) => {
+//   try {
+//     const data = await axios.get(
+//       `${process.env.API_URL}/pages/${children}/sections`
+//     );
+//     return data.data;
+//   } catch (error) {
+//     return [];
+//   }
+// };
+
+// export const getMenuHeader = async () => {
+//   try {
+//     const data = await axios.get(
+//       `${process.env.API_URL}/menus/header`
+//     );
+//     return data.data;
+//   } catch (error) {
+//     return [];
+//   }
+// };
+
+// export const getText = async () => {
+//   try {
+//     const data = await axios.get(
+//       `${process.env.API_URL}/texts`
+//     );
+//     return data.data;
+//   } catch (error) {
+//     return [];
+//   }
+// };
+
+// export const getTheme = async () => {
+//   try {
+//     const data = await axios.get(
+//       `${process.env.API_URL}/themes`
+//     );
+//     return data.data;
+//   } catch (error) {
+//     return [];
+//   }
+// };
+
+// export const getLocation = async () => {
+//   try {
+//     const data = await axios.get(
+//       `${process.env.API_URL}/locations`
+//     );
+//     return data.data;
+//   } catch (error) {
+//     return [];
+//   }
+// };
