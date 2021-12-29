@@ -23,6 +23,7 @@ function Button({ text, bg, padding }) {
 
 
 function Navbar1() {
+  console.log(process.env.REACT_APP_API_URL)
   const [pageSections, setPageSections] = useState([]);
   const getSectionDetail = async () => {
     const response = await getSectionsDetail(1);
