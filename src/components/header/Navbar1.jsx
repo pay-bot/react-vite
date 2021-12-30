@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getSectionsDetail, getMenuHeader, getTheme } from "../../utils/Api";
 import _ from "lodash";
+import classnames from 'classnames';
 
 
 
@@ -133,10 +134,15 @@ function Navbar1() {
       });
     }
   }
+
   
+
+
   return (
     
-    <div className={` px-16 h-20 shadow-md  ${bgHead}`}>
+    <div className={classnames(
+      'w-full ' +bgHead
+    )}>
       <nav className="flex items-center container mx-auto h-full ">
         {logo ? (<img src={logo} alt="" className="w-10 h-10" />) : null }
         <div className={`${alignHead} flex w-full`} >
