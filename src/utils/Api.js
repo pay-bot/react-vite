@@ -60,7 +60,7 @@ import axios from "axios"
 export const getSectionsDetail = async (children) => {
   try {
     const data = await axios.get(
-      `${import.meta.env.VITE_API_URL}/pages/${children}/sections`
+      `${process.env.REACT_APP_API_URL}/pages/${children}/sections`
     );
     return data.data;
   } catch (error) {
@@ -71,7 +71,7 @@ export const getSectionsDetail = async (children) => {
 export const getMenuHeader = async () => {
   try {
     const data = await axios.get(
-      `${import.meta.env.VITE_API_URL}/menus/header`
+      `${process.env.REACT_APP_API_URL}/menus/header`
     );
     return data.data;
   } catch (error) {
@@ -82,7 +82,7 @@ export const getMenuHeader = async () => {
 export const getText = async () => {
   try {
     const data = await axios.get(
-      `${import.meta.env.VITE_API_URL}/texts`
+      `${process.env.REACT_APP_API_URL}/texts`
     );
     return data.data;
   } catch (error) {
@@ -93,7 +93,7 @@ export const getText = async () => {
 export const getTheme = async () => {
   try {
     const data = await axios.get(
-      `${import.meta.env.VITE_API_URL}/themes`
+      `${process.env.REACT_APP_API_URL}/themes`
     );
     return data.data;
   } catch (error) {
@@ -104,7 +104,7 @@ export const getTheme = async () => {
 export const getLocation = async () => {
   try {
     const data = await axios.get(
-      `${import.meta.env.VITE_API_URL}/locations`
+      `${process.env.REACT_APP_API_URL}/locations`
     );
     return data.data;
   } catch (error) {

@@ -1,15 +1,11 @@
-import React from "react";
+import logo from './logo.svg';
+import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from './pages/Home'
 import About from "./pages/About";
-import './static/css/global.css'
-import './static/css/tailwind.css'
-
-// import '../public/styles.css'
-
 
 function App() {
-  
+  console.log(process.env.REACT_APP_API_URL)
   return (
     <BrowserRouter>
         <Routes>
