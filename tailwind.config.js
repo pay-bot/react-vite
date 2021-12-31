@@ -3,7 +3,7 @@ module.exports = {
   theme: { extend: {} },
   plugins: [],
   purge: {
-    content: ["./layouts/**/*.html", "./src/**/*.vue", "./src/**/*.jsx"],
+    content: ["./layouts/**/*.html", "./src/**/*.vue", "./src/**/*.{js,jsx,ts,tsx}"],
     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     options: {
       safelist: [
