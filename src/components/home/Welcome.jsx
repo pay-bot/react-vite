@@ -83,15 +83,22 @@ export default function Welcome() {
     }
   }
 
+  const text = 'test'
+
+  let replac = text.replace('test', 'text')
+
   return (
     <>
-      <div className="w-full relative bg-white pl-16">
-        <div className="w-full h-full absolute bggrad ">
-          <div className="w-6/12 h-full flex items-center">
+      <div className="relative w-full pl-16 bg-white">
+        <p>{bgPage}</p>
+        <p>{replac}</p>
+
+        <div className="absolute w-full h-full bggrad ">
+          <div className="flex items-center w-6/12 h-full">
             <div className="pl-32">
-              <p className="text-blue-600 font-bold uppercase">{caption}</p>
-              <div className="text-7xl text-white py-8">{title}</div>
-              <div className="text-white text-xl font-semibold">
+              <p className="font-bold text-blue-600 uppercase">{caption}</p>
+              <div className="py-8 text-white text-7xl">{title}</div>
+              <div className="text-xl font-semibold text-white">
                 {ReactHtmlParser(content)}
               </div>
             </div>
