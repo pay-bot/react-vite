@@ -153,20 +153,21 @@ const lost = {
     setIsHover(list);
   }
 
-  const HeroButton = styled.button`
-  ${tw`px-8 py-2 mr-2 font-bold rounded cursor-pointer `}
-  background-color: rgba(51, 51, 51, 0.5);
-  &:hover {
-    background-color: ${props => props.backgroundColorHover};
-    color: black;
-    transition: all 0.2s;
-  }
-`;
+ 
 
 const Nav = styled(Link)`
   ${tw`font-semibold whitespace-nowrap `}
   &:hover {
     color: ${txtcolorscdHead};
+    border-bottom: 4px solid ${txtcolorscdHead};
+    transition: all 0.2s;
+  }
+`;
+
+const ChildNav = styled.li`
+  ${tw`px-2 py-4 m-1 text-sm whitespace-nowrap w-80 md:text-base `}
+  &:hover {
+    background-color: ${bgPage};
     transition: all 0.2s;
   }
 `;
@@ -197,16 +198,15 @@ const Nav = styled(Link)`
                           return (
                             <>
                               {/* <svg class="block fill-current text-white w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg> */}
-                              <li
-                                className={`w-80 py-4 px-2 m-1 whitespace-no-wrap text-sm md:text-base text-gray-600 hover:text-gray-800 hover:bg-gray-200  ${bgHead}`}
+                              <ChildNav
+                                className={`${bgHead}`}
                               >
                                 <Link
                                   to="/"
-                                  className="font-semibold text-gray-600 whitespace-no-wrap hover:text-blue-800"
                                 >
                                   {child.name}
                                 </Link>
-                              </li>
+                              </ChildNav>
                             </>
                           );
                         }

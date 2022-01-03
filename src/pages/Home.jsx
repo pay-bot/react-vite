@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Acara from "../components/home/Acara";
 import Hero from "../components/home/Hero";
 import ReactHtmlParser from "react-html-parser";
+import tw, { styled } from "twin.macro";
+
 
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
@@ -88,10 +90,15 @@ export default function Home() {
   //   }
   // }
 
+  const PageWrapper = styled.div`
+  ${tw`w-full `}
+  background-color: ${bgPage};
+  
+`;
 
 
   return (
-    <div className={` w-full ${bgPage}`}>
+    <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
         <Hero/>
@@ -105,7 +112,7 @@ export default function Home() {
           }
         })} */}
       </div>
-    </div>
+    </PageWrapper>
   );
 }
 
