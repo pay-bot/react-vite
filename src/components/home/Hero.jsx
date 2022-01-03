@@ -6,8 +6,10 @@ import {
   getTheme,
 } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
+import tw, { styled } from "twin.macro";
 
-export default function Welcome() {
+
+export default function Hero() {
   const [pageSections, setPageSections] = useState([]);
   const getSectionDetail = async () => {
     const response = await getSectionsDetail(1);
@@ -33,7 +35,8 @@ export default function Welcome() {
     getThemeDetail();
   }, []);
 
-  let bgPage;
+  let bgPage, bgSect
+  
 
   if (theme) {
     let tema = theme;
@@ -42,6 +45,7 @@ export default function Welcome() {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
           bgPage = t.bgroundPage;
+          bgSect = t.bgroundSection
         }
       });
     }
@@ -83,17 +87,21 @@ export default function Welcome() {
     }
   }
 
-  const text = 'test'
-
-  let replac = text.replace('test', 'text')
+  const Hero = styled.div`
+  ${tw`absolute w-full h-full `}
+  background: linear-gradient(
+    90deg,
+    ${bgSect} 0%,
+    ${bgSect} 0%,
+    rgba(116, 242, 250, 0) 93%
+  );
+`;
 
   return (
     <>
       <div className="relative w-full pl-16 bg-white">
-        <p>{bgPage}</p>
-        <p>{replac}</p>
 
-        <div className="absolute w-full h-full bggrad ">
+        <Hero>
           <div className="flex items-center w-6/12 h-full">
             <div className="pl-32">
               <p className="font-bold text-blue-600 uppercase">{caption}</p>
@@ -103,7 +111,7 @@ export default function Welcome() {
               </div>
             </div>
           </div>
-        </div>
+        </Hero>
         <video
           className=""
           style={{ maxWidth: "100%", width: "100%", margin: "" }}

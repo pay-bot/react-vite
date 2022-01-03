@@ -211,7 +211,6 @@ const Nav = styled(Link)`
                           );
                         }
                       })}
-                      <HeroButton backgroundColorHover={bgHead}>Play</HeroButton>
                     </ul>
                   </li>
                 </ul>

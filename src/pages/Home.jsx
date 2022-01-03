@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Acara from "../components/home/Acara";
-import Welcome from "../components/home/Welcome";
+import Hero from "../components/home/Hero";
 import ReactHtmlParser from "react-html-parser";
 
 import { getSectionsDetail, getTheme } from "../utils/Api";
@@ -94,11 +94,11 @@ export default function Home() {
     <div className={` w-full ${bgPage}`}>
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
-        <Welcome/>
+        <Hero/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
-            return <Welcome />;
+            return <Hero />;
           }
           if (data.id === 7) {
             return <Acara />;
