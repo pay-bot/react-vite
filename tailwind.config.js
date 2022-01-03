@@ -3,10 +3,6 @@ module.exports = {
   theme: { extend: {} },
   plugins: [],
   safelist: [
-    
-    {
-      pattern: /bg-/||/text-/,
-      variants: ['lg', 'hover', 'focus', 'lg:hover'],
-    },
+    "${bgHead}"
   ],
 };

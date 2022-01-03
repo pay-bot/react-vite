@@ -4,6 +4,7 @@ import _ from "lodash";
 import classNames from "classnames";
 import clsx from "clsx";
 import cx from "clsx";
+import tw, { styled } from "twin.macro";
 
 import { Link } from "react-router-dom";
 
@@ -129,9 +130,49 @@ function Navbar1(props) {
     }
   }
 
+  const bg = {
+    'background-color': bgHead
+  }
+
+const list = {
+  'color' : txtcolorprmHead
+}  
+
+const lost = {
+  'color' : txtcolorscdHead
+}  
+  const [isHover, setIsHover] = useState(list);
+  const [pos, setPos] = useState(0);
+
+  function mouseEnter(e) {
+    const rect = e.target.getBoundingClientRect();
+    setPos(rect.left);
+    setIsHover(lost);
+  }
+  function mouseLeave() {
+    setIsHover(list);
+  }
+
+  const HeroButton = styled.button`
+  ${tw`px-8 py-2 mr-2 font-bold rounded cursor-pointer `}
+  background-color: rgba(51, 51, 51, 0.5);
+  &:hover {
+    background-color: ${props => props.backgroundColorHover};
+    color: black;
+    transition: all 0.2s;
+  }
+`;
+
+const Nav = styled(Link)`
+  ${tw`font-semibold whitespace-nowrap `}
+  &:hover {
+    color: ${txtcolorscdHead};
+    transition: all 0.2s;
+  }
+`;
 
   return (
-    <div className={bgHead}>
+    <div className={bgHead} style={bg}>
       <nav className="container flex items-center h-full mx-auto ">
         {logo ? <img src={logo} alt="" className="w-10 h-10" /> : null}
         <div className={`${alignHead} flex w-full`}>
@@ -139,13 +180,15 @@ function Navbar1(props) {
             if (data.parent_id === 0)
               return (
                 <ul className="flex flex-wrap py-10 text-sm md:text-base">
-                  <li className={`w-full p-5 relative mx-1 group`}>
-                    <Link
+                  <p></p>
+                  <li   className={`w-full p-5 relative mx-1 group`}>
+                    <Nav
+                    
                       to="/"
-                      className={`font-semibold whitespace-no-wrap ${txtcolorprmHead} hover:${txtcolorscdHead}  hover:border-b-4 border-red-300 py-2`}
+                      
                     >
                       {data.parent_id === 0 ? data.name : ""}
-                    </Link>
+                    </Nav>
                     <ul
                       className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block nav-shad`}
                     >
@@ -168,12 +211,14 @@ function Navbar1(props) {
                           );
                         }
                       })}
+                      <HeroButton backgroundColorHover={bgHead}>Play</HeroButton>
                     </ul>
                   </li>
                 </ul>
               );
           })}
         </div>
+        
       </nav>
     </div>
   );
