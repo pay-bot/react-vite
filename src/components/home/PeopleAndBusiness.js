@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail } from "../../utils/Api";
+import { getSectionsDetail, getTheme  } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
+import tw, { styled } from "twin.macro";
+
 
 export default function PeopleAndBusiness() {
     const [pageSections, setPageSections] = useState([]);
+  const [theme, setTheme] = useState([]);
+
   console.log("making", pageSections);
   useEffect(() => {
     let isSubscribed = true;
@@ -12,10 +16,15 @@ export default function PeopleAndBusiness() {
         setPageSections(pageSections);
       }
     });
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
+      }
+    });
     return () => (isSubscribed = false);
   }, []);
 
-  let title, content;
+  let title, content,media;
 
   
   if (pageSections) {
@@ -30,6 +39,7 @@ export default function PeopleAndBusiness() {
               
               title = s[0].heading;
               content = s[0].content;
+              media = s[0].media;
             }
            
             
@@ -40,9 +50,32 @@ export default function PeopleAndBusiness() {
       });
     }
   }
+
+  let bgSect;
+
+
+  if (theme) {
+    let tema = theme?.themes
+    if (tema && tema.length !== 0) {
+      tema.forEach((theme, i) => {
+        const t = theme ?? theme;
+        if (t && t.length !== 0) {
+          bgSect = t.bgroundSection
+          
+        }
+      });
+    }
+  }
+
+  const SectionWrapper = styled.div`
+  ${tw`w-full h-full `}
+  background-color: ${bgSect} ;
+`;
     return (
-        <div>
-            {title}
-        </div>
+        <SectionWrapper>
+            {media}
+            <p className="">{process.env.REACT_APP_ASSET_URL}</p>
+            <img src={`https://yap-cms.herokuapp.com/uploads/images/${media}`} alt="" className="w-5 h-5" />
+        </SectionWrapper>
     )
 }
