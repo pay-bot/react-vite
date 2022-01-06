@@ -5,23 +5,22 @@ import Navbar1 from './Navbar1';
 
 export default function Navbar() {
   const [theme, setTheme] = useState([]);
-  const getThemeDetail = async () => {
-    const response = await getTheme();
-    const parsedData = await response;
-    const themeData = parsedData.themes;
     // console.log('theme', themeData);
-    setTheme(themeData);
-    return theme;
-  };
-
+    
   useEffect(() => {
-    getThemeDetail();
+    let isSubscribed = true;
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
+      }
+    });
+    return () => (isSubscribed = false);
   }, []);
 
   let navStyle
 
   if (theme) {
-    let tema = theme;
+    let tema = theme?.themes
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
             const t = theme ?? theme;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Acara from "../components/home/Acara";
+import MakingYourWorld from "../components/home/MakingYourWorld";
 import Hero from "../components/home/Hero";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
@@ -102,13 +102,14 @@ export default function Home() {
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
         <Hero/>
+        <MakingYourWorld/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
             return <Hero />;
           }
           if (data.id === 7) {
-            return <Acara />;
+            return <MakingYourWorld />;
           }
         })} */}
       </div>

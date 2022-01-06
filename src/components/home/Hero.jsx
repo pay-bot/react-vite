@@ -11,35 +11,29 @@ import tw, { styled } from "twin.macro";
 
 export default function Hero() {
   const [pageSections, setPageSections] = useState([]);
-  const getSectionDetail = async () => {
-    const response = await getSectionsDetail(1);
-    const parsedData = await response;
-    const sectionsData = parsedData.pages.sections;
-    console.log("re1", sectionsData);
-    setPageSections(sectionsData);
-    return pageSections;
-  };
-
   const [theme, setTheme] = useState([]);
-  const getThemeDetail = async () => {
-    const response = await getTheme();
-    const parsedData = await response;
-    const themeData = parsedData.themes;
-    // console.log('theme', themeData);
-    setTheme(themeData);
-    return theme;
-  };
-
+  
   useEffect(() => {
-    getSectionDetail();
-    getThemeDetail();
+    let isSubscribed = true;
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
+      }
+    });
+    getSectionsDetail(1).then(sectionsData => {
+      if (isSubscribed) {
+        setPageSections(sectionsData);
+      }
+    });
+
+    return () => (isSubscribed = false);
   }, []);
 
   let bgPage, bgSect
   
 
   if (theme) {
-    let tema = theme;
+    let tema = theme?.themes
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
         const t = theme ?? theme;
@@ -67,7 +61,7 @@ export default function Hero() {
   let caption, title, content;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections?.pages?.sections;
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {

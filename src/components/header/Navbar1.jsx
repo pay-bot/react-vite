@@ -24,46 +24,33 @@ function Button({ text, bg, padding }) {
 
 function Navbar1(props) {
   // console.log(process.env.REACT_APP_API_URL)
-  const [pageSections, setPageSections] = useState([]);
-  const getSectionDetail = async () => {
-    const response = await getSectionsDetail(1);
-    const parsedData = await response;
-    const sectionsData = parsedData.pages.sections;
-    console.log("headerlogo", sectionsData);
-
-    setPageSections(sectionsData);
-    return pageSections;
-  };
-
+  
+  
   const [theme, setTheme] = useState([]);
-  const getThemeDetail = async () => {
-    const response = await getTheme();
-    const parsedData = await response;
-    const themeData = parsedData.themes;
-    // console.log('theme', themeData);
-    setTheme(themeData);
-    return theme;
-  };
-
   const [header, setHeader] = useState([]);
-  const getHeader = async () => {
-    const response = await getMenuHeader();
-    const parsedData = await response;
-    console.log("navhom", parsedData);
-    const HeaderData = parsedData;
-    setHeader(HeaderData);
-    return header;
-  };
-  const sortedHeader = _.sortBy(header, "list_order");
-
+  const [pageSections, setPageSections] = useState([]);
   useEffect(() => {
-    getHeader();
-    getThemeDetail();
-    getSectionDetail();
+    let isSubscribed = true;
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
+      }
+    });
+    getSectionsDetail(1).then(sectionsData => {
+      if (isSubscribed) {
+        setPageSections(sectionsData);
+      }
+    });
+
+    getMenuHeader().then(header => {
+      if (isSubscribed) {
+        setHeader(header);
+      }
+    });
+    return () => (isSubscribed = false);
   }, []);
-
-  // Menu Header Fetching
-
+ 
+  const sortedHeader = _.sortBy(header, "list_order");
   const sortedHeaderChild = _.sortBy(header, "list_order");
 
   if (header) {
@@ -86,7 +73,7 @@ function Navbar1(props) {
     alignHead;
 
   if (theme) {
-    let tema = theme;
+    let tema = theme?.themes
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
         const t = theme ?? theme;
@@ -108,7 +95,7 @@ function Navbar1(props) {
   let logo;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections?.pages?.sections;
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
@@ -131,29 +118,13 @@ function Navbar1(props) {
   }
 
   const bg = {
-    'background-color': bgHead
+    'backgroundColor': bgHead
   }
 
-const list = {
-  'color' : txtcolorprmHead
-}  
-
-const lost = {
-  'color' : txtcolorscdHead
-}  
-  const [isHover, setIsHover] = useState(list);
-  const [pos, setPos] = useState(0);
-
-  function mouseEnter(e) {
-    const rect = e.target.getBoundingClientRect();
-    setPos(rect.left);
-    setIsHover(lost);
-  }
-  function mouseLeave() {
-    setIsHover(list);
-  }
-
- 
+  const NavWrapper = styled.div`
+  ${tw`flex w-full `}
+  justify-content: ${alignHead};
+`;
 
 const Nav = styled(Link)`
   ${tw`font-semibold whitespace-nowrap `}
@@ -167,16 +138,23 @@ const Nav = styled(Link)`
 const ChildNav = styled.li`
   ${tw`px-2 py-4 m-1 text-sm whitespace-nowrap w-80 md:text-base `}
   &:hover {
-    background-color: ${bgPage};
+    backgroundColor: ${bgPage};
     transition: all 0.2s;
   }
 `;
+
+let i = 1
+let k = 225
+if ( i < k && i++){
+  console.log(i)
+}
+
 
   return (
     <div className={bgHead} style={bg}>
       <nav className="container flex items-center h-full mx-auto ">
         {logo ? <img src={logo} alt="" className="w-10 h-10" /> : null}
-        <div className={`${alignHead} flex w-full`}>
+        <NavWrapper>
           {sortedHeader.map((data, i) => {
             if (data.parent_id === 0)
               return (
@@ -216,7 +194,7 @@ const ChildNav = styled.li`
                 </ul>
               );
           })}
-        </div>
+        </NavWrapper>
         
       </nav>
     </div>
