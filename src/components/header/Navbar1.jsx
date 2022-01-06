@@ -129,6 +129,7 @@ function Navbar1(props) {
 const Nav = styled(Link)`
   ${tw`font-semibold whitespace-nowrap `}
   &:hover {
+    padding-bottom: 8px;
     color: ${txtcolorscdHead};
     border-bottom: 4px solid ${txtcolorscdHead};
     transition: all 0.2s;
@@ -136,29 +137,24 @@ const Nav = styled(Link)`
 `;
 
 const ChildNav = styled.li`
-  ${tw`px-2 py-4 m-1 text-sm whitespace-nowrap w-80 md:text-base `}
+  ${tw`p-2 py-4 m-1 text-sm whitespace-nowrap w-80 md:text-base `}
   &:hover {
-    backgroundColor: ${bgPage};
+    background-color: ${bgPage};
     transition: all 0.2s;
   }
 `;
 
-let i = 1
-let k = 225
-if ( i < k && i++){
-  console.log(i)
-}
 
 
   return (
-    <div className={bgHead} style={bg}>
-      <nav className="container flex items-center h-full mx-auto ">
+    <div style={bg}>
+      <nav className="container flex items-center h-full pl-16 mx-auto ">
         {logo ? <img src={logo} alt="" className="w-10 h-10" /> : null}
         <NavWrapper>
           {sortedHeader.map((data, i) => {
             if (data.parent_id === 0)
               return (
-                <ul className="flex flex-wrap py-10 text-sm md:text-base">
+                <ul className="flex flex-wrap py-5 text-sm md:text-base">
                   <p></p>
                   <li   className={`w-full p-5 relative mx-1 group`}>
                     <Nav
@@ -169,7 +165,7 @@ if ( i < k && i++){
                       {data.parent_id === 0 ? data.name : ""}
                     </Nav>
                     <ul
-                      className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block nav-shad`}
+                      className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block  nav-shad`}
                     >
                       {sortedHeaderChild.map((child, i) => {
                         if (data.id === child.parent_id) {

@@ -8,6 +8,7 @@ import tw, { styled } from "twin.macro";
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
 import Navbar from "../components/header/Navbar";
+import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
 
 export default function Home() {
   const [pageSections, setPageSections] = useState([]);
@@ -103,6 +104,7 @@ export default function Home() {
         <Navbar />
         <Hero/>
         <MakingYourWorld/>
+        <PeopleAndBusiness/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
