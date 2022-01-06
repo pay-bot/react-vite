@@ -9,6 +9,7 @@ import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
 import Navbar from "../components/header/Navbar";
 import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
+import HowWeWork from "../components/home/HowWeWork";
 
 export default function Home() {
   const [pageSections, setPageSections] = useState([]);
@@ -105,6 +106,7 @@ export default function Home() {
         <Hero/>
         <MakingYourWorld/>
         <PeopleAndBusiness/>
+        <HowWeWork/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {

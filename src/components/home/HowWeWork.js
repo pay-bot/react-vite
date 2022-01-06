@@ -3,9 +3,8 @@ import { getSectionsDetail, getTheme  } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
-
-export default function PeopleAndBusiness() {
-    const [pageSections, setPageSections] = useState([]);
+export default function HowWeWork() {
+  const [pageSections, setPageSections] = useState([]);
   const [theme, setTheme] = useState([]);
 
   console.log("making", pageSections);
@@ -24,7 +23,7 @@ export default function PeopleAndBusiness() {
     return () => (isSubscribed = false);
   }, []);
 
-  let title, content,media;
+  let title, content, caption;
 
   
   if (pageSections) {
@@ -33,13 +32,13 @@ export default function PeopleAndBusiness() {
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
-          case 3:
+          case 4:
             const s = section?.components ?? section.components[0];
             if (s && s.length !== 0) {
               
               title = s[0].heading;
               content = s[0].content;
-              media = s[0].media;
+              caption = s[0].caption;
             }
            
             
@@ -66,23 +65,15 @@ export default function PeopleAndBusiness() {
       });
     }
   }
-
-  const SectionWrapper = styled.div`
-  ${tw`w-full h-full py-16 `}
-  background-color: ${bgSect} ;
-`;
-    return (
-        <SectionWrapper>
-          <div className="flex justify-center items-center mx-auto py-16 max-w-2xl">
-            <div className="">
-
-            <img src={`${process.env.REACT_APP_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
-            <div className="text-center pb-16 text-5xl text-white font-semibold">{title}</div>
-            <div className="text-xl text-center  text-white">
+  return (
+    <div className="bg-white py-16 flex justify-center ">
+      <div className="max-w-2xl">
+       <div className="text-center">{caption}</div>
+       <div className="py-8  text-4xl text-center">{title}</div>
+              <div className="text-xl  text-center">
                 {ReactHtmlParser(content)}
               </div>
               </div>
-          </div>
-        </SectionWrapper>
-    )
+    </div>
+  )
 }
