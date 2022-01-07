@@ -66,24 +66,40 @@ export default function HowWeWork() {
     }
   }
 
-  // let articleId
+  let articleId = []
+  let artId
 
-  // if (article) {
-  //   let art = article;
-  //   if (art && art.length !== 0) {
-  //     art.forEach((data, i) => {
-  //       data?.category?.map((data) => {
-          
-  //         articleId = data.id
-  //       })
+  if (article) {
+    let art = article;
+    if (art && art.length !== 0) {
+      art.map((data, i) => {
+        articleId.push(data);
        
-           
-  //       }
-  //     )
-  //   }
-  // }
-  // console.log('ll' , articleId)
+        }
+        )
+        
+    }
+  }
 
+  let test = []
+  {articleId.map((data) => {
+    data.map((data) => {
+      
+      
+        // console.log('ss', data.id)
+       test.push(data)
+        // return (
+        //   <div className="">
+        //   <p className="">{data.name}</p>
+        //   {data.photos?.map((data)=> (
+        //     <img src={data.url} alt="" className="" />
+        //   ))}
+        //   <div className="text-center">{caption}</div>
+
+        //   </div>      
+        // )
+    })
+      })}
   
   return (
     <div className="flex py-16 bg-white ">
@@ -96,8 +112,37 @@ export default function HowWeWork() {
         </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
-        {article.map((data) => {
-            if(data.id === data.category_id) {
+         {test.map((data) => {
+           if(data.category.id === data.category_id) {
+             return(
+           <p className="">{data.name}</p>
+           ) 
+             }
+          })}
+        <p className=""></p>
+        {/* {articleId.map((data) => {
+          data.map((data) => {
+            
+            if(data.category.id === data.category_id) {
+              // console.log('ss', data.id)
+              return (
+                <p className="">{data.id}</p>
+              )
+              // return (
+              //   <div className="">
+              //   <p className="">{data.name}</p>
+              //   {data.photos?.map((data)=> (
+              //     <img src={data.url} alt="" className="" />
+              //   ))}
+              //   <div className="text-center">{caption}</div>
+      
+              //   </div>      
+              // )
+                }
+          })
+        })} */}
+        {/* {article.map((data) => {
+            if(data.category.id === data.category_id) {
               return (
                 <div className="">
                 <p className="">{data.name}</p>
@@ -112,7 +157,7 @@ export default function HowWeWork() {
             
           
           
-        })}
+        })} */}
         </div>
       </div>
     </div>
