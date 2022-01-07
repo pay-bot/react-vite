@@ -100,7 +100,7 @@ export default function Hero() {
             <div className="pl-32">
               <p className="font-bold text-blue-600 uppercase">{caption}</p>
               <div className="py-8 text-white text-7xl">{title}</div>
-              <div className="text-xl font-semibold text-white">
+              <div className="text-xl text-white textfont-semibold ">
                 {ReactHtmlParser(content)}
               </div>
             </div>

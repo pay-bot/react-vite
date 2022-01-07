@@ -73,12 +73,12 @@ export default function PeopleAndBusiness() {
 `;
     return (
         <SectionWrapper>
-          <div className="flex justify-center items-center mx-auto py-16 max-w-2xl">
+          <div className="flex items-center justify-center max-w-2xl py-16 mx-auto">
             <div className="">
 
-            <img src={`${process.env.REACT_APP_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
-            <div className="text-center pb-16 text-5xl text-white font-semibold">{title}</div>
-            <div className="text-xl text-center  text-white">
+            <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
+            <div className="pb-16 text-5xl font-semibold text-center text-white">{title}</div>
+            <div className=" text-center text-white">
                 {ReactHtmlParser(content)}
               </div>
               </div>

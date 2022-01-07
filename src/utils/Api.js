@@ -80,3 +80,20 @@ export const getLocation = async () => {
       return []
       }
     }
+
+    export const getArticle = async () => {
+      try {
+        const data = await axios.get(
+          `${process.env.REACT_APP_API_URL}/articles`
+        ).then(res => res.data).catch(err => {
+          console.warn(err)
+          return null
+          })
+          if (!data) throw new Error("Cannot get API blabla")
+          return data
+          } catch (err) {
+          console.warn(err)
+          return []
+          }
+        }
+    
