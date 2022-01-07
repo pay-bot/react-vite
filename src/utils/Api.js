@@ -3,7 +3,7 @@ import axios from "axios"
 export const getSectionsDetail = async (children) => {
   try {
     const data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/pages/${children}/sections`
+      `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/pages/${children}/sections`
     ).then(res => res.data).catch(err => {
       console.warn(err)
       return null
@@ -20,7 +20,7 @@ export const getSectionsDetail = async (children) => {
 export const getMenuHeader = async () => {
   try {
     const data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/menus/header`
+      `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/menus/header`
     ).then(res => res.data).catch(err => {
       console.warn(err)
       return null
@@ -36,7 +36,7 @@ export const getMenuHeader = async () => {
 export const getText = async () => {
   try {
     const data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/texts`
+      `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/texts`
     ).then(res => res.data).catch(err => {
       console.warn(err)
       return null
@@ -52,7 +52,7 @@ export const getText = async () => {
 export const getTheme = async () => {
   try {
     const data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/themes`
+      `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/themes`
     ).then(res => res.data).catch(err => {
       console.warn(err)
       return null
@@ -68,7 +68,7 @@ export const getTheme = async () => {
 export const getLocation = async () => {
   try {
     const data = await axios.get(
-      `${process.env.REACT_APP_API_URL}/locations`
+      `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/locations`
     ).then(res => res.data).catch(err => {
       console.warn(err)
       return null
@@ -84,7 +84,7 @@ export const getLocation = async () => {
     export const getArticle = async () => {
       try {
         const data = await axios.get(
-          `${process.env.REACT_APP_API_URL}/articles`
+          `https://api.allorigins.win/raw?url=${process.env.REACT_APP_API_URL}/articles`
         ).then(res => res.data).catch(err => {
           console.warn(err)
           return null
