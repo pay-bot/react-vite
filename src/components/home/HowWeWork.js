@@ -116,11 +116,16 @@ export default function HowWeWork() {
 
               
               <div className="">
-              <p className="">{data.name}</p>
+<div class="card-zoom">
               {data.photos?.map((data)=> (
+                <div class="imgBox ">
                 <img src={data.url} alt="" className="" />
+                </div>
               ))}
+
+</div>
               <div className="text-center">{caption}</div>
+              <p className="">{data.name}</p>
     
 
               </div>   
