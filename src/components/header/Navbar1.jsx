@@ -98,11 +98,11 @@ function Navbar1(props) {
   if (pageSections) {
 console.log("section contentew", pageSections);
 
-    let sec = pageSections?.pages;
+    let sec = pageSections;
     if (sec && sec.length !== 0) {
-      console.log("section contentrrr", sec);
+      console.log("section contentrrro", sec);
 
-      sec.forEach((section, i) => {
+      sec[0].forEach((section, i) => {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
