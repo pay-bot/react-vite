@@ -32,16 +32,17 @@ export default function HowWeWork() {
   let title, content, caption;
 
   if (pageSections) {
-    let sec = pageSections?.pages?.sections;
+    let sec = pageSections;
     if (sec && sec.length !== 0) {
-      sec.forEach((section, i) => {
+      sec[0].forEach((section, i) => {
         switch (i) {
-          case 4:
-            const s = section?.components ?? section.components[0];
+          case 1:
+            const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
-              title = s[0].heading;
-              content = s[0].content;
-              caption = s[0].caption;
+              
+              title = s[4]?.components[0]?.heading;
+              content = s[4]?.components[0]?.content;
+              caption = s[4]?.components[0]?.caption;
             }
 
             break;

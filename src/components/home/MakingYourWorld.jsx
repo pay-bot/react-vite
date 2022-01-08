@@ -20,9 +20,9 @@ export default function MakingYourWorld() {
 
   let image = [];
   if (pageSections) {
-    let sec = pageSections?.pages;
+    let sec = pageSections;
     if (sec && sec.length !== 0) {
-      sec.forEach((section, i) => {
+      sec[0].forEach((section, i) => {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
@@ -35,10 +35,10 @@ export default function MakingYourWorld() {
             s[2]?.components[0]?.photos?.forEach((data, i) => {
               image.push(data);
             });
-            // caption2 = s[1].caption;
-            // title2 = s[1].heading;
-            // content2 = s[1].content;
-            // video = s[1].action_url;
+            caption2 = s[2]?.components[0]?.caption;
+            title2 = s[2]?.components[0]?.heading;
+            content2 = s[2]?.components[0]?.content;
+            video = s[2]?.components[0]?.action_url;
 
             break;
           default:

@@ -100,8 +100,8 @@ export default function Home() {
         <Navbar />
         <Hero/>
         <MakingYourWorld/>
-        {/* <PeopleAndBusiness/> */}
-        {/* <HowWeWork/> */}
+        <PeopleAndBusiness/>
+        <HowWeWork/>
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
