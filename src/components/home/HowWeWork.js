@@ -116,9 +116,9 @@ export default function HowWeWork() {
 
               
               <div className="">
-<div class="card-zoom">
+<div className="card-zoom">
               {data.photos?.map((data)=> (
-                <div class="imgBox ">
+                <div className="imgBox ">
                 <img src={data.url} alt="" className="" />
                 </div>
               ))}

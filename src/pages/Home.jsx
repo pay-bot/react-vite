@@ -13,28 +13,22 @@ import HowWeWork from "../components/home/HowWeWork";
 
 export default function Home() {
   const [pageSections, setPageSections] = useState([]);
-  const getSectionDetail = async () => {
-    const response = await getSectionsDetail(1);
-    const parsedData = await response;
-    const sectionsData = parsedData.pages.sections;
-    console.log("re1hom", sectionsData);
-    setPageSections(sectionsData);
-    return pageSections;
-  };
-
   const [theme, setTheme] = useState([]);
-  const getThemeDetail = async () => {
-    const response = await getTheme();
-    const parsedData = await response;
-    const themeData = parsedData.themes;
-    // console.log('theme', themeData);
-    setTheme(themeData);
-    return theme;
-  };
 
+  console.log("making", pageSections);
   useEffect(() => {
-    getSectionDetail();
-    getThemeDetail();
+    let isSubscribed = true;
+    getSectionsDetail(1).then(pageSections => {
+      if (isSubscribed) {
+        setPageSections(pageSections);
+      }
+    });
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
+      }
+    });
+    return () => (isSubscribed = false);
   }, []);
 
   const sortedCols = _.sortBy(pageSections, "list_order");
@@ -45,10 +39,11 @@ export default function Home() {
 
   if (theme) {
     let tema = theme;
+    console.log('tem', tema)
     if (tema && tema.length !== 0) {
-      tema.forEach((theme, i) => {
+      tema.themes.forEach((theme, i) => {
        
-            const t = theme ?? theme;
+            const t = theme ?? theme[0];
             if (t && t.length !== 0) {
               bgPage = t.bgroundPage
         }
@@ -105,8 +100,8 @@ export default function Home() {
         <Navbar />
         <Hero/>
         <MakingYourWorld/>
-        <PeopleAndBusiness/>
-        <HowWeWork/>
+        {/* <PeopleAndBusiness/> */}
+        {/* <HowWeWork/> */}
        
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {

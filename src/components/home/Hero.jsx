@@ -20,9 +20,9 @@ export default function Hero() {
         setTheme(theme);
       }
     });
-    getSectionsDetail(1).then(sectionsData => {
+    getSectionsDetail(1).then(pageSections => {
       if (isSubscribed) {
-        setPageSections(sectionsData);
+        setPageSections(pageSections);
       }
     });
 
@@ -61,17 +61,17 @@ export default function Hero() {
   let caption, title, content;
 
   if (pageSections) {
-    let sec = pageSections?.pages?.sections;
+    let sec = pageSections?.pages;
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
           case 1:
-            const s = section?.components ?? section.components[0];
+            const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
               console.log("ini", s[0]);
-              caption = s[0].caption;
-              title = s[0].heading;
-              content = s[0].content;
+              caption =  s[1]?.components[0]?.caption;
+              title =  s[1]?.components[0]?.heading;
+              content =  s[1]?.components[0]?.content;
             }
             break;
           default:
@@ -114,7 +114,7 @@ export default function Hero() {
           muted
           controls
           alt="All the devices"
-          src="https://d2csxpduxe849s.cloudfront.net/media/A13DCF71-0059-4014-930224BDACD7889E/F68C503E-9957-4E5F-89BEEF67DB9A2F34/6DCE7A31-D0F8-4EF7-8F2E138C9F78482A.mp4"
+          // src="https://d2csxpduxe849s.cloudfront.net/media/A13DCF71-0059-4014-930224BDACD7889E/F68C503E-9957-4E5F-89BEEF67DB9A2F34/6DCE7A31-D0F8-4EF7-8F2E138C9F78482A.mp4"
           ref={videoEl}
         />
       </div>

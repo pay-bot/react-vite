@@ -29,6 +29,7 @@ function Navbar1(props) {
   const [theme, setTheme] = useState([]);
   const [header, setHeader] = useState([]);
   const [pageSections, setPageSections] = useState([]);
+
   useEffect(() => {
     let isSubscribed = true;
     getTheme().then(theme => {
@@ -36,9 +37,9 @@ function Navbar1(props) {
         setTheme(theme);
       }
     });
-    getSectionsDetail(1).then(sectionsData => {
+    getSectionsDetail(1).then(pageSections => {
       if (isSubscribed) {
-        setPageSections(sectionsData);
+        setPageSections(pageSections);
       }
     });
 
@@ -95,15 +96,19 @@ function Navbar1(props) {
   let logo;
 
   if (pageSections) {
-    let sec = pageSections?.pages?.sections;
+console.log("section contentew", pageSections);
+
+    let sec = pageSections?.pages;
     if (sec && sec.length !== 0) {
+      console.log("section contentrrr", sec);
+
       sec.forEach((section, i) => {
         switch (i) {
-          case 0:
-            const s = section?.components ?? section.components[0];
+          case 1:
+            const s = section?.sections ?? section.sections;
+            console.log("section contentrrr", s);
             if (s && s.length !== 0) {
-              s[0].photos?.map((data, i) => {
-                console.log("section content", data.url);
+              s[0]?.components[0]?.photos?.map((data, i) => {
                 logo = data.url;
               });
 

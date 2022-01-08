@@ -20,24 +20,25 @@ export default function MakingYourWorld() {
 
   let image = [];
   if (pageSections) {
-    let sec = pageSections?.pages?.sections;
+    let sec = pageSections?.pages;
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
-          case 2:
-            const s = section?.components ?? section.components[0];
+          case 1:
+            const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
-              caption = s[0].caption;
-              title = s[0].heading;
-              content = s[0].content;
+              console.log("ini", s[0]);
+              caption =  s[2]?.components[0]?.caption;
+              title =  s[2]?.components[0]?.heading;
+              content =  s[2]?.components[0]?.content;
             }
-            s[0].photos?.forEach((data, i) => {
+            s[2]?.components[0]?.photos?.forEach((data, i) => {
               image.push(data);
             });
-            caption2 = s[1].caption;
-            title2 = s[1].heading;
-            content2 = s[1].content;
-            video = s[1].action_url;
+            // caption2 = s[1].caption;
+            // title2 = s[1].heading;
+            // content2 = s[1].content;
+            // video = s[1].action_url;
 
             break;
           default:

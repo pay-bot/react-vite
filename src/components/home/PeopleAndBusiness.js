@@ -29,17 +29,17 @@ export default function PeopleAndBusiness() {
   
   if (pageSections) {
     
-    let sec = pageSections?.pages?.sections;
+    let sec = pageSections?.pages;
     if (sec && sec.length !== 0) {
       sec.forEach((section, i) => {
         switch (i) {
-          case 3:
-            const s = section?.components ?? section.components[0];
+          case 1:
+            const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
               
-              title = s[0].heading;
-              content = s[0].content;
-              media = s[0].media;
+              title = s[3]?.components[0]?.heading;
+              content = s[3]?.components[0]?.content;
+              media = s[3]?.components[0]?.media;
             }
            
             
