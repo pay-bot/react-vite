@@ -29,7 +29,7 @@ export default function Hero() {
     return () => (isSubscribed = false);
   }, []);
 
-  let bgPage, bgSect
+  let bgPage, bgSect, txtColorSection
   
 
   if (theme) {
@@ -40,6 +40,7 @@ export default function Hero() {
         if (t && t.length !== 0) {
           bgPage = t.bgroundPage;
           bgSect = t.bgroundSection
+          txtColorSection = t.txtcolorscdSection
         }
       });
     }
@@ -67,11 +68,19 @@ export default function Hero() {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0) {
-              console.log("ini", s[0]);
-              caption =  s[1]?.components[0]?.caption;
-              title =  s[1]?.components[0]?.heading;
-              content =  s[1]?.components[0]?.content;
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                switch (section.id) {
+                  case 6:
+              console.log("section contentrrr") 
+              caption =  section?.components[0]?.caption;
+              title =  section?.components[0]?.heading;
+              content =  section?.components[0]?.content;
+              break;
+              default:
+                break;
+            }
+      });
             }
             break;
           default:
@@ -91,6 +100,11 @@ export default function Hero() {
   );
 `;
 
+const SectionName = styled.p`
+  ${tw`font-bold uppercase `}
+  color : ${txtColorSection};
+`;
+
   return (
     <>
       <div className="relative w-full pl-16 bg-white">
@@ -98,7 +112,7 @@ export default function Hero() {
         <Hero>
           <div className="flex items-center w-6/12 h-full">
             <div className="pl-32">
-              <p className="font-bold text-blue-600 uppercase">{caption}</p>
+              <SectionName>{caption}</SectionName>
               <div className="py-8 text-white text-7xl">{title}</div>
               <div className="text-xl text-white textfont-semibold ">
                 {ReactHtmlParser(content)}

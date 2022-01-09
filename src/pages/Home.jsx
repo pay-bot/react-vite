@@ -10,12 +10,14 @@ import _ from "lodash";
 import Navbar from "../components/header/Navbar";
 import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
 import HowWeWork from "../components/home/HowWeWork";
+import OurServices from "../components/home/OurServices";
+import Investor from "../components/home/Investor";
 
 export default function Home() {
   const [pageSections, setPageSections] = useState([]);
   const [theme, setTheme] = useState([]);
 
-  console.log("making", pageSections);
+  //console.log("making", pageSections);
   useEffect(() => {
     let isSubscribed = true;
     getSectionsDetail(1).then(pageSections => {
@@ -33,8 +35,8 @@ export default function Home() {
 
   const sortedCols = _.sortBy(pageSections, "list_order");
 
-  let 
-  bgPage
+  let
+    bgPage
 
 
   if (theme) {
@@ -42,10 +44,10 @@ export default function Home() {
     console.log('tem', tema)
     if (tema && tema.length !== 0) {
       tema.themes.forEach((theme, i) => {
-       
-            const t = theme ?? theme[0];
-            if (t && t.length !== 0) {
-              bgPage = t.bgroundPage
+
+        const t = theme ?? theme[0];
+        if (t && t.length !== 0) {
+          bgPage = t.bgroundPage
         }
       });
     }
@@ -98,11 +100,13 @@ export default function Home() {
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
-        <Hero/>
-        <MakingYourWorld/>
-        <PeopleAndBusiness/>
-        <HowWeWork/>
-       
+        <Hero />
+        <MakingYourWorld />
+        {/* <PeopleAndBusiness /> */}
+        {/* <HowWeWork /> */}
+        {/* <OurServices/> */}
+        {/* <Investor/> */}
+
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
             return <Hero />;
@@ -129,66 +133,66 @@ export default function Home() {
 
 
 // const contenId = 2;
-  //   const [texts, setTexts] = useState([]);
-  //   const getTexts = async () => {
-  //     const response = await getText();
-  //     const parsedData = await response;
-  //     const textsData = parsedData;
-  //     console.log('text', textsData);
-  //     setTexts(textsData);
-  //     return texts;
-  //   };
+//   const [texts, setTexts] = useState([]);
+//   const getTexts = async () => {
+//     const response = await getText();
+//     const parsedData = await response;
+//     const textsData = parsedData;
+//     console.log('text', textsData);
+//     setTexts(textsData);
+//     return texts;
+//   };
 
-    // const [locations, setLocations] = useState([]);
-    // const getLocations = async () => {
-    //   const response = await getLocation();
-    //   const parsedData = await response;
-    //   const locationsData = parsedData.locations;
-    //   console.log('location', locationsData);
-    //   setLocations(locationsData);
-    //   return locations;
-    // };
+// const [locations, setLocations] = useState([]);
+// const getLocations = async () => {
+//   const response = await getLocation();
+//   const parsedData = await response;
+//   const locationsData = parsedData.locations;
+//   console.log('location', locationsData);
+//   setLocations(locationsData);
+//   return locations;
+// };
 
 
- // if (pageSections) {
-    //   let sec = pageSections;
-    //   if (sec && sec.length !== 0) {
-    //       sec[0].components.forEach((section, i) => {
-    //         switch (i) {
-    //             case 0:
-    //               if (section && section.length !== 0) {
-    //                 console.log("section contetnt", section);
-      
-    //               }
-    //               break;
-    //             default:
-    //               break;
-    //           }
-    //     });
-    //   }
-    // }
-    // let content = []
+// if (pageSections) {
+//   let sec = pageSections;
+//   if (sec && sec.length !== 0) {
+//       sec[0].components.forEach((section, i) => {
+//         switch (i) {
+//             case 0:
+//               if (section && section.length !== 0) {
+//                 console.log("section contetnt", section);
 
-    // if (pageSections) {
-    //   let sec = pageSections;
-    //   if (sec && sec.length !== 0) {
-    //       sec[0].components.forEach((section, i) => {
-    //         content.push({
-    //     heading: section.heading,
-    //     location_id : section.location_id
-        
-    //         });
-    //     });
-    //   }
-    // }
-  
-  //  {locations.map((loc, i) => {
-  //             if (data.location_id === loc.id) {
-  //               return(
-  //                 <p className="">{loc.name}</p>
-  //               )
-  //             }
-  //           })} 
+//               }
+//               break;
+//             default:
+//               break;
+//           }
+//     });
+//   }
+// }
+// let content = []
+
+// if (pageSections) {
+//   let sec = pageSections;
+//   if (sec && sec.length !== 0) {
+//       sec[0].components.forEach((section, i) => {
+//         content.push({
+//     heading: section.heading,
+//     location_id : section.location_id
+
+//         });
+//     });
+//   }
+// }
+
+//  {locations.map((loc, i) => {
+//             if (data.location_id === loc.id) {
+//               return(
+//                 <p className="">{loc.name}</p>
+//               )
+//             }
+//           })} 
 
 
 

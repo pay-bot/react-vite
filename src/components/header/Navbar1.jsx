@@ -96,21 +96,27 @@ function Navbar1(props) {
   let logo;
 
   if (pageSections) {
-console.log("section contentew", pageSections);
 
     let sec = pageSections;
     if (sec && sec.length !== 0) {
-      console.log("section contentrrro", sec);
 
       sec[0].forEach((section, i) => {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
-            console.log("section contentrrr", s);
-            if (s && s.length !== 0) {
-              s[0]?.components[0]?.photos?.map((data, i) => {
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                console.log("section contentrrr", section);
+                switch (section.id) {
+                  case 2:
+              section?.components[0]?.photos?.map((data, i) => {
                 logo = data.url;
               });
+              break;
+              default:
+                break;
+            }
+      });
 
               //  content = s[0].heading
             }

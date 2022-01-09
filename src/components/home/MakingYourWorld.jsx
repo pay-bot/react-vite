@@ -26,19 +26,28 @@ export default function MakingYourWorld() {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                switch (section.id) {
+                  case 7:
             if (s && s.length !== 0) {
-              console.log("ini", s[0]);
-              caption =  s[2]?.components[0]?.caption;
-              title =  s[2]?.components[0]?.heading;
-              content =  s[2]?.components[0]?.content;
+              caption = section?.components[0]?.caption;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
+              section?.components[0]?.photos?.forEach((data, i) => {
+                image.push(data);
+              });
+              caption2 = section?.components[0]?.caption;
+              title2 = section?.components[0]?.heading;
+              content2 = section?.components[0]?.content;
+              video = section?.components[0]?.action_url;
             }
-            s[2]?.components[0]?.photos?.forEach((data, i) => {
-              image.push(data);
-            });
-            caption2 = s[2]?.components[0]?.caption;
-            title2 = s[2]?.components[0]?.heading;
-            content2 = s[2]?.components[0]?.content;
-            video = s[2]?.components[0]?.action_url;
+            break;
+              default:
+                break;
+            }
+      });
+            }
 
             break;
           default:

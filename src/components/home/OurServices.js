@@ -1,37 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail, getTheme, getArticle } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
-export default function HowWeWork() {
+
+import { getSectionsDetail, getTheme } from "../../utils/Api";
+
+export default function OurServices() {
   const [pageSections, setPageSections] = useState([]);
   const [theme, setTheme] = useState([]);
-  const [article, setArticle] = useState([]);
 
-  //console.log("making", pageSections);
+  console.log("making", pageSections);
   useEffect(() => {
     let isSubscribed = true;
-    getSectionsDetail(1).then((pageSections) => {
+    getSectionsDetail(1).then(pageSections => {
       if (isSubscribed) {
         setPageSections(pageSections);
       }
     });
-    getTheme().then((theme) => {
+    getTheme().then(theme => {
       if (isSubscribed) {
         setTheme(theme);
-      }
-    });
-    getArticle().then((article) => {
-      if (isSubscribed) {
-        setArticle(article);
       }
     });
     return () => (isSubscribed = false);
   }, []);
 
-  let title, content, caption;
+
+  let sectionName
+  let title, content, media;
+
 
   if (pageSections) {
+
     let sec = pageSections;
     if (sec && sec.length !== 0) {
       sec[0].forEach((section, i) => {
@@ -39,11 +39,12 @@ export default function HowWeWork() {
           case 1:
             const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
-
-              title = s[4]?.components[0]?.heading;
-              content = s[4]?.components[0]?.content;
-              caption = s[4]?.components[0]?.caption;
+              sectionName = s[5].name
+              title = s[5]?.components[0]?.heading;
+              content = s[5]?.components[0]?.content;
+              media = s[5]?.components[0]?.media;
             }
+
 
             break;
           default:
@@ -53,68 +54,33 @@ export default function HowWeWork() {
     }
   }
 
-
-
   let bgSect;
 
+
   if (theme) {
-    let tema = theme?.themes;
+    let tema = theme?.themes
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
-          bgSect = t.bgroundSection;
+          bgSect = t.bgroundSection
+
         }
       });
     }
   }
-
-  let articleId = []
-
-  if (article) {
-    let art = article;
-    if (art && art.length !== 0) {
-      art.map((data, i) => {
-        articleId.push(data);
-
-      }
-      )
-
-    }
-  }
-
-  let test = []
-  {
-    articleId.map((data) => {
-      data.map((data) => {
-
-
-        test.push(data)
-
-      })
-    })
-  }
-
-
-
-
-
   return (
     <div className="flex py-16 bg-white ">
       <div className="">
-        <div className="flex mx-auto justify-center">
+        <div className="flex mx-auto">
           <div className="max-w-2xl">
-            <div className="text-center">
-              {caption}
-            </div>
-            <div className="py-8 text-4xl text-center">{title}
-            </div>
-            <div className="text-center ">{ReactHtmlParser(content)}
-            </div>
+            {sectionName}
+            <div className="py-8 text-4xl text-center">{title}</div>
+            <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
-          {test.map((data, i) => {
+          {/* {test.map((data, i) => {
             if (data.category.id === data.category_id) {
 
               return (
@@ -140,9 +106,9 @@ export default function HowWeWork() {
                 </>
               )
             }
-          })}
+          })} */}
         </div>
       </div>
     </div>
-  );
+  )
 }

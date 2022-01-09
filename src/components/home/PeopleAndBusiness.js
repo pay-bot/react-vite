@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail, getTheme  } from "../../utils/Api";
+import { getSectionsDetail, getTheme } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
 
 export default function PeopleAndBusiness() {
-    const [pageSections, setPageSections] = useState([]);
+  const [pageSections, setPageSections] = useState([]);
   const [theme, setTheme] = useState([]);
 
-  console.log("making", pageSections);
+  //console.log("making", pageSections);
   useEffect(() => {
     let isSubscribed = true;
     getSectionsDetail(1).then(pageSections => {
@@ -24,11 +24,11 @@ export default function PeopleAndBusiness() {
     return () => (isSubscribed = false);
   }, []);
 
-  let title, content,media;
+  let title, content, media;
 
-  
+
   if (pageSections) {
-    
+
     let sec = pageSections;
     if (sec && sec.length !== 0) {
       sec[0].forEach((section, i) => {
@@ -36,13 +36,13 @@ export default function PeopleAndBusiness() {
           case 1:
             const s = section?.sections ?? section.sections;
             if (s && s.length !== 0) {
-              
+
               title = s[3]?.components[0]?.heading;
               content = s[3]?.components[0]?.content;
               media = s[3]?.components[0]?.media;
             }
-           
-            
+
+
             break;
           default:
             break;
@@ -61,7 +61,7 @@ export default function PeopleAndBusiness() {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
           bgSect = t.bgroundSection
-          
+
         }
       });
     }
@@ -71,18 +71,18 @@ export default function PeopleAndBusiness() {
   ${tw`w-full h-full py-16 `}
   background-color: ${bgSect} ;
 `;
-    return (
-        <SectionWrapper>
-          <div className="flex items-center justify-center max-w-2xl py-16 mx-auto">
-            <div className="">
+  return (
+    <SectionWrapper>
+      <div className="flex items-center justify-center max-w-2xl py-16 mx-auto">
+        <div className="">
 
-            <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
-            <div className="pb-16 text-5xl font-semibold text-center text-white">{title}</div>
-            <div className=" text-center text-white">
-                {ReactHtmlParser(content)}
-              </div>
-              </div>
+          <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
+          <div className="pb-16 text-5xl font-semibold text-center text-white">{title}</div>
+          <div className=" text-center text-white">
+            {ReactHtmlParser(content)}
           </div>
-        </SectionWrapper>
-    )
+        </div>
+      </div>
+    </SectionWrapper>
+  )
 }
