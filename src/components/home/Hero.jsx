@@ -110,7 +110,7 @@ const CaptionArticle = styled.p`
       <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 ">
 
         <Hero>
-          <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-8/12 md:w-11/12">
+          <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-6/12 md:w-11/12">
             
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
               <CaptionArticle>{action}</CaptionArticle>
