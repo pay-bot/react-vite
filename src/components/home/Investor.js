@@ -34,17 +34,26 @@ export default function Investor() {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                switch (section.id) {
+                  case 12:
             if (s && s.length !== 0) {
 
-              title = s[6]?.components[0]?.heading;
-              content = s[6]?.components[0]?.content;
-              media = s[5]?.components[0]?.media;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
             }
 
+            break;
+            default:
+              break;
+          }
+    });
+          }
 
-            break;
-          default:
-            break;
+          break;
+        default:
+          break;
         }
       });
     }
@@ -67,8 +76,8 @@ export default function Investor() {
   }
   return (
     <div className="flex py-16 bg-white ">
-      <div className="">
-        <div className="flex mx-auto">
+      <div className="w-full">
+        <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
             <div className="py-8 text-4xl text-center">{title}</div>
             <div className="text-center ">{ReactHtmlParser(content)}</div>

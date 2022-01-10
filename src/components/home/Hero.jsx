@@ -100,7 +100,7 @@ export default function Hero() {
   );
 `;
 
-const SectionName = styled.p`
+const CaptionArticle = styled.p`
   ${tw`font-bold uppercase `}
   color : ${txtColorSection};
 `;
@@ -112,7 +112,7 @@ const SectionName = styled.p`
         <Hero>
           <div className="flex items-center w-6/12 h-full">
             <div className="pl-32">
-              <SectionName>{caption}</SectionName>
+              <CaptionArticle>{caption}</CaptionArticle>
               <div className="py-8 text-white text-7xl">{title}</div>
               <div className="text-xl text-white textfont-semibold ">
                 {ReactHtmlParser(content)}

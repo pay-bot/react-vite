@@ -1,15 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail } from "../../utils/Api";
+import { getSectionsDetail,
+  getTheme, } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
+import tw, { styled } from "twin.macro";
+
 
 export default function MakingYourWorld() {
   const [pageSections, setPageSections] = useState([]);
+  const [theme, setTheme] = useState([]);
   console.log("making", pageSections);
   useEffect(() => {
     let isSubscribed = true;
     getSectionsDetail(1).then((pageSections) => {
       if (isSubscribed) {
         setPageSections(pageSections);
+      }
+    });
+    getTheme().then(theme => {
+      if (isSubscribed) {
+        setTheme(theme);
       }
     });
     return () => (isSubscribed = false);
@@ -37,10 +46,10 @@ export default function MakingYourWorld() {
               section?.components[0]?.photos?.forEach((data, i) => {
                 image.push(data);
               });
-              caption2 = section?.components[0]?.caption;
-              title2 = section?.components[0]?.heading;
-              content2 = section?.components[0]?.content;
-              video = section?.components[0]?.action_url;
+              caption2 = section?.components[1]?.caption;
+              title2 = section?.components[1]?.heading;
+              content2 = section?.components[1]?.content;
+              video = section?.components[1]?.action_url;
             }
             break;
               default:
@@ -57,6 +66,25 @@ export default function MakingYourWorld() {
     }
   }
 
+
+  let bgPage, bgSect, txtColorSection
+  
+
+  if (theme) {
+    let tema = theme?.themes
+    if (tema && tema.length !== 0) {
+      tema.forEach((theme, i) => {
+        const t = theme ?? theme;
+        if (t && t.length !== 0) {
+          bgPage = t.bgroundPage;
+          bgSect = t.bgroundSection
+          txtColorSection = t.txtcolorscdSection
+        }
+      });
+    }
+  }
+
+  
   const videoEl = useRef(null);
 
   const attemptPlay = () => {
@@ -67,13 +95,19 @@ export default function MakingYourWorld() {
       });
   };
 
+  const CaptionArticle = styled.p`
+  ${tw`font-bold uppercase `}
+  color : ${txtColorSection};
+`;
+
+
   return (
     <div className="py-16 bg-white">
       <div className="relative w-full h-full py-16 ">
         <div className="flex items-center w-full h-full pl-32 pr-28">
           <div className="flex items-center justify-center w-4/12 h-full">
             <div className="">
-              <p className="font-bold text-blue-600 uppercase">{caption}</p>
+              <CaptionArticle >{caption}</CaptionArticle>
               <div className="py-8 text-5xl">{title}</div>
               <div className="text-lg">{ReactHtmlParser(content)}</div>
             </div>
@@ -96,8 +130,10 @@ export default function MakingYourWorld() {
         <div className="flex items-center w-full pl-36">
           <div className="w-3/12 ">
             <div className="">
-              <p className="font-bold text-blue-600 uppercase">{caption2}</p>
-              <div className="py-8 text-5xl">{title2}</div>
+              <CaptionArticle>
+                {caption2}
+                </CaptionArticle>
+              <p className="py-8 text-5xl">{title2}</p>
               <div className="text-lg">{ReactHtmlParser(content2)}</div>
             </div>
           </div>

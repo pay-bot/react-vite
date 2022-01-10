@@ -35,17 +35,27 @@ export default function PeopleAndBusiness() {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                switch (section.id) {
+                  case 9:
             if (s && s.length !== 0) {
 
-              title = s[3]?.components[0]?.heading;
-              content = s[3]?.components[0]?.content;
-              media = s[3]?.components[0]?.media;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
+              media = section?.components[0]?.media;
             }
 
+            break;
+            default:
+              break;
+          }
+    });
+          }
 
-            break;
-          default:
-            break;
+          break;
+        default:
+          break;
         }
       });
     }
@@ -78,7 +88,7 @@ export default function PeopleAndBusiness() {
 
           <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
           <div className="pb-16 text-5xl font-semibold text-center text-white">{title}</div>
-          <div className=" text-center text-white">
+          <div className="text-center text-white ">
             {ReactHtmlParser(content)}
           </div>
         </div>

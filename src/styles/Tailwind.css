@@ -14,3 +14,21 @@ div.imgBox {
   div.imgBox:hover img {
     transform: scale(1.3) !important;
   }
+
+  .splide__arrow {
+    display: none !important;
+  }
+  .splide__arrow:disabled {
+    pointer-events: none;
+    display: none !important;
+  }
+
+
+  .splide__pagination {
+    bottom: -20px !important;
+  }
+  .splide__pagination__page.is-active {
+
+    background: green !important;
+    transform: scale(1.4);
+  }

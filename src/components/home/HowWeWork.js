@@ -38,11 +38,22 @@ export default function HowWeWork() {
         switch (i) {
           case 1:
             const s = section?.sections ?? section.sections;
+            if (s && s.length !== 0 ) {
+              s.forEach((section, i) => {
+                switch (section.id) {
+                  case 10:
             if (s && s.length !== 0) {
 
-              title = s[4]?.components[0]?.heading;
-              content = s[4]?.components[0]?.content;
-              caption = s[4]?.components[0]?.caption;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
+              caption = section?.components[0]?.caption;
+            }
+
+            break;
+              default:
+                break;
+            }
+      });
             }
 
             break;
@@ -55,7 +66,7 @@ export default function HowWeWork() {
 
 
 
-  let bgSect;
+  let bgSect,txtColorSection
 
   if (theme) {
     let tema = theme?.themes;
@@ -64,6 +75,7 @@ export default function HowWeWork() {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
           bgSect = t.bgroundSection;
+          txtColorSection = t.txtcolorscdSection
         }
       });
     }
@@ -95,18 +107,21 @@ export default function HowWeWork() {
     })
   }
 
-
+  const CaptionArticle = styled.p`
+  ${tw`font-bold text-center uppercase`}
+  color : ${txtColorSection};
+`;
 
 
 
   return (
     <div className="flex py-16 bg-white ">
       <div className="">
-        <div className="flex mx-auto justify-center">
+        <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-            <div className="text-center">
+            <CaptionArticle>
               {caption}
-            </div>
+            </CaptionArticle>
             <div className="py-8 text-4xl text-center">{title}
             </div>
             <div className="text-center ">{ReactHtmlParser(content)}
