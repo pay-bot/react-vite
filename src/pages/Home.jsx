@@ -12,6 +12,7 @@ import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
 import HowWeWork from "../components/home/HowWeWork";
 import OurServices from "../components/home/OurServices";
 import Investor from "../components/home/Investor";
+import Insights from "../components/home/Insights";
 
 export default function Home() {
   const [pageSections, setPageSections] = useState([]);
@@ -106,6 +107,7 @@ export default function Home() {
         <HowWeWork />
         <OurServices/>
         <Investor/>
+        {/* <Insights/> */}
 
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {
