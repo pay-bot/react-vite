@@ -59,7 +59,7 @@ export default function Hero() {
     attemptPlay();
   }, []);
 
-  let caption, title, content;
+ let action, title, content;
 
   if (pageSections) {
     let sec = pageSections;
@@ -71,9 +71,9 @@ export default function Hero() {
             if (s && s.length !== 0 ) {
               s.forEach((section, i) => {
                 switch (section.id) {
-                  case 6:
+                  case 2:
               console.log("section contentrrr") 
-              caption =  section?.components[0]?.caption;
+              action =  section?.components[0]?.action_name;
               title =  section?.components[0]?.heading;
               content =  section?.components[0]?.content;
               break;
@@ -101,34 +101,38 @@ export default function Hero() {
 `;
 
 const CaptionArticle = styled.p`
-  ${tw`font-bold uppercase `}
+  ${tw`pt-10 font-bold text-center uppercase lg:text-left`}
   color : ${txtColorSection};
 `;
 
   return (
     <>
-      <div className="relative w-full pl-16 bg-white">
+      <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 ">
 
         <Hero>
-          <div className="flex items-center w-6/12 h-full">
-            <div className="pl-32">
-              <CaptionArticle>{caption}</CaptionArticle>
-              <div className="py-8 text-white text-7xl">{title}</div>
-              <div className="text-xl text-white textfont-semibold ">
+          <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-8/12 md:w-11/12">
+            
+            <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
+              <CaptionArticle>{action}</CaptionArticle>
+              <div className="py-8 text-5xl text-center text-white lg:text-7xl lg:text-left">{title}</div>
+              <div className="text-xl text-center text-white textfont-semibold lg:text-left ">
                 {ReactHtmlParser(content)}
+              </div>
+              <div className="py-20">
+              <div className="inline px-3 py-2 border">Learn more</div>
               </div>
             </div>
           </div>
         </Hero>
         <video
-          className=""
-          style={{ maxWidth: "100%", width: "100%", margin: "" }}
+          className="h-[1000px] "
+          style={{ maxWidth: "100%", width: "120%", height: "100%", margin: "", }}
           playsInline
           loop
           muted
           controls
           alt="All the devices"
-          // src="https://d2csxpduxe849s.cloudfront.net/media/A13DCF71-0059-4014-930224BDACD7889E/F68C503E-9957-4E5F-89BEEF67DB9A2F34/6DCE7A31-D0F8-4EF7-8F2E138C9F78482A.mp4"
+          src="https://d2csxpduxe849s.cloudfront.net/media/A13DCF71-0059-4014-930224BDACD7889E/F68C503E-9957-4E5F-89BEEF67DB9A2F34/6DCE7A31-D0F8-4EF7-8F2E138C9F78482A.mp4"
           ref={videoEl}
         />
       </div>

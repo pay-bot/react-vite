@@ -25,7 +25,7 @@ export default function Insights() {
   }, []);
 
   let sectionName;
-  let title, content, media;
+  let title, content, action;
 
   if (pageSections) {
     let sec = pageSections;
@@ -37,10 +37,10 @@ export default function Insights() {
             if (s && s.length !== 0) {
               s.forEach((section, i) => {
                 switch (section.id) {
-                  case 12:
+                  case 8:
                     if (s && s.length !== 0) {
-                      sectionName = section?.name;
-                      content = section?.components[0]?.content;
+                      action = section?.components[0]?.action_name;
+                      content = section?.components[0]?.heading;
                     }
 
                     break;
@@ -87,7 +87,7 @@ export default function Insights() {
       <div className="w-full">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-          <CaptionArticle>{sectionName}</CaptionArticle>
+          <CaptionArticle>{action}</CaptionArticle>
 
             <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
@@ -110,7 +110,7 @@ export default function Insights() {
                         ))}
 
                       </div>
-                      <div className="text-center">{caption}</div>
+                      <div className="text-center">{action}</div>
                       <p className="">{data.name}</p>
 
 

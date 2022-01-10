@@ -67,7 +67,7 @@ export default function Home() {
     attemptPlay();
   }, []);
 
-  let caption, title, content;
+ let action, title, content;
 
   // if (pageSections) {
   //   let sec = pageSections;
@@ -78,7 +78,7 @@ export default function Home() {
   //           const s = section?.components ?? section.components[0];
   //           if (s && s.length !== 0) {
   //             console.log('ini' , s[1])
-  //            caption = s[1].caption
+  //            action = s[1].caption
   //             title = s[1].heading
   //              content = s[1].content
   //           }
@@ -107,7 +107,7 @@ export default function Home() {
         <HowWeWork />
         <OurServices/>
         <Investor/>
-        {/* <Insights/> */}
+        <Insights/>
 
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {

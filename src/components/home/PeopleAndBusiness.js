@@ -38,7 +38,7 @@ export default function PeopleAndBusiness() {
             if (s && s.length !== 0 ) {
               s.forEach((section, i) => {
                 switch (section.id) {
-                  case 9:
+                  case 4:
             if (s && s.length !== 0) {
 
               title = section?.components[0]?.heading;
@@ -78,12 +78,12 @@ export default function PeopleAndBusiness() {
   }
 
   const SectionWrapper = styled.div`
-  ${tw`w-full h-full py-16 `}
+  ${tw`w-full h-full `}
   background-color: ${bgSect} ;
 `;
   return (
     <SectionWrapper>
-      <div className="flex items-center justify-center max-w-2xl py-16 mx-auto">
+      <div className="flex items-center justify-center max-w-2xl mx-auto xl:py-16 2xl:py-32">
         <div className="">
 
           <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />

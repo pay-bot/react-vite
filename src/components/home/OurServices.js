@@ -45,7 +45,7 @@ export default function OurServices() {
             if (s && s.length !== 0) {
               s.forEach((section, i) => {
                 switch (section.id) {
-                  case 11:
+                  case 6:
                     if (s && s.length !== 0) {
                       sectionName = s[5].name;
                       title = section?.components[0]?.heading;
@@ -118,7 +118,7 @@ export default function OurServices() {
             <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
         </div>
-        <div className="w-11/12 pt-16 mx-auto">
+        <div className="w-11/12 mx-auto 2xl:py-16 xl:py-8">
           <Splide
             options={{
               type: "loop",
@@ -130,7 +130,7 @@ export default function OurServices() {
             }}
           >
             {test.map((data, i) => {
-              if (data.category_id === 5) {
+              if (data.category_id === 2) {
                 return (
                   <>
                     <SplideSlide>
@@ -142,7 +142,7 @@ export default function OurServices() {
                             </div>
                           ))}
                         </div>
-                        {/* <div className="text-center">{caption}</div> */}
+                        {/* <div className="text-center">{action}</div> */}
                         <div className="absolute bottom-0 top-2/3">
                           <div className="px-4 py-2 bg-blue-500 ">
 

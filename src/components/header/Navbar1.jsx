@@ -108,7 +108,7 @@ function Navbar1(props) {
               s.forEach((section, i) => {
                 console.log("section contentrrr", section);
                 switch (section.id) {
-                  case 2:
+                  case 1:
               section?.components[0]?.photos?.map((data, i) => {
                 logo = data.url;
               });
@@ -138,7 +138,7 @@ function Navbar1(props) {
 `;
 
 const Nav = styled(Link)`
-  ${tw`font-semibold whitespace-nowrap `}
+  ${tw`font-semibold uppercase whitespace-nowrap `}
   &:hover {
     padding-bottom: 8px;
     color: ${txtcolorscdHead};

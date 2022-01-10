@@ -40,7 +40,7 @@ export default function Investor() {
             if (s && s.length !== 0 ) {
               s.forEach((section, i) => {
                 switch (section.id) {
-                  case 12:
+                  case 7:
             if (s && s.length !== 0) {
               sectionName = section?.name;
 
@@ -118,7 +118,7 @@ export default function Investor() {
                         ))}
 
                       </div>
-                      <div className="text-center">{caption}</div>
+                      <div className="text-center">{action}</div>
                       <p className="">{data.name}</p>
 
 
