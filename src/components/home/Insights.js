@@ -1,60 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { getSectionsDetail, getTheme } from "../../utils/Api";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
 export default function Insights() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-
-  console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then((pageSections) => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then((theme) => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+
+    
+  }, [dispatch]);
+  
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
 
   let sectionName;
   let title, content, action;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 8:
-                    if (s && s.length !== 0) {
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 8:
                       action = section?.components[0]?.action_name;
                       content = section?.components[0]?.heading;
-                    }
-
-                    break;
-                  default:
-                    break;
-                }
-              });
-            }
-
-            break;
-          default:
-            break;
-        }
-      });
+                      break;
+                      default:
+                        break;
+                      }
+                    });
+                  }
     }
   }
 

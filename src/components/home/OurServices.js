@@ -2,90 +2,68 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
-import { getSectionsDetail, getTheme, getArticle } from "../../utils/Api";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {
+  fetchAsyncSections,
+  getAllSections,
+} from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
+import {
+  fetchAsyncArticles,
+  getAllArticles,
+} from "../../features/articles/articleSlice";
+import { Link } from "react-router-dom";
+
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 export default function OurServices() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-  const [article, setArticle] = useState([]);
-
-  console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then((pageSections) => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then((theme) => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    getArticle().then((article) => {
-      if (isSubscribed) {
-        setArticle(article);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+    dispatch(fetchAsyncArticles());
+  }, [dispatch]);
+
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
+  const article = useSelector(getAllArticles);
 
   let sectionName;
   let title, content, media;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 6:
-                    if (s && s.length !== 0) {
-                      sectionName = s[5].name;
-                      title = section?.components[0]?.heading;
-                      content = section?.components[0]?.content;
-                      media = section?.components[0]?.media;
-                    }
-                    break;
-                  default:
-                    break;
-                }
-              });
-            }
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 6:
+              sectionName = s[5].name;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
+              media = section?.components[0]?.media;
 
-            break;
-          default:
-            break;
-        }
-      });
+              break;
+            default:
+              break;
+          }
+        });
+      }
     }
   }
 
-  let articleId = [];
+  let articles = [];
 
   if (article) {
     let art = article;
     if (art && art.length !== 0) {
-      art.map((data, i) => {
-        console.log("our", data);
-        articleId.push(data);
+      art[0]?.map((data, i) => {
+        articles.push(data);
       });
     }
-  }
-
-  let test = [];
-  {
-    articleId.map((data) => {
-      data.map((data) => {
-        test.push(data);
-      });
-    });
   }
 
   let bgSect, txtColorSection;
@@ -126,10 +104,9 @@ export default function OurServices() {
               perPage: 4,
               gap: "3rem",
               pagination: true,
-
             }}
           >
-            {test.map((data, i) => {
+            {articles.map((data, i) => {
               if (data.category_id === 2) {
                 return (
                   <>
@@ -138,18 +115,20 @@ export default function OurServices() {
                         <div className="card-zoom">
                           {data.photos?.map((data) => (
                             <div className="imgBox w-[300px]">
-                              <img src={data.url} alt="" className="flex object-cover w-full h-72" />
+                              <img
+                                src={data.url}
+                                alt=""
+                                className="flex object-cover w-full h-72"
+                              />
                             </div>
                           ))}
                         </div>
                         {/* <div className="text-center">{action}</div> */}
                         <div className="absolute bottom-0 top-2/3">
                           <div className="px-4 py-2 bg-blue-500 ">
-
-                            
-                          {data.name}
+                            {data.name}
                           </div>
-                          </div>
+                        </div>
                       </div>
                     </SplideSlide>
                   </>

@@ -1,89 +1,69 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { getSectionsDetail, getTheme } from "../../utils/Api";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {
+  fetchAsyncSections,
+  getAllSections,
+} from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
 export default function Investor() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-
-  console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then(pageSections => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+  }, [dispatch]);
 
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
 
   let sectionName;
   let title, content, media;
 
-
   if (pageSections) {
-
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 7:
-            if (s && s.length !== 0) {
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 7:
               sectionName = section?.name;
 
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
-            }
 
-            break;
+              break;
             default:
               break;
           }
-    });
-          }
-
-          break;
-        default:
-          break;
-        }
-      });
+        });
+      }
     }
   }
 
   let bgSect, txtColorSection;
 
-
   if (theme) {
-    let tema = theme?.themes
+    let tema = theme?.themes;
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
-          bgSect = t.bgroundSection
+          bgSect = t.bgroundSection;
           txtColorSection = t.txtcolorscdSection;
-
         }
       });
     }
   }
 
   const SectionWrapper = styled.div`
-  ${tw`w-full h-full py-16 `}
-  background-color: ${bgSect} ;
-`;
+    ${tw`w-full h-full py-16 `}
+    background-color: ${bgSect};
+  `;
 
   const CaptionArticle = styled.p`
     ${tw`font-bold text-center uppercase `}
@@ -94,10 +74,12 @@ export default function Investor() {
       <div className="w-full">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-          <CaptionArticle>{sectionName}</CaptionArticle>
+            <CaptionArticle>{sectionName}</CaptionArticle>
 
             <div className="py-8 text-4xl text-center text-white">{title}</div>
-            <div className="text-center text-white ">{ReactHtmlParser(content)}</div>
+            <div className="text-center text-white ">
+              {ReactHtmlParser(content)}
+            </div>
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
@@ -131,5 +113,5 @@ export default function Investor() {
         </div>
       </div>
     </SectionWrapper>
-  )
+  );
 }

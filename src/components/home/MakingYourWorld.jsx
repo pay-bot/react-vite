@@ -1,45 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail,
-  getTheme, } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
 
 
 export default function MakingYourWorld() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-  console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then((pageSections) => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+
+    
+  }, [dispatch]);
+  
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
 
  let action, title, content;
  let action2, title2, content2, video;
 
   let image = [];
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 3:
-            if (s && s.length !== 0) {
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 3:
               action = section?.components[0]?.action_name;
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
@@ -50,13 +41,7 @@ export default function MakingYourWorld() {
               title2 = section?.components[1]?.heading;
               content2 = section?.components[1]?.content;
               video = section?.components[1]?.action_url;
-            }
-            break;
-              default:
-                break;
-            }
-      });
-            }
+            
 
             break;
           default:
@@ -65,7 +50,7 @@ export default function MakingYourWorld() {
       });
     }
   }
-
+    }
 
   let bgPage, bgSect, txtColorSection
   

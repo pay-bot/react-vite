@@ -5,6 +5,7 @@ import './styles/Tailwind.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home'
 import About from "./pages/About";
+import ServiceDetail from './components/home/ServiceDetail/ServiceDetail';
 
 function App() {
   console.log(process.env.REACT_APP_API_URL)
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} exact />
+          <Route path="/services/:slug" component={<ServiceDetail/>} />
           <Route path="/about" element={<About />} exact />
         </Routes>
     </BrowserRouter>

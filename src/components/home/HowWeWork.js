@@ -1,60 +1,44 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail, getTheme, getArticle } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
+import { fetchAsyncArticles, getAllArticles } from "../../features/articles/articleSlice";
+
 
 export default function HowWeWork() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-  const [article, setArticle] = useState([]);
-
-  //console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then((pageSections) => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then((theme) => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    getArticle().then((article) => {
-      if (isSubscribed) {
-        setArticle(article);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+    dispatch(fetchAsyncArticles());
+
+    
+  }, [dispatch]);
+  
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
+  const article = useSelector(getAllArticles);
+
+  
 
   let title, content, action;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 5:
-            if (s && s.length !== 0) {
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 5:
 
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
               action = section?.components[0]?.action_name;
-            }
-
-            break;
-              default:
-                break;
-            }
-      });
-            }
+           
 
             break;
           default:
@@ -63,6 +47,7 @@ export default function HowWeWork() {
       });
     }
   }
+}
 
 
 
@@ -81,13 +66,13 @@ export default function HowWeWork() {
     }
   }
 
-  let articleId = []
+  let articles = []
 
   if (article) {
     let art = article;
     if (art && art.length !== 0) {
-      art.map((data, i) => {
-        articleId.push(data);
+      art[0]?.map((data, i) => {
+        articles.push(data);
 
       }
       )
@@ -95,17 +80,7 @@ export default function HowWeWork() {
     }
   }
 
-  let test = []
-  {
-    articleId.map((data) => {
-      data.map((data) => {
-
-
-        test.push(data)
-
-      })
-    })
-  }
+  
 
   const CaptionArticle = styled.p`
   ${tw`font-bold uppercase`}
@@ -129,7 +104,7 @@ export default function HowWeWork() {
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10 2xl:py-16 xl:py-8">
-          {test.map((data, i) => {
+          { articles.map((data, i) => {
             if (data.category_id === 1) {
 
               return (

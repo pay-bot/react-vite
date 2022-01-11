@@ -1,46 +1,38 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  getSectionsDetail,
-  getText,
-  getLocation,
-  getTheme,
-} from "../../utils/Api";
+
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
+
 
 
 export default function Hero() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-  
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    getSectionsDetail(1).then(pageSections => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
 
-    return () => (isSubscribed = false);
-  }, []);
-
-  let bgPage, bgSect, txtColorSection
+    
+  }, [dispatch]);
   
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
+  // console.log("sectionredux", pageSections);
+  
+  let bgPage, bgSect, txtColorSection;
 
   if (theme) {
-    let tema = theme?.themes
+    let tema = theme?.themes;
     if (tema && tema.length !== 0) {
       tema.forEach((theme, i) => {
         const t = theme ?? theme;
         if (t && t.length !== 0) {
           bgPage = t.bgroundPage;
-          bgSect = t.bgroundSection
-          txtColorSection = t.txtcolorscdSection
+          bgSect = t.bgroundSection;
+          txtColorSection = t.txtcolorscdSection;
         }
       });
     }
@@ -59,74 +51,71 @@ export default function Hero() {
     attemptPlay();
   }, []);
 
- let action, title, content;
+  let action, title, content;
 
   if (pageSections) {
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 2:
-              console.log("section contentrrr") 
-              action =  section?.components[0]?.action_name;
-              title =  section?.components[0]?.heading;
-              content =  section?.components[0]?.content;
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 2:
+              // console.log("section contentrrr", section);
+              action = section?.components[0]?.action_name;
+              title = section?.components[0]?.heading;
+              content = section?.components[0]?.content;
               break;
-              default:
-                break;
-            }
-      });
-            }
-            break;
-          default:
-            break;
-        }
-      });
+            default:
+              break;
+          }
+        });
+      }
     }
   }
 
   const Hero = styled.div`
-  ${tw`absolute w-full h-full `}
-  background: linear-gradient(
+    ${tw`absolute w-full h-full `}
+    background: linear-gradient(
     90deg,
     ${bgSect} 0%,
     ${bgSect} 0%,
     rgba(116, 242, 250, 0) 93%
   );
-`;
+  `;
 
-const CaptionArticle = styled.p`
-  ${tw`pt-10 font-bold text-center uppercase lg:text-left`}
-  color : ${txtColorSection};
-`;
+  const CaptionArticle = styled.p`
+    ${tw`pt-10 font-bold text-center uppercase lg:text-left`}
+    color : ${txtColorSection};
+  `;
 
   return (
     <>
       <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 ">
-
         <Hero>
           <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-6/12 md:w-11/12">
-            
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
               <CaptionArticle>{action}</CaptionArticle>
-              <div className="py-8 text-5xl text-center text-white lg:text-7xl lg:text-left">{title}</div>
+              <div className="py-8 text-5xl text-center text-white lg:text-7xl lg:text-left">
+                {title}
+              </div>
               <div className="text-xl text-center text-white textfont-semibold lg:text-left ">
                 {ReactHtmlParser(content)}
               </div>
               <div className="py-20">
-              <div className="inline px-3 py-2 border">Learn more</div>
+                <div className="inline px-3 py-2 border">Learn more</div>
               </div>
             </div>
           </div>
         </Hero>
         <video
           className="h-[1000px] "
-          style={{ maxWidth: "100%", width: "120%", height: "100%", margin: "", }}
+          style={{
+            maxWidth: "100%",
+            width: "120%",
+            height: "100%",
+            margin: "",
+          }}
           playsInline
           loop
           muted

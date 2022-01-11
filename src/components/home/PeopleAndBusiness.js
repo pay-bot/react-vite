@@ -1,57 +1,41 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSectionsDetail, getTheme } from "../../utils/Api";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
 
 
 export default function PeopleAndBusiness() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
-
-  //console.log("making", pageSections);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then(pageSections => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+
+    
+  }, [dispatch]);
+  
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
 
   let title, content, media;
 
 
   if (pageSections) {
-
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                switch (section.id) {
-                  case 4:
-            if (s && s.length !== 0) {
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 4:
 
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
               media = section?.components[0]?.media;
-            }
 
-            break;
-            default:
-              break;
-          }
-    });
-          }
+        
 
           break;
         default:
@@ -60,6 +44,7 @@ export default function PeopleAndBusiness() {
       });
     }
   }
+}
 
   let bgSect;
 

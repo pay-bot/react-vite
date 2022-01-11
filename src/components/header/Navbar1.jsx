@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { getSectionsDetail, getMenuHeader, getTheme } from "../../utils/Api";
 import _ from "lodash";
-import classNames from "classnames";
-import clsx from "clsx";
-import cx from "clsx";
 import tw, { styled } from "twin.macro";
-
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice"
+import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice"
+import { fetchAsyncHeaders, getHeaders } from "../../features/menus/menuSlice";
+
+
 
 function Button({ text, bg, padding }) {
   return (
@@ -23,44 +25,26 @@ function Button({ text, bg, padding }) {
 }
 
 function Navbar1(props) {
-  // console.log(process.env.REACT_APP_API_URL)
-  
-  
-  const [theme, setTheme] = useState([]);
-  const [header, setHeader] = useState([]);
-  const [pageSections, setPageSections] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    let isSubscribed = true;
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    getSectionsDetail(1).then(pageSections => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
+    dispatch(fetchAsyncSections());
+    dispatch(fetchAsyncThemes());
+    dispatch(fetchAsyncHeaders());
+  }, [dispatch]);
 
-    getMenuHeader().then(header => {
-      if (isSubscribed) {
-        setHeader(header);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+  const pageSections = useSelector(getAllSections);
+  const theme = useSelector(getThemes);
+  const header = useSelector(getHeaders);
+  
  
   const sortedHeader = _.sortBy(header, "list_order");
   const sortedHeaderChild = _.sortBy(header, "list_order");
 
   if (header) {
-    let sec = header;
-    if (sec && sec.length !== 0) {
-      sec.forEach((section, i) => {
+    let head = header;
+    if (head && head.length !== 0) {
         sortedHeaderChild.push({
-          name: section.name,
-        });
+          name: head.name,
       });
     }
   }
@@ -96,30 +80,17 @@ function Navbar1(props) {
   let logo;
 
   if (pageSections) {
-
-    let sec = pageSections;
+    let sec = pageSections[0]?.sections;
     if (sec && sec.length !== 0) {
-
-      sec[0].forEach((section, i) => {
-        switch (i) {
-          case 1:
-            const s = section?.sections ?? section.sections;
-            if (s && s.length !== 0 ) {
-              s.forEach((section, i) => {
-                console.log("section contentrrr", section);
-                switch (section.id) {
-                  case 1:
+      const s = sec ?? sec;
+      if (s && s.length !== 0) {
+        s?.forEach((section, i) => {
+          switch (section.id) {
+            case 1:
               section?.components[0]?.photos?.map((data, i) => {
                 logo = data.url;
               });
-              break;
-              default:
-                break;
-            }
-      });
 
-              //  content = s[0].heading
-            }
             break;
           default:
             break;
@@ -127,6 +98,7 @@ function Navbar1(props) {
       });
     }
   }
+}
 
   const bg = {
     'backgroundColor': bgHead
@@ -182,7 +154,7 @@ const ChildNav = styled.li`
                         if (data.id === child.parent_id) {
                           return (
                             <>
-                              {/* <svg class="block fill-current text-white w-4 h-4 absolute left-0 top-0 ml-3 -mt-3 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg> */}
+                              <svg className="absolute top-0 left-0 z-0 block w-4 h-4 ml-3 -mt-3 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
                               <ChildNav
                                 className={`${bgHead}`}
                               >

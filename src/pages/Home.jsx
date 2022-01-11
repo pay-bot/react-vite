@@ -102,6 +102,7 @@ export default function Home() {
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
         <Hero />
+        
         <MakingYourWorld />
         <PeopleAndBusiness />
         <HowWeWork />
@@ -159,7 +160,7 @@ export default function Home() {
 // if (pageSections) {
 //   let sec = pageSections;
 //   if (sec && sec.length !== 0) {
-//       sec[0].components.forEach((section, i) => {
+//       sec.components.forEach((section, i) => {
 //         switch (i) {
 //             case 0:
 //               if (section && section.length !== 0) {
@@ -178,7 +179,7 @@ export default function Home() {
 // if (pageSections) {
 //   let sec = pageSections;
 //   if (sec && sec.length !== 0) {
-//       sec[0].components.forEach((section, i) => {
+//       sec.components.forEach((section, i) => {
 //         content.push({
 //     heading: section.heading,
 //     location_id : section.location_id
