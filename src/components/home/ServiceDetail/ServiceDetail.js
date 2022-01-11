@@ -20,9 +20,10 @@ export default function ServiceDetail() {
   }, [dispatch, slug]);
     return (
         <div className="movie-section">
-        {Object?.article?.map((data) =>
-        { console.log('ini slug' , data)
-        })}
+        {Object.entries(data).map(data =>
+        (
+          <p className="">{data[1].name}</p>
+        ))}
       </div>
     )
 }
