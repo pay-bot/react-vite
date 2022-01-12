@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import { useThemesQuery, usePagesQuery } from '../../features/api/apiSlice'
+import {
+  useThemesQuery,
+  usePagesQuery,
+  useArticlesQuery,
+} from "../../features/api/apiSlice";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
 export default function Insights() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
+  const { data: articles = [],  isSuccess } = useArticlesQuery();
 
   let sectionName;
   let title, content, action;
@@ -19,14 +24,14 @@ export default function Insights() {
         s?.forEach((section, i) => {
           switch (section.id) {
             case 8:
-                      action = section?.components[0]?.action_name;
-                      content = section?.components[0]?.heading;
-                      break;
-                      default:
-                        break;
-                      }
-                    });
-                  }
+              action = section?.components[0]?.action_name;
+              content = section?.components[0]?.heading;
+              break;
+            default:
+              break;
+          }
+        });
+      }
     }
   }
 
@@ -55,45 +60,41 @@ export default function Insights() {
     color : ${txtColorSection};
   `;
   return (
-  <div className="py-16 bg-white">
+    <div className="py-16 bg-white">
       <div className="w-full">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-          <CaptionArticle>{action}</CaptionArticle>
+            <CaptionArticle>{action}</CaptionArticle>
 
             <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
-          {/* {test.map((data, i) => {
-            if (data.category.id === data.category_id) {
-
-              return (
-                <>
-                  {i < 2 && (
-
-
-                    <div className="">
-                      <div className="card-zoom">
-                        {data.photos?.map((data) => (
-                          <div className="imgBox ">
-                            <img src={data.url} alt="" className="" />
-                          </div>
-                        ))}
-
-                      </div>
-                      <div className="text-center">{action}</div>
-                      <p className="">{data.name}</p>
-
-
+          {articles[0]?.map((data, i) =>  (
+              <>
+                  <div className="">
+                    <div className="card-zoom">
+                      {data.photos?.map((data) => (
+                        <div className="imgBox ">
+                          <img src={data.url} alt="" className="" />
+                        </div>
+                      ))}
                     </div>
-                  )}
-                </>
-              )
-            }
-          })} */}
+                    <div className="p">
+                      <CaptionArticle className="py-4 text-left">
+                        {action}
+                      </CaptionArticle>
+                      <p className="pb-4 font-semibold capitalize">
+                        {data.name}
+                      </p>
+                      <div className="">{ReactHtmlParser(data.content)}</div>
+                    </div>
+                  </div>
+              </>
+           ) )}
         </div>
+
       </div>
-  </div>
-  )
+    </div>
+  );
 }

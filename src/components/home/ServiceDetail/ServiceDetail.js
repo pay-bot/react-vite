@@ -10,6 +10,7 @@ export default function ServiceDetail() {
   const { data: article = [], isLoading, isError, isSuccess } = useArticleQuery(slug);
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
+  console.log(article)
 
   let bgPage, bgSect, txtColorSection;
 
@@ -39,12 +40,18 @@ export default function ServiceDetail() {
       <div className="mx-auto bg-white max-w-screen-2xl ">
         <Navbar/>
           {isSuccess && (
-            <div className="py-32 pl-40">
+            <div className="py-24 pl-40">
           {Object.entries(article).map(data => (
-            <div className="">
+            <div className="flex items-center w-full">
+              <div className="w-5/12 pr-16">
             <div className="">{data[1].name}</div>
-            <div className="">{data[1].summary}</div>
-            <div className="text-lg">{ReactHtmlParser(data[1].content)}</div>
+            <div className="py-8 text-6xl font-semibold">{data[1].summary}</div>
+            <div className="text-lg prose">{ReactHtmlParser(data[1].content)}</div>
+                
+              </div>
+              <div className="w-7/12">
+                <img src={data[1].photos[0].url} alt="" className="object-cover" />
+              </div>
             </div>
           ))}
           </div>

@@ -23,6 +23,8 @@ module.exports = {
     extend: {
       'hd': '1366px'
   } },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   
 };
