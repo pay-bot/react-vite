@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice"
 import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice"
 import { fetchAsyncHeaders, getHeaders } from "../../features/menus/menuSlice";
+import { useThemesQuery, useHeadersQuery, usePagesQuery } from '../../features/api/apiSlice'
 
 
 
@@ -25,16 +26,20 @@ function Button({ text, bg, padding }) {
 }
 
 function Navbar1(props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAsyncSections());
-    dispatch(fetchAsyncThemes());
-    dispatch(fetchAsyncHeaders());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchAsyncSections());
+  //   dispatch(fetchAsyncThemes());
+  //   dispatch(fetchAsyncHeaders());
+  // }, [dispatch]);
 
-  const pageSections = useSelector(getAllSections);
-  const theme = useSelector(getThemes);
-  const header = useSelector(getHeaders);
+  // const pageSections = useSelector(getAllSections);
+  // const theme = useSelector(getThemes);
+  // const header = useSelector(getHeaders);
+  const { data: theme = [] } = useThemesQuery();
+  const { data: header = [] } = useHeadersQuery();
+  const { data: pageSections = [] } = usePagesQuery();
+  
   
  
   const sortedHeader = _.sortBy(header, "list_order");

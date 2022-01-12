@@ -1,16 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import sectionsReducer from "./sections/sectionSlice";
-import themesReducer from "./themes/themeSlice"
-import menusReducer from "./menus/menuSlice"
-import articlesReducer from "./articles/articleSlice"
-
-
+import { configureStore } from '@reduxjs/toolkit';
+import { Api } from '../features/api/apiSlice';
 
 export const store = configureStore({
   reducer: {
-    headers : menusReducer,
-    themes: themesReducer,
-    sections: sectionsReducer,
-    articles: articlesReducer,
+    [Api.reducerPath]: Api.reducer,
   },
+  
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(Api.middleware),
+    
 });
+
+

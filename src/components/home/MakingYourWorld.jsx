@@ -1,23 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
-import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
+import { useThemesQuery, usePagesQuery } from '../../features/api/apiSlice'
+
 
 
 export default function MakingYourWorld() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAsyncSections());
-    dispatch(fetchAsyncThemes());
-
-    
-  }, [dispatch]);
-  
-  const pageSections = useSelector(getAllSections);
-  const theme = useSelector(getThemes);
+  const { data: theme = [] } = useThemesQuery();
+  const { data: pageSections = [] } = usePagesQuery();
 
  let action, title, content;
  let action2, title2, content2, video;

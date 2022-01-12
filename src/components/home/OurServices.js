@@ -2,33 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import {
-  fetchAsyncSections,
-  getAllSections,
-} from "../../features/sections/sectionSlice";
-import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
-import {
-  fetchAsyncArticles,
-  getAllArticles,
-} from "../../features/articles/articleSlice";
+import { useThemesQuery, usePagesQuery, useArticlesQuery } from '../../features/api/apiSlice'
 import { Link } from "react-router-dom";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 export default function OurServices() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAsyncSections());
-    dispatch(fetchAsyncThemes());
-    dispatch(fetchAsyncArticles());
-  }, [dispatch]);
-
-  const pageSections = useSelector(getAllSections);
-  const theme = useSelector(getThemes);
-  const article = useSelector(getAllArticles);
+  const { data: pageSections = [] } = usePagesQuery();
+  const { data: theme = [] } = useThemesQuery();
+  const { data: articles = [] } = useArticlesQuery();
 
   let sectionName;
   let title, content, media;
@@ -55,17 +38,7 @@ export default function OurServices() {
     }
   }
 
-  let articles = [];
-
-  if (article) {
-    let art = article;
-    if (art && art.length !== 0) {
-      art[0]?.map((data, i) => {
-        articles.push(data);
-      });
-    }
-  }
-
+  
   let bgSect, txtColorSection;
 
   if (theme) {
@@ -106,7 +79,7 @@ export default function OurServices() {
               pagination: true,
             }}
           >
-            {articles.map((data, i) => {
+            {articles[0]?.map((data, i) => {
               if (data.category_id === 2) {
                 return (
                   <>

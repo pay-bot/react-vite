@@ -1,29 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { fetchAsyncSections, getAllSections } from "../../features/sections/sectionSlice";
-import { fetchAsyncThemes, getThemes } from "../../features/themes/themeSlice";
-import { fetchAsyncArticles, getAllArticles } from "../../features/articles/articleSlice";
+import { useThemesQuery, usePagesQuery, useArticlesQuery } from '../../features/api/apiSlice'
+
 
 
 export default function HowWeWork() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAsyncSections());
-    dispatch(fetchAsyncThemes());
-    dispatch(fetchAsyncArticles());
-
-    
-  }, [dispatch]);
-  
-  const pageSections = useSelector(getAllSections);
-  const theme = useSelector(getThemes);
-  const article = useSelector(getAllArticles);
-
-  
-
+  const { data: pageSections = [] } = usePagesQuery();
+  const { data: theme = [] } = useThemesQuery();
+  const { data: articles = [] } = useArticlesQuery();
   let title, content, action;
 
   if (pageSections) {
@@ -66,19 +51,8 @@ export default function HowWeWork() {
     }
   }
 
-  let articles = []
 
-  if (article) {
-    let art = article;
-    if (art && art.length !== 0) {
-      art[0]?.map((data, i) => {
-        articles.push(data);
-
-      }
-      )
-
-    }
-  }
+  
 
   
 
@@ -104,7 +78,7 @@ export default function HowWeWork() {
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10 2xl:py-16 xl:py-8">
-          { articles.map((data, i) => {
+          { articles[0]?.map((data, i) => {
             if (data.category_id === 1) {
 
               return (

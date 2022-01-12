@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import MakingYourWorld from "../components/home/MakingYourWorld";
-import Hero from "../components/home/Hero";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
 
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
-import Navbar from "../components/header/Navbar";
+import Navbar1 from "../components/header/Navbar1";
+import { useThemesQuery } from '../features/api/apiSlice'
+import Hero from "../components/home/Hero";
+import MakingYourWorld from "../components/home/MakingYourWorld";
 import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
 import HowWeWork from "../components/home/HowWeWork";
 import OurServices from "../components/home/OurServices";
@@ -15,26 +16,29 @@ import Investor from "../components/home/Investor";
 import Insights from "../components/home/Insights";
 
 export default function Home() {
-  const [pageSections, setPageSections] = useState([]);
-  const [theme, setTheme] = useState([]);
+  const { data: theme = [] } = useThemesQuery();
+  // const [pageSections, setPageSections] = useState([]);
+  // const [theme, setTheme] = useState([]);
 
-  //console.log("making", pageSections);
-  useEffect(() => {
-    let isSubscribed = true;
-    getSectionsDetail(1).then(pageSections => {
-      if (isSubscribed) {
-        setPageSections(pageSections);
-      }
-    });
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+  // //console.log("making", pageSections);
+  // useEffect(() => {
+  //   let isSubscribed = true;
+  //   getSectionsDetail(1).then(pageSections => {
+  //     if (isSubscribed) {
+  //       setPageSections(pageSections);
+  //     }
+  //   });
+  //   getTheme().then(theme => {
+  //     if (isSubscribed) {
+  //       setTheme(theme);
+  //     }
+  //   });
+  //   return () => (isSubscribed = false);
+  // }, []);
 
-  const sortedCols = _.sortBy(pageSections, "list_order");
+  
+
+  // const sortedCols = _.sortBy(pageSections, "list_order");
 
   let
     bgPage
@@ -48,6 +52,7 @@ export default function Home() {
 
         const t = theme ?? theme[0];
         if (t && t.length !== 0) {
+          console.log('ini', t.bgroundPage)
           bgPage = t.bgroundPage
         }
       });
@@ -100,7 +105,7 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
-        <Navbar />
+        <Navbar1 />
         <Hero />
         
         <MakingYourWorld />
