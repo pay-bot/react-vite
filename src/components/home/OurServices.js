@@ -84,6 +84,7 @@ export default function OurServices() {
                 return (
                   <>
                     <SplideSlide>
+                      <Link to={`/articles/${data.slug}`}>
                       <div className="relative flex justify-center">
                         <div className="card-zoom">
                           {data.photos?.map((data) => (
@@ -103,6 +104,7 @@ export default function OurServices() {
                           </div>
                         </div>
                       </div>
+                      </Link>
                     </SplideSlide>
                   </>
                 );

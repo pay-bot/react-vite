@@ -5,7 +5,7 @@ import tw, { styled } from "twin.macro";
 
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
-import Navbar1 from "../components/header/Navbar1";
+import Navbar from "../components/header/Navbar";
 import { useThemesQuery } from '../features/api/apiSlice'
 import Hero from "../components/home/Hero";
 import MakingYourWorld from "../components/home/MakingYourWorld";
@@ -46,13 +46,11 @@ export default function Home() {
 
   if (theme) {
     let tema = theme;
-    console.log('tem', tema)
     if (tema && tema.length !== 0) {
       tema.themes.forEach((theme, i) => {
 
         const t = theme ?? theme[0];
         if (t && t.length !== 0) {
-          console.log('ini', t.bgroundPage)
           bgPage = t.bgroundPage
         }
       });
@@ -105,7 +103,7 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
-        <Navbar1 />
+        <Navbar />
         <Hero />
         
         <MakingYourWorld />

@@ -8,12 +8,11 @@ import About from "./pages/About";
 import ServiceDetail from './components/home/ServiceDetail/ServiceDetail';
 
 function App() {
-  console.log(process.env.REACT_APP_API_URL)
   return (
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} exact />
-          {/* <Route path="/articles/:slug" element={<ServiceDetail/>} /> */}
+          <Route path="/articles/:slug" element={<ServiceDetail/>} />
           <Route path="/about" element={<About />} exact />
         </Routes>
     </BrowserRouter>

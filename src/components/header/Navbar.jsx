@@ -2,20 +2,10 @@ import React,{ useState, useEffect} from 'react'
 import { getTheme } from '../../utils/Api'
 import Navbar2 from './Navbar2';
 import Navbar1 from './Navbar1';
+import { useThemesQuery, useHeadersQuery, usePagesQuery } from '../../features/api/apiSlice'
 
 export default function Navbar() {
-  const [theme, setTheme] = useState([]);
-    // console.log('theme', themeData);
-    
-  useEffect(() => {
-    let isSubscribed = true;
-    getTheme().then(theme => {
-      if (isSubscribed) {
-        setTheme(theme);
-      }
-    });
-    return () => (isSubscribed = false);
-  }, []);
+  const { data: theme = [] } = useThemesQuery();
 
   let navStyle
 
