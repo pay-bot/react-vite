@@ -56,7 +56,7 @@ export default function Insights() {
   `;
 
   const CaptionArticle = styled.p`
-    ${tw`font-bold text-center uppercase `}
+    ${tw`font-bold  uppercase `}
     color : ${txtColorSection};
   `;
   return (
@@ -64,14 +64,19 @@ export default function Insights() {
       <div className="w-full">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-            <CaptionArticle>{action}</CaptionArticle>
+            <CaptionArticle className='text-center'>{action}</CaptionArticle>
 
             <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
         </div>
         <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
-          {articles[0]?.map((data, i) =>  (
-              <>
+    {articles[0]?.map((data, i) =>  {
+     
+
+      if (i > 3 & i < 7) {
+        return (
+          <>
+              
                   <div className="">
                     <div className="card-zoom">
                       {data.photos?.map((data) => (
@@ -82,16 +87,19 @@ export default function Insights() {
                     </div>
                     <div className="p">
                       <CaptionArticle className="py-4 text-left">
-                        {action}
+                      {data.name}
                       </CaptionArticle>
-                      <p className="pb-4 font-semibold capitalize">
-                        {data.name}
-                      </p>
+                      
                       <div className="">{ReactHtmlParser(data.content)}</div>
                     </div>
                   </div>
               </>
-           ) )}
+
+        )
+      }
+    }
+              
+            )}
         </div>
 
       </div>
