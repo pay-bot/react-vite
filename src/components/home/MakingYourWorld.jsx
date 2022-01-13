@@ -83,7 +83,7 @@ const ImageGrid = styled.p`
 
   return (
     <div className="py-8 bg-white xl:py-16">
-      <div className="relative w-full h-full py-16 ">
+      <div className="relative w-full py-16 md:h-full ">
         <div className="flex flex-col items-center w-full h-full lg:flex-row 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-10 2xl:pr-28 hd:pr-24 xl:pr-20 lg:pr-5">
           <div className="flex items-center justify-center h-full xl:w-5/12 lg:w-4/12">
             <div className="w-11/12 mx-auto md:w-6/12 lg:w-full ">
@@ -93,7 +93,7 @@ const ImageGrid = styled.p`
             </div>
           </div>
           <div className="w-10/12 h-full pt-8 xl:w-7/12 lg:w-8/12 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-5 lg:pt-0">
-            <div className="h-full grid-cols-1 gap-10 md:gap-y-0 gap-y-4 md:grid-cols-3 ">
+            <div className="grid h-full grid-cols-1 gap-10 gap-y-8 md:grid-cols-3 ">
               {image.map((data) => (
                 <ImageGrid>
                   <div className="">
