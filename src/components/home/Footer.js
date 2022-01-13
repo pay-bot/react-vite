@@ -81,17 +81,20 @@ export default function Footer() {
         </div>
       </SectionWrapper>
       <FooterWrapper>
-        <div className="flex justify-around w-full">
-          <div className="w-1/12">
+        <div className="flex flex-col justify-around w-full md:flex-row">
+          <div className="w-full md:w-6/12">
+            
+          <div className="w-full md:w-3/12">
             <img src={logo} alt="" className="w-20 h-20" />
           </div>
-          <div className="flex grid w-7/12 grid-cols-3 px-8">
+          <div className="flex grid grid-cols-1 px-8 md:w-7/12 lg:grid-cols-3">
             {footer.map((data) => (
-              <p className="text-white">{data.name}</p>
+              <p className="text-center text-white md:text-left">{data.name}</p>
             ))}
           </div>
-          <div className="w-4/12">
-              <div className="prose text-gray-300">{ReactHtmlParser(contentFooter)}</div>
+          </div>
+          <div className="w-full md:w-6/12">
+              <div className="prose text-center text-gray-300 md:text-left">{ReactHtmlParser(contentFooter)}</div>
           </div>
         </div>
       </FooterWrapper>

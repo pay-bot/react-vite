@@ -99,7 +99,7 @@ let contentId
     <>
       <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 md:h-full ">
         <Hero>
-          <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-6/12 md:w-11/12">
+          <div className="flex items-center w-11/12 h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-7/12">
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
               <CaptionArticle>{action}</CaptionArticle>
               <div className="py-8 text-3xl text-center text-white lg:text-5xl lg:text-7xl lg:text-left">
@@ -108,7 +108,7 @@ let contentId
               <div className="text-xl text-center text-white textfont-semibold lg:text-left ">
                 {ReactHtmlParser(content)}
               </div>
-              <div className="py-20">
+              <div className="flex justify-center py-20 lg:justify-start ">
               <Link to={`/articles/covid19-solutions`}>
                 <div className="inline px-3 py-2 text-white border">{learn}</div>
                 </Link>
@@ -119,7 +119,7 @@ let contentId
 
         
         <video
-          className="object-cover md:h-[50vh] h-[80vh]"
+          className="object-cover md:h-[50vh] h-[80vh] lg:h-[60vh] 2xl:h-[80vh]"
           style={{
             maxWidth: "100%",
             width: "120%",
