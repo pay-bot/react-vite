@@ -50,7 +50,7 @@ export default function Investor() {
   }
 
   const SectionWrapper = styled.div`
-    ${tw`w-full h-full py-16 `}
+    ${tw`w-full h-full py-8 xl:py-16 `}
     background-color: ${bgSect};
   `;
 
@@ -59,8 +59,9 @@ export default function Investor() {
     color : ${txtColorSection};
   `;
   return (
+    <div className="flex py-8 bg-white xl:py-16 ">
     <SectionWrapper>
-      <div className="w-full">
+      <div className="w-11/12 mx-auto md:w-full md:mx-0">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
             <CaptionArticle>{sectionName}</CaptionArticle>
@@ -102,5 +103,6 @@ export default function Investor() {
         </div>
       </div>
     </SectionWrapper>
+    </div>
   );
 }

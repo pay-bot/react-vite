@@ -53,21 +53,23 @@ export default function PeopleAndBusiness() {
   }
 
   const SectionWrapper = styled.div`
-  ${tw`w-full h-full `}
+  ${tw`w-full h-full py-8 xl:py-16 `}
   background-color: ${bgSect} ;
 `;
   return (
+    <div className="flex py-8 bg-white xl:py-16 ">
     <SectionWrapper>
       <div className="flex items-center justify-center max-w-2xl mx-auto xl:py-16 2xl:py-32">
         <div className="">
 
           <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
-          <div className="pb-16 text-5xl font-semibold text-center text-white">{title}</div>
-          <div className="text-center text-white ">
+          <div className="pb-16 text-3xl font-semibold text-center text-white lg:text-5xl">{title}</div>
+          <div className="px-8 text-center text-white md:px-0">
             {ReactHtmlParser(content)}
           </div>
         </div>
       </div>
     </SectionWrapper>
+    </div>
   )
 }

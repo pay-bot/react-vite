@@ -13,7 +13,7 @@ export default function OurServices() {
   const { data: theme = [] } = useThemesQuery();
   const { data: articles = [] } = useArticlesQuery();
 
-  let sectionName;
+  let action;
   let title, content, media;
 
   if (pageSections) {
@@ -24,10 +24,10 @@ export default function OurServices() {
         s?.forEach((section, i) => {
           switch (section.id) {
             case 6:
-              sectionName = s[5].name;
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
               media = section?.components[0]?.media;
+              action = section?.components[0]?.action_name;
 
               break;
             default:
@@ -65,16 +65,16 @@ export default function OurServices() {
   `;
 
   return (
-    <div className="flex py-16 bg-white ">
-      <div className="w-full">
+    <div className="flex py-8 bg-white xl:py-16 ">
+      <div className="w-11/12 mx-auto md:w-full md:mx-0">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
-            <CaptionArticle>{sectionName}</CaptionArticle>
+            <CaptionArticle>{action}</CaptionArticle>
             <div className="py-8 text-4xl text-center">{title}</div>
             <div className="text-center ">{ReactHtmlParser(content)}</div>
           </div>
         </div>
-        <div className="w-11/12 mx-auto 2xl:py-16 xl:py-8">
+        <div className="w-11/12 py-8 mx-auto 2xl:py-16 xl:py-8">
           <Splide
             options={{
               type: "loop",
@@ -82,6 +82,32 @@ export default function OurServices() {
               perPage: 4,
               gap: "3rem",
               pagination: true,
+              breakpoints: {
+                623: {
+                  perPage: 1,
+                  perMove: 1,
+                },
+                1000: {
+                  perPage: 2,
+                  perMove: 1,
+                },
+                1024: {
+                  perPage: 3,
+                  perMove: 1,
+                },
+                1600: {
+                  perPage: 4,
+                  perMove: 1,
+                },
+                1920: {
+                  perPage: 4,
+                  perMove: 1,
+                },
+                2560: {
+                  perPage: 4,
+                  perMove: 1,
+                },
+              },
             }}
           >
             {articles[0]?.map((data, i) => {

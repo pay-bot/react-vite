@@ -82,18 +82,18 @@ const ImageGrid = styled.p`
 
 
   return (
-    <div className="py-16 bg-white">
+    <div className="py-8 bg-white xl:py-16">
       <div className="relative w-full h-full py-16 ">
-        <div className="flex items-center w-full h-full 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-10 2xl:pr-28 hd:pr-24 xl:pr-20 lg:pr-5">
+        <div className="flex flex-col items-center w-full h-full lg:flex-row 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-10 2xl:pr-28 hd:pr-24 xl:pr-20 lg:pr-5">
           <div className="flex items-center justify-center h-full xl:w-5/12 lg:w-4/12">
-            <div className="">
+            <div className="w-11/12 mx-auto md:w-6/12 lg:w-full ">
               <CaptionArticle >{action}</CaptionArticle>
-              <div className="py-8 text-5xl">{title}</div>
+              <div className="py-8 text-3xl lg:text-5xl">{title}</div>
               <div className="text-lg">{ReactHtmlParser(content)}</div>
             </div>
           </div>
-          <div className="h-full xl:w-7/12 lg:w-8/12 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-5">
-            <div className="grid h-full grid-cols-3 gap-10 ">
+          <div className="w-10/12 h-full pt-8 xl:w-7/12 lg:w-8/12 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-5 lg:pt-0">
+            <div className="h-full grid-cols-1 gap-10 md:gap-y-0 gap-y-4 md:grid-cols-3 ">
               {image.map((data) => (
                 <ImageGrid>
                   <div className="">
@@ -107,17 +107,17 @@ const ImageGrid = styled.p`
         </div>
       </div>
       <div className="py-16">
-        <div className="flex items-center w-full 2xl:pl-36 hd:pl-20 xl:pl-24">
-          <div className="w-3/12 ">
+        <div className="flex flex-col items-center w-full pl-8 md:flex-row 2xl:pl-36 hd:pl-20 xl:pl-24">
+          <div className="md:w-3/12 ">
             <div className="">
               <CaptionArticle>
                 {action2}
                 </CaptionArticle>
-              <p className="py-8 text-5xl">{title2}</p>
+              <p className="py-8 text-3xl lg:text-5xl">{title2}</p>
               <div className="text-lg">{ReactHtmlParser(content2)}</div>
             </div>
           </div>
-          <div className="w-9/12 pl-10 2xl:pr-44 hd:pr-36 xl:pr-28">
+          <div className="pt-8 pr-0 pr-8 md:pt-0 md:pl-10 md:w-9/12 2xl:pr-44 hd:pr-36 xl:pr-28">
             <video
               className=""
               style={{ maxWidth: "100%", width: "100%", margin: "" }}

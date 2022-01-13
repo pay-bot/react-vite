@@ -57,16 +57,17 @@ export default function Footer() {
   }
 
   const SectionWrapper = styled.div`
-    ${tw`w-full h-full mt-16`}
+    ${tw`w-full h-full `}
     background-color: ${bgEachSection};
   `;
   const FooterWrapper = styled.div`
-    ${tw`w-full h-full px-8 py-16`}
+    ${tw`w-full h-full px-8 py-8 xl:py-16`}
     background-color: ${bgSect};
   `;
 
   return (
     <>
+     <div className="pt-16 bg-white ">
       <SectionWrapper>
         <div className="flex items-center justify-center max-w-2xl py-8 mx-auto xl:py-10 2xl:py-24">
           <div className="">
@@ -84,7 +85,7 @@ export default function Footer() {
           <div className="w-1/12">
             <img src={logo} alt="" className="w-20 h-20" />
           </div>
-          <div className="flex grid w-7/12 grid-cols-3">
+          <div className="flex grid w-7/12 grid-cols-3 px-8">
             {footer.map((data) => (
               <p className="text-white">{data.name}</p>
             ))}
@@ -94,6 +95,7 @@ export default function Footer() {
           </div>
         </div>
       </FooterWrapper>
+      </div>
     </>
   );
 }

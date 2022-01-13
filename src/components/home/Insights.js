@@ -7,6 +7,8 @@ import {
 } from "../../features/api/apiSlice";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
+import { Link } from "react-router-dom";
+
 
 export default function Insights() {
   const { data: theme = [] } = useThemesQuery();
@@ -56,26 +58,27 @@ export default function Insights() {
   `;
 
   const CaptionArticle = styled.p`
-    ${tw`font-bold  uppercase `}
+    ${tw`font-bold uppercase `}
     color : ${txtColorSection};
   `;
   return (
-    <div className="py-16 bg-white">
-      <div className="w-full">
+    <div className="py-8 bg-white xl:py-16">
+      <div className="w-11/12 mx-auto md:w-full md:mx-0">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
             <CaptionArticle className='text-center'>{action}</CaptionArticle>
 
-            <div className="text-center ">{ReactHtmlParser(content)}</div>
+            <div className="py-8 text-3xl text-center lg:text-5xl">{ReactHtmlParser(content)}</div>
           </div>
         </div>
-        <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
+        <div className="grid w-11/12 py-8 mx-auto md:gap-y-0 gap-y-8 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
     {articles[0]?.map((data, i) =>  {
      
 
       if (i > 3 & i < 7) {
         return (
           <>
+                 <Link to={`/articles/${data.slug}`}>
               
                   <div className="">
                     <div className="card-zoom">
@@ -93,6 +96,7 @@ export default function Insights() {
                       <div className="">{ReactHtmlParser(data.content)}</div>
                     </div>
                   </div>
+                  </Link>
               </>
 
         )

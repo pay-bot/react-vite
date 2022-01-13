@@ -4,6 +4,7 @@ import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 import { useThemesQuery, usePagesQuery, useTextsQuery } from '../../features/api/apiSlice'
 
+import { Link } from "react-router-dom";
 
 
 
@@ -101,15 +102,16 @@ let contentId
           <div className="flex items-center h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-6/12 md:w-11/12">
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
               <CaptionArticle>{action}</CaptionArticle>
-              <div className="py-8 text-5xl text-center text-white lg:text-7xl lg:text-left">
+              <div className="py-8 lg:text-5xl text-3xl text-center text-white lg:text-7xl lg:text-left">
                 {title}
               </div>
               <div className="text-xl text-center text-white textfont-semibold lg:text-left ">
                 {ReactHtmlParser(content)}
               </div>
               <div className="py-20">
-              
+              <Link to={`/articles/covid19-solutions`}>
                 <div className="inline px-3 py-2 text-white border">{learn}</div>
+                </Link>
               </div>
             </div>
           </div>

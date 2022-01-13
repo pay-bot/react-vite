@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 import { useThemesQuery, usePagesQuery, useArticlesQuery } from '../../features/api/apiSlice'
+import { Link } from "react-router-dom";
 
 
 
@@ -64,8 +65,8 @@ export default function HowWeWork() {
 
 
   return (
-    <div className="flex py-16 bg-white ">
-      <div className="w-full ">
+    <div className="flex py-8 bg-white xl:py-16 ">
+      <div className="w-11/12 mx-auto md:w-full md:mx-0 ">
         <div className="flex justify-center mx-auto">
           <div className="max-w-2xl">
             <CaptionArticle className='text-center'>
@@ -73,18 +74,18 @@ export default function HowWeWork() {
             </CaptionArticle>
             <div className="py-8 text-4xl text-center">{title}
             </div>
-            <div className="text-center ">{ReactHtmlParser(content)}
+            <div className="pb-8 text-center lg:pb-0">{ReactHtmlParser(content)}
             </div>
           </div>
         </div>
-        <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10 2xl:py-16 xl:py-8">
+        <div className="grid w-11/12 mx-auto gap-y-8 md:gap-y-0 md:grid-cols-2 lg:grid-cols-3 gap-x-10 2xl:pt-16 xl:pt-8">
           { articles[0]?.map((data, i) => {
             if (data.category_id === 1) {
 
               return (
                 <>
                  
-
+                 <Link to={`/articles/${data.slug}`}>
 
                     <div className="">
                       <div className="card-zoom">
@@ -107,6 +108,7 @@ export default function HowWeWork() {
 
 
                     </div>
+                    </Link>
                 </>
               )
             }

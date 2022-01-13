@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
 
-
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
 import Navbar from "../components/header/Navbar";
-import { useThemesQuery, usePagesQuery } from '../features/api/apiSlice'
+import { useThemesQuery, usePagesQuery } from "../features/api/apiSlice";
 import Hero from "../components/home/Hero";
 import MakingYourWorld from "../components/home/MakingYourWorld";
 import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
@@ -21,81 +20,55 @@ export default function Home() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
 
+  let bgPage;
 
-  
-  let
-  bgPage
-  
-  
   if (theme) {
     let tema = theme;
     if (tema && tema.length !== 0) {
       tema.themes.forEach((theme, i) => {
-        
         const t = theme ?? theme[0];
         if (t && t.length !== 0) {
-          bgPage = t.bgroundPage
+          bgPage = t.bgroundPage;
         }
       });
     }
   }
   const videoEl = useRef(null);
-  
+
   const attemptPlay = () => {
     videoEl &&
-    videoEl.current &&
-    videoEl.current.play().catch(error => {
-      console.error("Error attempting to play", error);
-    });
+      videoEl.current &&
+      videoEl.current.play().catch((error) => {
+        console.error("Error attempting to play", error);
+      });
   };
-  
+
   useEffect(() => {
     attemptPlay();
   }, []);
-  
+
   let action, title, content;
-  
-  
-  
+
   const PageWrapper = styled.div`
-  ${tw`w-full `}
-  background-color: ${bgPage};
-  
+    ${tw`w-full `}
+    background-color: ${bgPage};
   `;
-  
-  // let learn
-  //   {Object.entries(sortedCols).map(data => {
-    //     data[0].map((data) => {
-      //       // data[0]?.map((data) => {
-        //         console.log(data.sections.id)
-        
-        //         learn = data.description
-        //       // })
-        
-        //     })
-        
-        //     })}
-        
-        
-        let sectionIdSort = []
-        {pageSections.map((data, i) => {
-          data.sections.map((data) => {
-            sectionIdSort.push(data);
-            
-          }) 
-        })}
-        
-        const sortedCols = _.sortBy(sectionIdSort, "list_order");
+
+  let sectionIdSort = [];
+  {
+    pageSections.map((data, i) => {
+      data.sections.map((data) => {
+        sectionIdSort.push(data);
+      });
+    });
+  }
+
+  const sortedCols = _.sortBy(sectionIdSort, "list_order");
   return (
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
-        {/* <p className="">{sectionIdSort}</p> */}
-        {/* {sectionIdSort === 2 && (<Hero />)} */}
-
         {sortedCols.map((data, i) => {
-        
-           
           if (data.id === 2) {
             return <Hero />;
           }
@@ -109,37 +82,23 @@ export default function Home() {
             return <HowWeWork />;
           }
           if (data.id === 6) {
-            return <OurServices/>;
+            return <OurServices />;
           }
           if (data.id === 7) {
-            return <Investor/>;
+            return <Investor />;
           }
           if (data.id === 8) {
-            return <Insights/>;
+            return <Insights />;
           }
           if (data.id === 12) {
-            return  <StayUpToDate/>;
+            return <StayUpToDate />;
           }
-
         })}
-        <Footer/>
-        
+        <Footer />
       </div>
     </PageWrapper>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const contenId = 2;
 //   const [texts, setTexts] = useState([]);
@@ -161,7 +120,6 @@ export default function Home() {
 //   setLocations(locationsData);
 //   return locations;
 // };
-
 
 // if (pageSections) {
 //   let sec = pageSections;
@@ -201,11 +159,10 @@ export default function Home() {
 //                 <p className="">{loc.name}</p>
 //               )
 //             }
-//           })} 
+//           })}
 
-
-
-{/* <div className="flex gap-x-4 ">
+{
+  /* <div className="flex gap-x-4 ">
         {content.map((data,i) => 
           // console.log('tests' , data)
             <div className="bg-gray-300">
@@ -224,4 +181,5 @@ export default function Home() {
         )}
 
 
-      </div> */}
+      </div> */
+}

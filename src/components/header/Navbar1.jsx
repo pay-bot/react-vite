@@ -137,7 +137,10 @@ const ChildNav = styled.li`
   return (
     <div style={bg}>
       <nav className="container flex items-center h-full pl-16 mx-auto ">
+      <Link to='/'>
+        
         {logo ? <img src={logo} alt="" className="w-16 h-16" /> : null}
+        </Link>
         <NavWrapper>
           {sortedHeader.map((data, i) => {
             if (data.parent_id === 0)
