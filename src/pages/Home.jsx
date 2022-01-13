@@ -14,6 +14,8 @@ import HowWeWork from "../components/home/HowWeWork";
 import OurServices from "../components/home/OurServices";
 import Investor from "../components/home/Investor";
 import Insights from "../components/home/Insights";
+import StayUpToDate from "../components/home/StayUpToDate";
+import Footer from "../components/home/Footer";
 
 export default function Home() {
   const { data: theme = [] } = useThemesQuery();
@@ -112,6 +114,8 @@ export default function Home() {
         <OurServices/>
         <Investor/>
         <Insights/>
+        <StayUpToDate/>
+        <Footer/>
 
         {/* {sortedCols.map((data, i) => {
           if (data.id === 6) {

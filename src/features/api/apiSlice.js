@@ -15,6 +15,10 @@ export const Api = createApi({
       query: () => '/menus/header',
       providesTags: ['Header'],
     }),
+    footers: builder.query({
+      query: () => '/menus/footer',
+      providesTags: ['Footer'],
+    }),
     pages: builder.query({
       query: () => '/pages/1/sections',
       providesTags: ['Page'],
@@ -34,6 +38,7 @@ export const Api = createApi({
 export const {
   usePagesQuery,
   useThemesQuery,
+  useFootersQuery,
   useHeadersQuery,
   useArticlesQuery,
   useArticleQuery,
