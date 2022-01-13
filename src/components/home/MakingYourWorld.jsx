@@ -75,6 +75,11 @@ export default function MakingYourWorld() {
   color : ${txtColorSection};
 `;
 
+const ImageGrid = styled.p`
+  ${tw`flex items-center justify-center h-full py-10 transition duration-500 transform hover:scale-110 `}
+  background-color : ${bgPage};
+`;
+
 
   return (
     <div className="py-16 bg-white">
@@ -90,12 +95,12 @@ export default function MakingYourWorld() {
           <div className="h-full xl:w-7/12 lg:w-8/12 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-5">
             <div className="grid h-full grid-cols-3 gap-10 ">
               {image.map((data) => (
-                <div className="flex items-center justify-center h-full py-10 transition duration-500 transform bg-red-100 hover:scale-110">
+                <ImageGrid>
                   <div className="">
                     <img src={data.url} alt="" className="w-20 h-20 mx-auto " />
                     <p className="pt-4 text-center">{data.name}</p>
                   </div>
-                </div>
+                </ImageGrid>
               ))}
             </div>
           </div>

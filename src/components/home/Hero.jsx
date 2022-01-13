@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
-import { useThemesQuery, usePagesQuery } from '../../features/api/apiSlice'
+import { useThemesQuery, usePagesQuery, useTextsQuery } from '../../features/api/apiSlice'
 
 
 
@@ -10,6 +10,8 @@ import { useThemesQuery, usePagesQuery } from '../../features/api/apiSlice'
 export default function Hero() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
+  const { data: text = [] } = useTextsQuery();
+  console.log(text)
   
   let bgPage, bgSect, txtColorSection;
 
@@ -39,7 +41,7 @@ export default function Hero() {
   useEffect(() => {
     attemptPlay();
   }, []);
-
+let contentId 
   let action, title, content;
 
   if (pageSections) {
@@ -50,7 +52,7 @@ export default function Hero() {
         s?.forEach((section, i) => {
           switch (section.id) {
             case 2:
-              // console.log("section contentrrr", section);
+              contentId = section?.components[0]?.id;
               action = section?.components[0]?.action_name;
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
@@ -62,6 +64,20 @@ export default function Hero() {
       }
     }
   }
+  let learn
+  {Object.entries(text).map(data => {
+    data[1].map((data) => {
+      // data[0]?.map((data) => {
+        if(data.content_id === 2) {
+        
+        learn = data.description
+      // })
+        }
+    })
+      
+    })}
+
+ 
 
   const Hero = styled.div`
     ${tw`absolute w-full h-full `}
@@ -92,7 +108,8 @@ export default function Hero() {
                 {ReactHtmlParser(content)}
               </div>
               <div className="py-20">
-                <div className="inline px-3 py-2 border">Learn more</div>
+              
+                <div className="inline px-3 py-2 text-white border">{learn}</div>
               </div>
             </div>
           </div>

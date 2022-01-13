@@ -68,7 +68,7 @@ export default function Footer() {
   return (
     <>
       <SectionWrapper>
-        <div className="flex items-center justify-center max-w-2xl mx-auto xl:py-16 2xl:py-32">
+        <div className="flex items-center justify-center max-w-2xl py-8 mx-auto xl:py-10 2xl:py-24">
           <div className="">
             <div className="pb-4 text-sm font-semibold text-center text-white">
               {action}

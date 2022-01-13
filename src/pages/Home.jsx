@@ -6,7 +6,7 @@ import tw, { styled } from "twin.macro";
 import { getSectionsDetail, getTheme } from "../utils/Api";
 import _ from "lodash";
 import Navbar from "../components/header/Navbar";
-import { useThemesQuery } from '../features/api/apiSlice'
+import { useThemesQuery, usePagesQuery } from '../features/api/apiSlice'
 import Hero from "../components/home/Hero";
 import MakingYourWorld from "../components/home/MakingYourWorld";
 import PeopleAndBusiness from "../components/home/PeopleAndBusiness";
@@ -19,38 +19,19 @@ import Footer from "../components/home/Footer";
 
 export default function Home() {
   const { data: theme = [] } = useThemesQuery();
-  // const [pageSections, setPageSections] = useState([]);
-  // const [theme, setTheme] = useState([]);
+  const { data: pageSections = [] } = usePagesQuery();
 
-  // //console.log("making", pageSections);
-  // useEffect(() => {
-  //   let isSubscribed = true;
-  //   getSectionsDetail(1).then(pageSections => {
-  //     if (isSubscribed) {
-  //       setPageSections(pageSections);
-  //     }
-  //   });
-  //   getTheme().then(theme => {
-  //     if (isSubscribed) {
-  //       setTheme(theme);
-  //     }
-  //   });
-  //   return () => (isSubscribed = false);
-  // }, []);
 
   
-
-  // const sortedCols = _.sortBy(pageSections, "list_order");
-
   let
-    bgPage
-
-
+  bgPage
+  
+  
   if (theme) {
     let tema = theme;
     if (tema && tema.length !== 0) {
       tema.themes.forEach((theme, i) => {
-
+        
         const t = theme ?? theme[0];
         if (t && t.length !== 0) {
           bgPage = t.bgroundPage
@@ -59,72 +40,90 @@ export default function Home() {
     }
   }
   const videoEl = useRef(null);
-
+  
   const attemptPlay = () => {
     videoEl &&
-      videoEl.current &&
-      videoEl.current.play().catch(error => {
-        console.error("Error attempting to play", error);
-      });
+    videoEl.current &&
+    videoEl.current.play().catch(error => {
+      console.error("Error attempting to play", error);
+    });
   };
-
+  
   useEffect(() => {
     attemptPlay();
   }, []);
-
- let action, title, content;
-
-  // if (pageSections) {
-  //   let sec = pageSections;
-  //   if (sec && sec.length !== 0) {
-  //     sec.forEach((section, i) => {
-  //       switch (i) {
-  //         case 0:
-  //           const s = section?.components ?? section.components[0];
-  //           if (s && s.length !== 0) {
-  //             console.log('ini' , s[1])
-  //            action = s[1].caption
-  //             title = s[1].heading
-  //              content = s[1].content
-  //           }
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     });
-  //   }
-  // }
-
+  
+  let action, title, content;
+  
+  
+  
   const PageWrapper = styled.div`
   ${tw`w-full `}
   background-color: ${bgPage};
   
-`;
-
-
+  `;
+  
+  // let learn
+  //   {Object.entries(sortedCols).map(data => {
+    //     data[0].map((data) => {
+      //       // data[0]?.map((data) => {
+        //         console.log(data.sections.id)
+        
+        //         learn = data.description
+        //       // })
+        
+        //     })
+        
+        //     })}
+        
+        
+        let sectionIdSort = []
+        {pageSections.map((data, i) => {
+          data.sections.map((data) => {
+            sectionIdSort.push(data);
+            
+          }) 
+        })}
+        
+        const sortedCols = _.sortBy(sectionIdSort, "list_order");
   return (
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
         <Navbar />
-        <Hero />
-        
-        <MakingYourWorld />
-        <PeopleAndBusiness />
-        <HowWeWork />
-        <OurServices/>
-        <Investor/>
-        <Insights/>
-        <StayUpToDate/>
-        <Footer/>
+        {/* <p className="">{sectionIdSort}</p> */}
+        {/* {sectionIdSort === 2 && (<Hero />)} */}
 
-        {/* {sortedCols.map((data, i) => {
-          if (data.id === 6) {
+        {sortedCols.map((data, i) => {
+        
+           
+          if (data.id === 2) {
             return <Hero />;
           }
-          if (data.id === 7) {
+          if (data.id === 3) {
             return <MakingYourWorld />;
           }
-        })} */}
+          if (data.id === 4) {
+            return <PeopleAndBusiness />;
+          }
+          if (data.id === 5) {
+            return <HowWeWork />;
+          }
+          if (data.id === 6) {
+            return <OurServices/>;
+          }
+          if (data.id === 7) {
+            return <Investor/>;
+          }
+          if (data.id === 8) {
+            return <Insights/>;
+          }
+          if (data.id === 12) {
+            return  <StayUpToDate/>;
+          }
+
+        })}
+        <Footer/>
+        
       </div>
     </PageWrapper>
   );

@@ -31,6 +31,10 @@ export const Api = createApi({
       query: (slug) => `/articles/${slug}`,
       providesTags: ['Article'],
     }),
+    texts: builder.query({
+      query: () => `/texts`,
+      providesTags: ['Text'],
+    }),
     
   }),
 });
@@ -42,4 +46,5 @@ export const {
   useHeadersQuery,
   useArticlesQuery,
   useArticleQuery,
+  useTextsQuery,
 } = Api;

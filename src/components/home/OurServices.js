@@ -59,6 +59,11 @@ export default function OurServices() {
     color : ${txtColorSection};
   `;
 
+  const CardTitle = styled.p`
+    ${tw`px-4 py-2 text-white `}
+    background-color : ${bgSect};
+  `;
+
   return (
     <div className="flex py-16 bg-white ">
       <div className="w-full">
@@ -99,9 +104,9 @@ export default function OurServices() {
                         </div>
                         {/* <div className="text-center">{action}</div> */}
                         <div className="absolute bottom-0 top-2/3">
-                          <div className="px-4 py-2 bg-blue-500 ">
+                          <CardTitle>
                             {data.name}
-                          </div>
+                          </CardTitle>
                         </div>
                       </div>
                       </Link>
