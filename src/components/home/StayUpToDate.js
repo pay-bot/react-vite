@@ -54,7 +54,7 @@ export default function StayUpToDate() {
 
     return (
       <div className="flex py-8 bg-white xl:py-16 ">
-        <SectionWrapper>
+        <SectionWrapper className='px-2 md:px-0'>
         <div className="flex items-center justify-center max-w-2xl mx-auto ">
           <div className="">
   
