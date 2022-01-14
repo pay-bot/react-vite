@@ -102,7 +102,7 @@ let contentId
           <div className="flex items-center w-11/12 h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-7/12">
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
               <CaptionArticle>{action}</CaptionArticle>
-              <div className="py-8 text-3xl text-center text-white lg:text-5xl lg:text-7xl lg:text-left">
+              <div className="py-8 text-3xl text-center text-white lg:text-5xl lg:text-6xl lg:text-left">
                 {title}
               </div>
               <div className="text-xl text-center text-white textfont-semibold lg:text-left ">
@@ -119,7 +119,7 @@ let contentId
 
         
         <video
-          className="object-cover md:h-[50vh] h-[80vh] lg:h-[70vh] "
+          className="object-cover md:h-[50vh] h-[80vh] lg:h-[55vh] "
           style={{
             maxWidth: "100%",
             width: "120%",
