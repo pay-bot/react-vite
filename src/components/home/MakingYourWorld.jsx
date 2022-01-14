@@ -107,14 +107,14 @@ const ImageGrid = styled.p`
         </div>
       </div>
       <div className="py-16">
-        <div className="flex flex-col items-center w-full pl-8 md:flex-row 2xl:pl-36 hd:pl-20 xl:pl-24">
+        <div className="flex flex-col items-center w-full pl-8 md:flex-row 2xl:pl-36 hd:pl-20 xl:pl-24 ">
           <div className="md:w-3/12 ">
             <div className="">
               <CaptionArticle>
                 {action2}
                 </CaptionArticle>
               <p className="py-8 text-3xl lg:text-5xl">{title2}</p>
-              <div className="text-lg">{ReactHtmlParser(content2)}</div>
+              <div className="pr-8 text-lg md:pr-8 lg:pr-0">{ReactHtmlParser(content2)}</div>
             </div>
           </div>
           <div className="pt-8 pr-0 pr-8 md:pt-0 md:pl-10 md:w-9/12 2xl:pr-44 hd:pr-36 xl:pr-28">

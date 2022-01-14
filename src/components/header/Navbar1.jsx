@@ -197,7 +197,7 @@ const ChildNav = styled.li`
         <div className="flex justify-end ml-auto lg:hidden" ref={ref}>
             <HiMenuAlt3
               onClick={() => setIsMenuOpen((oldState) => !oldState)}
-              className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+              className="w-10 h-10 p-2 mr-4 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
             />
             {isMenuOpen && (
               <NavWrapper className='absolute inset-x-0 z-30 block w-11/12 py-4 mx-auto bg-white shadow-lg top-20 lg:hidden'>
