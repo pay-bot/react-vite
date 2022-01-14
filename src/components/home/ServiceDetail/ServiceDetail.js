@@ -56,7 +56,7 @@ export default function ServiceDetail() {
           <div className="py-24 pl-0 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
             {Object.entries(article).map((data) => (
               <div className="flex flex-col-reverse items-center w-full lg:flex-row">
-                <div className="w-11/12 pr-16 lg:w-5/12">
+                <div className="w-11/12 md:pr-16 lg:w-5/12">
                   <CaptionArticle className="">{data[1].name}</CaptionArticle>
                   <div className="py-8 text-3xl font-semibold lg:text-5xl">
                     {data[1].summary}
