@@ -81,7 +81,7 @@ let contentId
  
 
   const Hero = styled.div`
-    ${tw`absolute w-full h-full `}
+    ${tw`absolute h-full `}
     background: linear-gradient(
     90deg,
     ${bgSect} 0%,
