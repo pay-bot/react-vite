@@ -55,7 +55,7 @@ export default function StayUpToDate() {
     return (
       <div className="flex py-8 bg-white xl:py-16 ">
         <SectionWrapper>
-        <div className="flex items-center justify-center max-w-2xl mx-auto xl:py-16 2xl:py-32">
+        <div className="flex items-center justify-center max-w-2xl mx-auto ">
           <div className="">
   
             <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-8 lg:mb-16" />
