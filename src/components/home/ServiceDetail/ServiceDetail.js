@@ -54,26 +54,26 @@ export default function ServiceDetail() {
         <Navbar />
         {isSuccess && (
           <div className="py-24 pl-0 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
-            {Object.entries(article).map((data) => (
+          
               <div className="flex flex-col-reverse items-center w-full lg:flex-row">
-                <div className="w-11/12 md:pr-16 lg:w-5/12">
-                  <CaptionArticle className="">{data[1].name}</CaptionArticle>
+                <div className="w-11/12 pr-16 lg:w-5/12">
+                  <CaptionArticle className="">{article.name}</CaptionArticle>
                   <div className="py-8 text-3xl font-semibold lg:text-5xl">
-                    {data[1].summary}
+                    {article.summary}
                   </div>
                   <div className="text-lg prose">
-                    {ReactHtmlParser(data[1].content)}
+                    {ReactHtmlParser(article.content)}
                   </div>
                 </div>
                 <div className="w-full lg:w-7/12">
                   <img
-                    src={data[1].photos[0].url}
+                    src={article.photos[0].url}
                     alt=""
                     className="object-cover"
                   />
                 </div>
               </div>
-            ))}
+            
           </div>
         )}
       </div>
