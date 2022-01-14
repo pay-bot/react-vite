@@ -69,7 +69,7 @@ export default function Footer() {
     <>
      <div className="pt-16 bg-white ">
       <SectionWrapper>
-        <div className="flex items-center justify-center max-w-2xl py-8 mx-auto xl:py-10 2xl:py-24">
+        <div className="flex items-center justify-center max-w-2xl py-8 mx-auto xl:py-16">
           <div className="">
             <div className="pb-4 text-sm font-semibold text-center text-white">
               {action}
@@ -84,8 +84,8 @@ export default function Footer() {
         <div className="flex flex-col justify-around w-full md:flex-row">
           <div className="flex flex-col w-full lg:w-7/12 md:w-6/12 lg:flex-row">
             
-          <div className="flex justify-center w-full md:w-2/12 lg:w-1/12 md:justify-start lg:mx-0 md:mx-8">
-            <img src={logo} alt="" className="w-20 h-20" />
+          <div className="flex justify-center w-full md:w-2/12 lg:w-2/12 md:justify-start lg:mx-0 md:mx-8">
+            <img src={logo} alt="" className="w-20 h-20 border-2 rounded-full" />
           </div>
           <div className="flex grid grid-cols-1 px-8 py-8 md:w-11/12 lg:grid-cols-3 md:py-0 ">
             {footer.map((data) => (
