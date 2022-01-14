@@ -113,11 +113,11 @@ const ImageGrid = styled.p`
               <CaptionArticle>
                 {action2}
                 </CaptionArticle>
-              <p className="py-8 text-3xl lg:text-5xl">{title2}</p>
+              <p className="py-8 pr-8 text-3xl lg:text-5xl md:pr-8 lg:pr-0">{title2}</p>
               <div className="pr-8 text-lg md:pr-8 lg:pr-0">{ReactHtmlParser(content2)}</div>
             </div>
           </div>
-          <div className="pt-8 pr-0 pr-8 md:pt-0 md:pl-10 md:w-9/12 2xl:pr-44 hd:pr-36 xl:pr-28">
+          <div className="pt-8 pr-8 md:pt-0 md:pl-10 md:w-9/12 2xl:pr-44 hd:pr-36 xl:pr-28">
             <video
               className=""
               style={{ maxWidth: "100%", width: "100%", margin: "" }}

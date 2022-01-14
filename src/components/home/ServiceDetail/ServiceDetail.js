@@ -53,7 +53,7 @@ export default function ServiceDetail() {
       <div className="mx-auto bg-white max-w-screen-2xl ">
         <Navbar />
         {isSuccess && (
-          <div className="py-24 pl-0 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
+          <div className="py-8 pl-0 xl:py-24 2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8 md:py-16">
           
               <div className="flex flex-col-reverse items-center w-full lg:flex-row">
                 <div className="w-11/12 pr-16 lg:w-5/12">
