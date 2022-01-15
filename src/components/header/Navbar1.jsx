@@ -147,7 +147,7 @@ const ChildNav = styled.li`
 
 
   return (
-    <div style={bg}>
+    <div style={bg} className='z-30'>
       <nav className="container flex items-center h-full py-4 pl-4 mx-auto lg:pl-16 lg:py-0">
       <Link to='/'>
         
