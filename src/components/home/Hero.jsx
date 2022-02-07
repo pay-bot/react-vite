@@ -120,7 +120,7 @@ let contentId
 
         
         <video
-          className="object-cover md:h-[50vh] h-[80vh] lg:h-[55vh] xl:h-[100vh] "
+          className="object-cover md:h-[50vh] h-[80vh] lg:h-[55vh] xl:h-[100vh] 2xl:h-[70vh] "
           style={{
             maxWidth: "100%",
             width: "120%",
