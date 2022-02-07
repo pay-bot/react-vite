@@ -12,7 +12,7 @@ export default function Hero() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
   const { data: text = [] } = useTextsQuery();
-  console.log(text)
+  // console.log(text)
   
   let bgPage, bgSect, txtColorSection;
 
@@ -43,7 +43,7 @@ export default function Hero() {
     attemptPlay();
   }, []);
 let contentId 
-  let action, title, content;
+  let action, title, content, video;
 
   if (pageSections) {
     let sec = pageSections[0]?.sections;
@@ -57,6 +57,7 @@ let contentId
               action = section?.components[0]?.action_name;
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
+              video = section?.components[0]?.action_url;
               break;
             default:
               break;
@@ -97,7 +98,7 @@ let contentId
 
   return (
     <>
-      <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 md:h-full ">
+      <div className="relative w-full bg-white 2xl:pl-16 hd:pl-12 md:h-full z-0 ">
         <Hero>
           <div className="flex items-center w-11/12 h-full mx-auto lg:mx-0 2xl:w-6/12 lg:w-7/12">
             <div className="2xl:pl-32 hd:pl-16 xl:pl-20 lg:pl-8">
@@ -131,7 +132,7 @@ let contentId
           muted
           controls
           alt="All the devices"
-          src="https://d2csxpduxe849s.cloudfront.net/media/A13DCF71-0059-4014-930224BDACD7889E/F68C503E-9957-4E5F-89BEEF67DB9A2F34/6DCE7A31-D0F8-4EF7-8F2E138C9F78482A.mp4"
+          src={video}
           ref={videoEl}
         />
       </div>

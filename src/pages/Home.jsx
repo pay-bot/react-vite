@@ -15,6 +15,7 @@ import Investor from "../components/home/Investor";
 import Insights from "../components/home/Insights";
 import StayUpToDate from "../components/home/StayUpToDate";
 import Footer from "../components/home/Footer";
+import ModalManger from "../utils/ModalManger";
 
 export default function Home() {
   const { data: theme = [] } = useThemesQuery();
@@ -67,6 +68,7 @@ export default function Home() {
   return (
     <PageWrapper>
       <div className="mx-auto max-w-screen-2xl ">
+        {/* <ModalManger/> */}
         <Navbar />
         {sortedCols.map((data, i) => {
           if (data.id === 2) {

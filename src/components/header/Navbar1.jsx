@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 import { useThemesQuery, useHeadersQuery, usePagesQuery } from '../../features/api/apiSlice'
 import { HiMenuAlt3 } from "react-icons/hi";
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../features/modal/modalSlice';
 
 
 
@@ -144,16 +146,17 @@ const ChildNav = styled.li`
   }
 `;
 
+const dispatch = useDispatch();
 
 
   return (
-    <div style={bg}>
+    <div style={bg} className="z-100">
       <nav className="container flex items-center h-full py-4 pl-4 mx-auto lg:pl-16 lg:py-0">
       <Link to='/'>
         
         {logo ? <img src={logo} alt="" className="w-12 h-12 md:h-16 md:w-16" /> : null}
         </Link>
-        <NavWrapper className='hidden lg:flex'>
+        <NavWrapper className='hidden lg:flex z-30'>
           {sortedHeader.map((data, i) => {
             if (data.parent_id === 0)
               return (
@@ -168,15 +171,15 @@ const ChildNav = styled.li`
                       {data.parent_id === 0 ? data.name : ""}
                     </Nav>
                     <ul
-                      className={`absolute bg-white left-0 mt-5  z-10 hidden group-hover:block  nav-shad`}
+                      className={`absolute bg-white left-0 mt-5  z-30 hidden group-hover:block  nav-shad`}
                     >
                       {sortedHeaderChild.map((child, i) => {
                         if (data.id === child.parent_id) {
                           return (
                             <>
-                              <svg className="absolute top-0 left-0 z-0 block w-4 h-4 ml-3 -mt-3 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                              <svg className="absolute top-0 left-0 z-100 block w-4 h-4 ml-3 -mt-3 text-white fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
                               <ChildNav
-                                className={`${bgHead}`}
+                                className={`${bgHead} z-100`}
                               >
                                 <Link
                                   to="/"
@@ -193,6 +196,27 @@ const ChildNav = styled.li`
                 </ul>
               );
           })}
+          {/* <ul className='header-left'>
+        <li
+          onClick={() =>
+            dispatch(
+              openModal({
+                name: 'Login',
+                childrenProps: { name: 'kareem', email: 'kareem@gmail.com' },
+              })
+            )
+          }
+        >
+          Login
+        </li>
+        <li
+          onClick={() =>
+            dispatch(openModal({ name: 'Register', position: 'bottom' }))
+          }
+        >
+          Register
+        </li>
+      </ul> */}
         </NavWrapper>
         <div className="flex justify-end ml-auto lg:hidden" ref={ref}>
             <HiMenuAlt3
