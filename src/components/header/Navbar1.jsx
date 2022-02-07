@@ -150,11 +150,7 @@ const dispatch = useDispatch();
 
 
   return (
-<<<<<<< HEAD
     <div style={bg} className="z-100">
-=======
-    <div style={bg} className='z-30'>
->>>>>>> b0f529ddf9f07dc4e9ae4264cdd95e1083934ff2
       <nav className="container flex items-center h-full py-4 pl-4 mx-auto lg:pl-16 lg:py-0">
       <Link to='/'>
         
