@@ -4,9 +4,9 @@ import tw, { styled } from "twin.macro";
 import { useThemesQuery, usePagesQuery } from '../../features/api/apiSlice'
 
 export default function StayUpToDate() {
-    const { data: theme = [] } = useThemesQuery();
+  const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
-  
+
   let bgPage, bgSect, txtColorSection;
 
   if (theme) {
@@ -26,7 +26,7 @@ export default function StayUpToDate() {
   let action, title, content, media;
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -52,12 +52,12 @@ export default function StayUpToDate() {
   background-color: ${bgSect} ;
 `;
 
-    return (
-      <div className="flex py-8 bg-white xl:py-16 ">
-        <SectionWrapper className='px-2 md:px-0'>
+  return (
+    <div className="flex py-8 bg-white xl:py-16 ">
+      <SectionWrapper className='px-2 md:px-0'>
         <div className="flex items-center justify-center max-w-2xl mx-auto ">
           <div className="">
-  
+
             <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-8 lg:mb-16" />
             <div className="pb-8 text-3xl font-semibold text-center text-white lg:pb-16 lg:text-5xl">{title}</div>
             <div className="text-center text-white ">
@@ -66,6 +66,6 @@ export default function StayUpToDate() {
           </div>
         </div>
       </SectionWrapper>
-      </div>
-    )
+    </div>
+  )
 }

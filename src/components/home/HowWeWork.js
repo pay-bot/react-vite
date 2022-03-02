@@ -13,7 +13,7 @@ export default function HowWeWork() {
   let title, content, action;
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -24,20 +24,20 @@ export default function HowWeWork() {
               title = section?.components[0]?.heading;
               content = section?.components[0]?.content;
               action = section?.components[0]?.action_name;
-           
 
-            break;
-          default:
-            break;
-        }
-      });
+
+              break;
+            default:
+              break;
+          }
+        });
+      }
     }
   }
-}
 
 
 
-  let bgSect,txtColorSection
+  let bgSect, txtColorSection
 
   if (theme) {
     let tema = theme?.themes;
@@ -53,9 +53,9 @@ export default function HowWeWork() {
   }
 
 
-  
 
-  
+
+
 
   const CaptionArticle = styled.p`
   ${tw`font-bold uppercase`}
@@ -79,13 +79,13 @@ export default function HowWeWork() {
           </div>
         </div>
         <div className="grid w-11/12 mx-auto gap-y-8 md:gap-y-0 md:grid-cols-2 lg:grid-cols-3 gap-x-10 2xl:pt-16 xl:pt-8">
-          { articles[0]?.map((data, i) => {
+          {articles[0]?.map((data, i) => {
             if (data.category_id === 1) {
 
               return (
                 <>
-                 
-                 <Link to={`/articles/${data.slug}`}>
+
+                  <Link to={`/articles/${data.slug}`}>
 
                     <div className="">
                       <div className="card-zoom">
@@ -98,17 +98,17 @@ export default function HowWeWork() {
                       </div>
                       <div className="p">
 
-                        
-                      <CaptionArticle className="py-4 text-left">{action}</CaptionArticle>
-                      <p className="pb-4 font-semibold capitalize">{data.name}</p>
-                      <div className="">
-            {ReactHtmlParser(data.content)}
-          </div>
+
+                        <CaptionArticle className="py-4 text-left">{action}</CaptionArticle>
+                        <p className="pb-4 font-semibold capitalize">{data.name}</p>
+                        <div className="">
+                          {ReactHtmlParser(data.content)}
+                        </div>
                       </div>
 
 
                     </div>
-                    </Link>
+                  </Link>
                 </>
               )
             }

@@ -13,7 +13,7 @@ export default function PeopleAndBusiness() {
 
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -25,16 +25,16 @@ export default function PeopleAndBusiness() {
               content = section?.components[0]?.content;
               media = section?.components[0]?.media;
 
-        
 
-          break;
-        default:
-          break;
-        }
-      });
+
+              break;
+            default:
+              break;
+          }
+        });
+      }
     }
   }
-}
 
   let bgSect;
 
@@ -58,18 +58,18 @@ export default function PeopleAndBusiness() {
 `;
   return (
     <div className="flex py-8 bg-white xl:py-16 ">
-    <SectionWrapper>
-      <div className="flex items-center justify-center max-w-2xl mx-auto ">
-        <div className="">
+      <SectionWrapper>
+        <div className="flex items-center justify-center max-w-2xl mx-auto ">
+          <div className="">
 
-          <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
-          <div className="pb-16 text-3xl font-semibold text-center text-white lg:text-5xl">{title}</div>
-          <div className="px-8 text-center text-white md:px-0">
-            {ReactHtmlParser(content)}
+            <img src={`${process.env.REACT_APP_API_ASSET_URL}/uploads/images/${media}`} alt="" className="w-10 h-10 mx-auto mb-16" />
+            <div className="pb-16 text-3xl font-semibold text-center text-white lg:text-5xl">{title}</div>
+            <div className="px-8 text-center text-white md:px-0">
+              {ReactHtmlParser(content)}
+            </div>
           </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
     </div>
   )
 }

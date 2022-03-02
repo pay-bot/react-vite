@@ -55,12 +55,12 @@ export default function Home() {
     background-color: ${bgPage};
   `;
 
+  console.log('page', pageSections)
+
   let sectionIdSort = [];
   {
-    pageSections.map((data, i) => {
-      data.sections.map((data) => {
+    pageSections?.model?.sections?.map((data, i) => {
         sectionIdSort.push(data);
-      });
     });
   }
 

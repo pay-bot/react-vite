@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 export default function Insights() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
-  const { data: articles = [],  isSuccess } = useArticlesQuery();
+  const { data: articles = [], isSuccess } = useArticlesQuery();
 
   let sectionName;
   let title, content, action;
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -72,38 +72,38 @@ export default function Insights() {
           </div>
         </div>
         <div className="grid w-11/12 py-8 mx-auto md:gap-y-0 gap-y-8 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
-    {articles[0]?.map((data, i) =>  {
-     
+          {articles[0]?.map((data, i) => {
 
-      if (i > 3 & i < 7) {
-        return (
-          <>
-                 <Link to={`/articles/${data.slug}`}>
-              
-                  <div className="">
-                    <div className="card-zoom">
-                      {data.photos?.map((data) => (
-                        <div className="imgBox ">
-                          <img src={data.url} alt="" className="" />
-                        </div>
-                      ))}
+
+            if (i > 3 & i < 7) {
+              return (
+                <>
+                  <Link to={`/articles/${data.slug}`}>
+
+                    <div className="">
+                      <div className="card-zoom">
+                        {data.photos?.map((data) => (
+                          <div className="imgBox ">
+                            <img src={data.url} alt="" className="" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="p">
+                        <CaptionArticle className="py-4 text-left">
+                          {data.name}
+                        </CaptionArticle>
+
+                        <div className="">{ReactHtmlParser(data.content)}</div>
+                      </div>
                     </div>
-                    <div className="p">
-                      <CaptionArticle className="py-4 text-left">
-                      {data.name}
-                      </CaptionArticle>
-                      
-                      <div className="">{ReactHtmlParser(data.content)}</div>
-                    </div>
-                  </div>
                   </Link>
-              </>
+                </>
 
-        )
-      }
-    }
-              
-            )}
+              )
+            }
+          }
+
+          )}
         </div>
 
       </div>

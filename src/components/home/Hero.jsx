@@ -2,18 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 
 import ReactHtmlParser from "react-html-parser";
 import tw, { styled } from "twin.macro";
-import { useThemesQuery, usePagesQuery, useTextsQuery } from '../../features/api/apiSlice'
+import {
+  useThemesQuery,
+  usePagesQuery,
+  useTextsQuery,
+} from "../../features/api/apiSlice";
 
 import { Link } from "react-router-dom";
-
-
 
 export default function Hero() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
   const { data: text = [] } = useTextsQuery();
   // console.log(text)
-  
+
   let bgPage, bgSect, txtColorSection;
 
   if (theme) {
@@ -42,11 +44,11 @@ export default function Hero() {
   useEffect(() => {
     attemptPlay();
   }, []);
-let contentId 
+  let contentId;
   let action, title, content, video;
-
+  console.log("p", pageSections);
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -66,20 +68,18 @@ let contentId
       }
     }
   }
-  let learn
-  {Object.entries(text).map(data => {
-    data[1].map((data) => {
-      // data[0]?.map((data) => {
-        if(data.content_id === 2) {
-        
-        learn = data.description
-      // })
+  let learn;
+  {
+    Object.entries(text).map((data) => {
+      data[1].map((data) => {
+        // data[0]?.map((data) => {
+        if (data.content_id === 2) {
+          learn = data.description;
+          // })
         }
-    })
-      
-    })}
-
- 
+      });
+    });
+  }
 
   const Hero = styled.div`
     ${tw`absolute z-30 h-full`}
@@ -110,15 +110,16 @@ let contentId
                 {ReactHtmlParser(content)}
               </div>
               <div className="flex justify-center py-20 lg:justify-start ">
-              <Link to={`/articles/covid19-solutions`}>
-                <div className="inline px-3 py-2 text-white border">{learn}</div>
+                <Link to={`/articles/covid19-solutions`}>
+                  <div className="inline px-3 py-2 text-white border">
+                    {learn}
+                  </div>
                 </Link>
               </div>
             </div>
           </div>
         </Hero>
 
-        
         <video
           className="object-cover md:h-[50vh] h-[80vh] lg:h-[55vh] xl:h-[100vh] 2xl:h-[70vh] "
           style={{

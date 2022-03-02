@@ -17,7 +17,7 @@ export default function OurServices() {
   let title, content, media;
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -38,7 +38,7 @@ export default function OurServices() {
     }
   }
 
-  
+
   let bgSect, txtColorSection;
 
   if (theme) {
@@ -116,25 +116,25 @@ export default function OurServices() {
                   <>
                     <SplideSlide>
                       <Link to={`/articles/${data.slug}`}>
-                      <div className="relative flex justify-center">
-                        <div className="card-zoom">
-                          {data.photos?.map((data) => (
-                            <div className="imgBox w-[300px]">
-                              <img
-                                src={data.url}
-                                alt=""
-                                className="flex object-cover w-full h-72"
-                              />
-                            </div>
-                          ))}
+                        <div className="relative flex justify-center">
+                          <div className="card-zoom">
+                            {data.photos?.map((data) => (
+                              <div className="imgBox w-[300px]">
+                                <img
+                                  src={data.url}
+                                  alt=""
+                                  className="flex object-cover w-full h-72"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          {/* <div className="text-center">{action}</div> */}
+                          <div className="absolute bottom-0 top-2/3">
+                            <CardTitle>
+                              {data.name}
+                            </CardTitle>
+                          </div>
                         </div>
-                        {/* <div className="text-center">{action}</div> */}
-                        <div className="absolute bottom-0 top-2/3">
-                          <CardTitle>
-                            {data.name}
-                          </CardTitle>
-                        </div>
-                      </div>
                       </Link>
                     </SplideSlide>
                   </>

@@ -13,7 +13,7 @@ export default function Investor() {
   let title, content, media;
 
   if (pageSections) {
-    let sec = pageSections[0]?.sections;
+    let sec = pageSections?.model?.sections;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
@@ -60,20 +60,20 @@ export default function Investor() {
   `;
   return (
     <div className="flex py-8 bg-white xl:py-16 ">
-    <SectionWrapper>
-      <div className="w-11/12 mx-auto md:w-full md:mx-0">
-        <div className="flex justify-center mx-auto">
-          <div className="max-w-2xl">
-            <CaptionArticle>{sectionName}</CaptionArticle>
+      <SectionWrapper>
+        <div className="w-11/12 mx-auto md:w-full md:mx-0">
+          <div className="flex justify-center mx-auto">
+            <div className="max-w-2xl">
+              <CaptionArticle>{sectionName}</CaptionArticle>
 
-            <div className="py-8 text-4xl text-center text-white">{title}</div>
-            <div className="text-center text-white ">
-              {ReactHtmlParser(content)}
+              <div className="py-8 text-4xl text-center text-white">{title}</div>
+              <div className="text-center text-white ">
+                {ReactHtmlParser(content)}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
-          {/* {test.map((data, i) => {
+          <div className="grid w-11/12 grid-cols-3 mx-auto gap-x-10">
+            {/* {test.map((data, i) => {
             if (data.category.id === data.category_id) {
 
               return (
@@ -100,9 +100,9 @@ export default function Investor() {
               )
             }
           })} */}
+          </div>
         </div>
-      </div>
-    </SectionWrapper>
+      </SectionWrapper>
     </div>
   );
 }
