@@ -74,7 +74,7 @@ export default function MakingYourWorld() {
     ${tw`flex items-center justify-center h-full py-10 transition duration-500 transform hover:scale-110 `}
     background-color : ${bgPage};
   `;
-
+console.log('im', pageSections)
   return (
     <div className="py-8 bg-white xl:py-16">
       <div className="relative w-full py-16 md:h-full ">

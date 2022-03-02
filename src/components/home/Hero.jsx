@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   const { data: theme = [] } = useThemesQuery();
   const { data: pageSections = [] } = usePagesQuery();
-  const { data: text = [] } = useTextsQuery();
+  // const { data: text = [] } = useTextsQuery();
   // console.log(text)
 
   let bgPage, bgSect, txtColorSection;
@@ -46,20 +46,24 @@ export default function Hero() {
   }, []);
   let contentId;
   let action, title, content, video;
+  let textLearn;
   console.log("p", pageSections);
   if (pageSections) {
-    let sec = pageSections?.model?.sections;
+    let sec = pageSections?.contentWithTexts;
     if (sec && sec.length !== 0) {
       const s = sec ?? sec;
       if (s && s.length !== 0) {
         s?.forEach((section, i) => {
           switch (section.id) {
             case 2:
-              contentId = section?.components[0]?.id;
-              action = section?.components[0]?.action_name;
-              title = section?.components[0]?.heading;
-              content = section?.components[0]?.content;
-              video = section?.components[0]?.action_url;
+              contentId = section?.id;
+              action = section?.action_name;
+              title = section?.heading;
+              content = section?.content;
+              video = section?.action_url;
+              textLearn = Object.entries(section?.texts).map(
+                (data) => data[1].title
+              );
               break;
             default:
               break;
@@ -68,18 +72,18 @@ export default function Hero() {
       }
     }
   }
-  let learn;
-  {
-    Object.entries(text).map((data) => {
-      data[1].map((data) => {
-        // data[0]?.map((data) => {
-        if (data.content_id === 2) {
-          learn = data.description;
-          // })
-        }
-      });
-    });
-  }
+  // let learn;
+  // {
+  //   Object.entries(text).map((data) => {
+  //     data[1].map((data) => {
+  //       // data[0]?.map((data) => {
+  //       if (data.content_id === 2) {
+  //         learn = data.description;
+  //         // })
+  //       }
+  //     });
+  //   });
+  // }
 
   const Hero = styled.div`
     ${tw`absolute z-30 h-full`}
@@ -112,7 +116,7 @@ export default function Hero() {
               <div className="flex justify-center py-20 lg:justify-start ">
                 <Link to={`/articles/covid19-solutions`}>
                   <div className="inline px-3 py-2 text-white border">
-                    {learn}
+                    {textLearn}
                   </div>
                 </Link>
               </div>
